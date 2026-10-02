@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Klurtenias</title>
+<style>
+:root{--bg:#0f0e17;--card:#1a1823;--accent:#ff8906;--accent2:#f25f4c;--text:#fffffe;--muted:#a7a9be;--border:#2e2c3a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:16px}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:270px;background:var(--card);border-right:1px solid var(--border);padding:2rem 1.5rem;position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0}
+.sidebar h1{font-size:1.25rem;color:var(--accent);margin-bottom:.3rem}
+.sidebar .sub{font-size:.75rem;color:var(--muted);margin-bottom:1.5rem}
+.sidebar nav a{display:block;color:var(--muted);text-decoration:none;padding:.45rem .7rem;border-radius:6px;font-size:.92rem;transition:all .15s}
+.sidebar nav a:hover{background:var(--bg);color:var(--accent)}
+.sidebar nav a.sub-link{padding-left:1.5rem;font-size:.85rem}
+.content{flex:1;max-width:1000px;padding:3rem;min-width:0}
+section{margin-bottom:3.5rem;scroll-margin-top:1rem}
+h2{color:var(--accent);font-size:2rem;margin-bottom:1rem;border-bottom:2px solid var(--border);padding-bottom:.5rem}
+h3{color:var(--accent2);font-size:1.35rem;margin:2rem 0 .8rem;scroll-margin-top:1rem}
+h4{color:var(--text);font-size:1.1rem;margin:1.5rem 0 .5rem}
+h5{color:var(--muted);font-size:1rem;margin:1rem 0 .4rem;font-weight:600}
+p{margin-bottom:1rem}
+em{color:var(--muted);font-style:italic}
+strong{color:var(--accent)}
+code{background:var(--card);padding:.1rem .4rem;border-radius:4px;font-family:monospace;font-size:.9em;color:var(--accent2)}
+ul,ol{margin:.5rem 0 1rem 1.5rem}
+li{margin-bottom:.4rem}
+table{width:100%;border-collapse:collapse;margin:.5rem 0 1rem;background:var(--bg);border-radius:6px;overflow:hidden;font-size:.9rem}
+th{background:var(--border);padding:.55rem .8rem;text-align:left;color:var(--accent);font-weight:600;font-size:.85rem}
+td{padding:.45rem .8rem;border-top:1px solid var(--border)}
+tr:hover td{background:rgba(255,137,6,.05)}
+.callout{background:var(--card);border-left:4px solid var(--accent);padding:1rem 1.2rem;border-radius:6px;margin:1.2rem 0}
+.callout.tip{border-left-color:#4ade80}
+.callout.warn{border-left-color:#facc15}
+.callout.danger{border-left-color:#ef4444}
+.callout p{margin:0;font-size:.95rem}
+.badge{display:inline-block;padding:.1rem .5rem;border-radius:4px;font-size:.72rem;font-weight:600;vertical-align:middle}
+.badge.comun{background:#3f3f46;color:#e4e4e7}
+.badge.media{background:#166534;color:#bbf7d0}
+.badge.raro{background:#1e40af;color:#bfdbfe}
+.badge.epico{background:#6b21a8;color:#e9d5ff}
+.badge.legendario{background:#9a3412;color:#fed7aa}
+.badge.mitico{background:#991b1b;color:#fecaca}
+.steps{counter-reset:s;list-style:none;margin-left:0}
+.steps li{counter-increment:s;padding-left:2.5rem;position:relative;margin-bottom:1rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:1.8rem;height:1.8rem;background:var(--accent);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.activities{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem;margin:1rem 0}
+.activity{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.6rem .9rem;font-size:.9rem}
+.activity.no{opacity:.45}
+details{background:var(--card);border:1px solid var(--border);border-radius:8px;margin:.6rem 0;padding:0 .9rem}
+summary{cursor:pointer;padding:.75rem .3rem;font-weight:600;color:var(--accent);list-style:none;user-select:none;font-size:1rem}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▶";display:inline-block;font-size:.7rem;margin-right:.5rem;transition:transform .15s}
+details[open]>summary::before{transform:rotate(90deg)}
+details[open]{padding-bottom:.9rem}
+details .inner{padding:0 .2rem}
+details.nested{margin-left:1rem;background:rgba(255,137,6,.03)}
+details.nested summary{font-size:.95rem;padding:.65rem .3rem}
+details.subnested{margin-left:2rem;background:rgba(255,137,6,.05)}
+details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
+.zone-header{background:linear-gradient(135deg,rgba(255,137,6,.15),transparent);border-radius:10px;padding:1.4rem;margin:1.5rem 0 1rem;border:1px solid var(--border)}
+.zone-header h3{margin-top:0}
+.horario{font-size:.8rem;color:var(--muted);font-style:italic}
+.footer{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;text-align:center}
+.mob-summary{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.mob-summary .mob-name{flex:1}
+.mob-summary .mob-meta{font-size:.8rem;color:var(--muted);font-weight:400}
+@media (max-width:900px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;padding:1rem}
+  .sidebar nav{display:flex;flex-wrap:wrap;gap:.3rem}
+  .sidebar nav a{padding:.4rem .7rem;font-size:.85rem}
+  .content{padding:1.5rem}
+  h2{font-size:1.5rem}
+  details.nested{margin-left:.3rem}
+  details.subnested{margin-left:.6rem}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h1>📖 Guía de Klurtenias</h1>
+<p class="sub">Manual del aventurero · v1.0</p>
+<nav>
+<a href="#s1">1. Empezando</a>
+<a href="#s2">2. Movimiento</a>
+<a href="#s3">3. Recolecciones</a>
+<a href="#s4">4. Profesiones</a>
+<a href="#s5">5. Habilidades</a>
+<a href="#s6">6. Zonas y criaturas</a>
+<a href="#s6-bosque" class="sub-link">↳ Bosque del Alba</a>
+<a href="#s6-forja" class="sub-link">↳ Forja de Pyraen</a>
+<a href="#s7">7. Progresión</a>
+</nav>
+</aside>
+<main class="content">
+
+<section id="s1"><h2>1. Empezando</h2>
+<p><strong>Klurtenias</strong> es un mundo quebrado por la guerra. Cuando el Vacío Primordial irrumpió por primera vez, un emperador llamado Kaelus entregó su alma para invocar a Aeternus, el Uno y el Todo, y detener la invasión. La grieta se cerró, pero quedó una cicatriz abierta en el mundo.</p>
+<p>Ahora, <em>vos</em> cruzás el umbral. Antes de pisar la Ciudadela, tenés que elegir quién vas a ser.</p>
+<h3>Crear tu personaje</h3>
+<ol class="steps">
+<li>Escribí <code>/start</code> para comenzar el registro.</li>
+<li>Elegí tu <strong>género</strong>. No afecta stats, pero algunos NPCs te hablan distinto.</li>
+<li>Elegí tu <strong>raza</strong>. Cada una tiene stats base distintos y raciales únicas.</li>
+<li>Si la raza lo permite, elegí una <strong>variante</strong>.</li>
+<li>Elegí un <strong>nombre</strong>.</li>
+</ol>
+<div class="callout tip"><p>💡 No le des demasiada importancia a la raza en tu primera partida. Todas son jugables.</p></div>
+<h3>Las razas de Klurtenias</h3>
+<p>Cada raza tiene stats base distintos (Fuerza, Destreza, Inteligencia, Constitución, Carisma) y raciales únicas.</p>
+<table><thead><tr><th>Raza</th><th>💪 FUE</th><th>🦵 DES</th><th>🧠 INT</th><th>❤️ CON</th><th>🌀 CAR</th></tr></thead><tbody>
+<tr><td><strong>Humanos</strong></td><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td></tr>
+<tr><td><strong>Altos Elfos</strong></td><td>2</td><td>6</td><td>5</td><td>2</td><td>5</td></tr>
+<tr><td><strong>Elfos Oscuros</strong></td><td>3</td><td>7</td><td>3</td><td>3</td><td>4</td></tr>
+<tr><td><strong>Enanos</strong></td><td>5</td><td>2</td><td>3</td><td>6</td><td>4</td></tr>
+<tr><td><strong>Altos Orcos</strong></td><td>7</td><td>3</td><td>1</td><td>7</td><td>2</td></tr>
+<tr><td><strong>Serafines</strong></td><td>2</td><td>3</td><td>7</td><td>3</td><td>5</td></tr>
+<tr><td><strong>Demonios</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Nagas</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Reptilianos</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Manas Primordiales</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody></table>
+<h3>Las clases</h3>
+<p>El <strong>Instructor</strong> en los Cuarteles te asigna una clase según el arma que elijas:</p>
+<table><thead><tr><th>Clase</th><th>Arma típica</th><th>Rol</th></tr></thead><tbody>
+<tr><td>⚔️ <strong>Guerrero</strong></td><td>Espada, maza, hacha, lanza</td><td>Cuerpo a cuerpo, tanque o DPS</td></tr>
+<tr><td>🗡️ <strong>Pícaro</strong></td><td>Daga, cuchillo, arma de puño</td><td>Daño crítico, sangrado, evasión</td></tr>
+<tr><td>🏹 <strong>Explorador</strong></td><td>Arco, ballesta, pistola</td><td>Daño a distancia, precisión</td></tr>
+<tr><td>🔮 <strong>Mago</strong></td><td>Bastón, varita, orbe</td><td>Hechizos elementales, soporte</td></tr>
+</tbody></table>
+<div class="callout warn"><p>⚠️ El arma que elijas al principio define tu clase. Cambiarla requiere empezar un personaje nuevo.</p></div>
+</section>
+<section id="s2"><h2>2. Movimiento</h2>
+<p>Te movés por el mundo a través de los <strong>botones de dirección</strong> que aparecen en cada zona. El mapa está dividido en zonas concéntricas: la Ciudadela y las zonas 1 son las más seguras, las zonas interiores son las más peligrosas.</p>
+<h3>El Bosque del Alba</h3>
+<p>Al norte de la Ciudadela se extiende el Bosque del Alba. Está dividido en <strong>5 zonas concéntricas</strong>, cada una con sus propios recursos, criaturas y nivel de peligro.</p>
+<table><thead><tr><th>Zona</th><th>Nodos</th><th>Nivel</th><th>Peligro</th></tr></thead><tbody>
+<tr><td>1. Claros del Alba</td><td>16</td><td>1-5</td><td>🟢 Muy bajo</td></tr>
+<tr><td>2. Maleza Espinosa</td><td>12</td><td>5-15</td><td>🟢 Bajo</td></tr>
+<tr><td>3. Arboleda de los Colmillos</td><td>8</td><td>15-35</td><td>🟡 Medio</td></tr>
+<tr><td>4. Corazón Rocoso</td><td>4</td><td>35-55</td><td>🟠 Alto</td></tr>
+<tr><td>5. Claro Prohibido</td><td>1</td><td>55+</td><td>💀 Jefe único</td></tr>
+</tbody></table>
+<h3>La Forja de Pyraen</h3>
+<p>Más allá del bosque, la Forja de Pyraen es una zona volcánica con <strong>5 zonas concéntricas</strong>.</p>
+<table><thead><tr><th>Zona</th><th>Nodos</th><th>Rango</th><th>Peligro</th></tr></thead><tbody>
+<tr><td>1. Páramos de Ceniza</td><td>16</td><td>D</td><td>🟠 Alto</td></tr>
+<tr><td>2. Grietas de Lava</td><td>12</td><td>C</td><td>🟠 Alto</td></tr>
+<tr><td>3. Cañón de Obsidiana</td><td>8</td><td>B</td><td>🔴 Muy alto</td></tr>
+<tr><td>4. Laderas del Coloso</td><td>4</td><td>A</td><td>🔴 Extremo</td></tr>
+<tr><td>5. Cráter del Dragón</td><td>1</td><td>S+</td><td>💀 Jefe único</td></tr>
+</tbody></table>
+<h3>Campamentos de Caravanas</h3>
+<p>Existen <strong>dos campamentos</strong> conectados por una ruta de caravanas: uno en la puerta de la Ciudadela y otro en el Refugio de la Ceniza (hub de la Forja).</p>
+<ul>
+<li>Cuesta <strong>15 de oro</strong> por tramo.</li>
+<li>Dura aproximadamente <strong>2 minutos 45 segundos</strong>.</li>
+<li>Solo podés viajar a nodos que <strong>ya visitaste antes</strong>.</li>
+<li>No se puede iniciar un viaje en combate, recolectando o domando.</li>
+</ul>
+</section>
+<section id="s3"><h2>3. Recolecciones</h2>
+<p>Recolectar es una de las actividades centrales del juego. Sirve para conseguir materiales que después usás en crafteo, alquimia, cocina, etc.</p>
+<h3>Los 5 tipos de recolección</h3>
+<h4>⛏️ Minería</h4>
+<p>Requiere ser <strong>Minero</strong> y tener un <strong>pico</strong> equipado. Extrae minerales de las vetas. En el bosque solo se puede minar en la zona 4 (Corazón Rocoso). En la Forja hay varios nodos con vetas en cada zona.</p>
+<h4>🪓 Tala</h4>
+<p>Requiere ser <strong>Leñador</strong> y tener un <strong>hacha</strong> equipada. Corta árboles para obtener maderas. Disponible en la mayoría de las zonas del bosque.</p>
+<h4>🌸 Herboristería</h4>
+<p>Requiere ser <strong>Herborista</strong>. Recolecta hierbas, flores y hongos. Disponible en muchas zonas del bosque y algunas de la Forja.</p>
+<h4>🔎 Cazador de Tesoros</h4>
+<p>Requiere ser <strong>Cazador de Tesoros</strong>. Explora la zona buscando objetos ocultos — desde tesoros hasta materiales raros. Es la única forma de conseguir ciertos drops.</p>
+<h4>🧺 Recolección genérica</h4>
+<p>Disponible para <strong>cualquier jugador</strong>. Sirve para juntar recursos básicos como piedra, rama, hoja o fibra vegetal.</p>
+<h3>¿Cómo funciona?</h3>
+<p>Cuando encontrás un nodo con recursos, aparece un botón de recolección. Cada cierto tiempo (un <em>tick</em>) se hace una tirada de probabilidad por cada recurso posible. La recolección sigue en segundo plano — podés cerrar el bot y volver después.</p>
+<h3>Stamina y recursos</h3>
+<p>Cada tick consume <strong>stamina</strong>. Si te quedás sin stamina, la recolección se detiene. Se regenera con el tiempo (incluso AFK).</p>
+<div class="callout warn"><p>⚠️ La <strong>saciedad</strong> afecta la regeneración de stamina. Comé seguido.</p></div>
+<h3>Herramientas y durabilidad</h3>
+<p>Minar y talar requieren herramientas (pico y hacha). Cada una tiene <strong>durabilidad</strong> y se desgasta. Cuando se rompe, hay que craftear o comprar una nueva.</p>
+<h3>Dónde encontrar cada cosa</h3>
+<p>La sección <a href="#s6"><strong>Zonas y criaturas</strong></a> detalla zona por zona qué recursos se pueden conseguir y con qué frecuencia.</p>
+</section>
+<section id="s4"><h2>4. Profesiones</h2>
+<p>Las profesiones definen qué podés recolectar y qué podés craftear. Hay tres ranuras: <strong>recolección</strong>, <strong>producción</strong> y <strong>libre</strong>. Podés tener hasta 3 profesiones al mismo tiempo.</p>
+<p>Cada profesión sube de nivel acumulando XP al usarla. Con niveles más altos desbloqueás recetas mejores.</p>
+<div class="callout tip"><p>💡 Tocá el nombre de una profesión para desplegar sus recetas. Volvé a tocar para cerrarla.</p></div>
+<h3>🌿 Profesiones de Recolección</h3>
+<details class=""><summary>Cazador de Tesoros</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Desollador</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Herboristería</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Minería</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Tala</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<h3>⚒️ Profesiones de Producción</h3>
+<details class=""><summary>Alquimia</summary><div class="inner"><p><strong>19 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Pólvora</td><td>Carbón ×3, Piedra ×2, Esencia Menor ×1</td><td>Pólvora</td></tr>
+<tr><td>1</td><td>Poción de Vida Menor</td><td>Hierba Curativa ×2, Ceniza Fértil ×1</td><td>Poción de Vida Menor</td></tr>
+<tr><td>1</td><td>Poción de Maná Menor</td><td>Raíz Común ×2, Carbón Ardiente ×1</td><td>Poción de Maná Menor</td></tr>
+<tr><td>20</td><td>Vidrio</td><td>Piedra ×3, Carbón ×2</td><td>Vidrio</td></tr>
+<tr><td>20</td><td>Poción de Fuerza</td><td>Raíz de Mandrágora ×1, Hoja de Ortiga ×2, Ceniza Fértil ×2</td><td>Poción de Fuerza</td></tr>
+<tr><td>20</td><td>Poción de Destreza</td><td>Trébol de Cuatro Hojas ×1, Menta Silvestre ×2, Carbón Ardiente ×2</td><td>Poción de Destreza</td></tr>
+<tr><td>20</td><td>Poción de Inteligencia</td><td>Flor de Medianoche ×1, Raíz Común ×2, Flor de Ceniza ×1</td><td>Poción de Inteligencia</td></tr>
+<tr><td>20</td><td>Infusión de Flor de Ceniza</td><td>Flor de Ceniza ×2, Menta Silvestre ×1</td><td>Infusión de Flor de Ceniza</td></tr>
+<tr><td>25</td><td>Poción de Energía Ígnea</td><td>Carbón Ardiente ×3, Raíz Común ×1</td><td>Poción de Energía Ígnea</td></tr>
+<tr><td>30</td><td>Poción de Vida Media</td><td>Hierba Curativa ×3, Menta Silvestre ×2, Gema de Azufre ×1</td><td>Poción de Vida Media</td></tr>
+<tr><td>30</td><td>Poción de Maná Media</td><td>Raíz Común ×3, Menta Silvestre ×2, Piedra Pómez ×1</td><td>Poción de Maná Media</td></tr>
+<tr><td>40</td><td>Poción de Resistencia al Fuego</td><td>Sangre de Salamandra ×2, Hierba Curativa ×2</td><td>Poción de Resistencia al Fuego</td></tr>
+<tr><td>40</td><td>Veneno de Azufre</td><td>Gema de Azufre ×2, Belladona ×1</td><td>Veneno de Azufre</td></tr>
+<tr><td>50</td><td>Poción de Berserker</td><td>Belladona ×2, Baba Ácida ×2, Raíz de Mandrágora ×1, Sangre de Salamandra ×1</td><td>Poción de Berserker</td></tr>
+<tr><td>60</td><td>Poción de Invisibilidad</td><td>Hongo Lunar ×2, Flor de Medianoche ×1, Hoja de Ortiga ×1</td><td>Poción de Invisibilidad</td></tr>
+<tr><td>70</td><td>Poción de Vida Mayor</td><td>Hierba Curativa ×5, Raíz Común ×3, Flor Silvestre ×2, Obsidiana Pura ×1</td><td>Poción de Vida Mayor</td></tr>
+<tr><td>70</td><td>Poción de Maná Mayor</td><td>Raíz Común ×5, Hoja de Ortiga ×3, Flor Silvestre ×2, Cristal de Magma ×1</td><td>Poción de Maná Mayor</td></tr>
+<tr><td>120</td><td>Elixir Arcano</td><td>Hongo Arcano ×2, Esencia Mágica ×3, Raíz de Dragón ×1</td><td>Elixir Arcano</td></tr>
+<tr><td>150</td><td>Elixir Primordial</td><td>Loto Negro ×2, Esencia Arcana ×2, Raíz de Dragón ×2</td><td>Elixir Primordial</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Carpintería</summary><div class="inner"><p><strong>64 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Palo</td><td>Rama ×2</td><td>Palo</td></tr>
+<tr><td>10</td><td>Tabla de Abeto</td><td>Abeto ×3</td><td>Tabla de Abeto</td></tr>
+<tr><td>10</td><td>Arco de Abeto</td><td>Palo ×3, Tabla Abeto ×5, Fibra Vegetal ×2</td><td>Arco de Abeto</td></tr>
+<tr><td>10</td><td>Ballesta de Abeto</td><td>Palo ×3, Tabla Abeto ×5, Fibra Vegetal ×2</td><td>Ballesta de Abeto</td></tr>
+<tr><td>10</td><td>Bastón de Abeto</td><td>Palo ×2, Tabla Abeto ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Abeto</td></tr>
+<tr><td>10</td><td>Varita de Abeto</td><td>Palo ×2, Tabla Abeto ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Abeto</td></tr>
+<tr><td>10</td><td>Escudo Ligero de Abeto</td><td>Tabla Abeto ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Abeto</td></tr>
+<tr><td>25</td><td>Tabla de Alamo</td><td>Álamo ×3</td><td>Tabla de Alamo</td></tr>
+<tr><td>25</td><td>Arco de Alamo</td><td>Palo ×3, Tabla Alamo ×5, Fibra Vegetal ×2</td><td>Arco de Alamo</td></tr>
+<tr><td>25</td><td>Ballesta de Alamo</td><td>Palo ×3, Tabla Alamo ×5, Fibra Vegetal ×2</td><td>Ballesta de Alamo</td></tr>
+<tr><td>25</td><td>Bastón de Alamo</td><td>Palo ×2, Tabla Alamo ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Alamo</td></tr>
+<tr><td>25</td><td>Varita de Alamo</td><td>Palo ×2, Tabla Alamo ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Alamo</td></tr>
+<tr><td>25</td><td>Escudo Ligero de Alamo</td><td>Tabla Alamo ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Alamo</td></tr>
+<tr><td>30</td><td>Arco de Ceniza</td><td>Palo ×3, Tabla Abeto ×3, Carbón Ardiente ×2, Ceniza Fértil ×1</td><td>Arco de Ceniza</td></tr>
+<tr><td>40</td><td>Tabla de Olmo</td><td>Olmo ×3</td><td>Tabla de Olmo</td></tr>
+<tr><td>40</td><td>Arco de Olmo</td><td>Palo ×3, Tabla Olmo ×5, Fibra Vegetal ×2</td><td>Arco de Olmo</td></tr>
+<tr><td>40</td><td>Ballesta de Olmo</td><td>Palo ×3, Tabla Olmo ×5, Fibra Vegetal ×2</td><td>Ballesta de Olmo</td></tr>
+<tr><td>40</td><td>Bastón de Olmo</td><td>Palo ×2, Tabla Olmo ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Olmo</td></tr>
+<tr><td>40</td><td>Varita de Olmo</td><td>Palo ×2, Tabla Olmo ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Olmo</td></tr>
+<tr><td>40</td><td>Escudo Ligero de Olmo</td><td>Tabla Olmo ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Olmo</td></tr>
+<tr><td>50</td><td>Ballesta de Azufre</td><td>Palo ×3, Tabla Olmo ×4, Gema de Azufre ×2</td><td>Ballesta de Azufre</td></tr>
+<tr><td>55</td><td>Tabla de Pino</td><td>Pino ×3</td><td>Tabla de Pino</td></tr>
+<tr><td>55</td><td>Arco de Pino</td><td>Palo ×3, Tabla Pino ×5, Fibra Vegetal ×2</td><td>Arco de Pino</td></tr>
+<tr><td>55</td><td>Ballesta de Pino</td><td>Palo ×3, Tabla Pino ×5, Fibra Vegetal ×2</td><td>Ballesta de Pino</td></tr>
+<tr><td>55</td><td>Bastón de Pino</td><td>Palo ×2, Tabla Pino ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Pino</td></tr>
+<tr><td>55</td><td>Varita de Pino</td><td>Palo ×2, Tabla Pino ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Pino</td></tr>
+<tr><td>55</td><td>Escudo Ligero de Pino</td><td>Tabla Pino ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Pino</td></tr>
+<tr><td>70</td><td>Tabla de Nogal</td><td>Nogal ×3</td><td>Tabla de Nogal</td></tr>
+<tr><td>70</td><td>Arco de Nogal</td><td>Palo ×3, Tabla Nogal ×5, Fibra Vegetal ×2</td><td>Arco de Nogal</td></tr>
+<tr><td>70</td><td>Ballesta de Nogal</td><td>Palo ×3, Tabla Nogal ×5, Fibra Vegetal ×2</td><td>Ballesta de Nogal</td></tr>
+<tr><td>70</td><td>Bastón de Nogal</td><td>Palo ×2, Tabla Nogal ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Nogal</td></tr>
+<tr><td>70</td><td>Varita de Nogal</td><td>Palo ×2, Tabla Nogal ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Nogal</td></tr>
+<tr><td>70</td><td>Escudo Ligero de Nogal</td><td>Tabla Nogal ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Nogal</td></tr>
+<tr><td>75</td><td>Bastón de Nogal con Obsidiana y Rubí</td><td>Palo ×2, Tabla Nogal ×4, Obsidiana Pura ×2, Esencia Mágica ×1, Rubí ×1</td><td>Bastón de Nogal con Obsidiana y Rubí</td></tr>
+<tr><td>85</td><td>Tabla de Roble</td><td>Roble ×3</td><td>Tabla de Roble</td></tr>
+<tr><td>85</td><td>Arco de Roble</td><td>Palo ×3, Tabla Roble ×5, Fibra Vegetal ×2</td><td>Arco de Roble</td></tr>
+<tr><td>85</td><td>Ballesta de Roble</td><td>Palo ×3, Tabla Roble ×5, Fibra Vegetal ×2</td><td>Ballesta de Roble</td></tr>
+<tr><td>85</td><td>Bastón de Roble</td><td>Palo ×2, Tabla Roble ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Roble</td></tr>
+<tr><td>85</td><td>Varita de Roble</td><td>Palo ×2, Tabla Roble ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Roble</td></tr>
+<tr><td>85</td><td>Escudo Ligero de Roble</td><td>Tabla Roble ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Roble</td></tr>
+<tr><td>100</td><td>Tabla de Acre</td><td>Acre ×3</td><td>Tabla de Acre</td></tr>
+<tr><td>100</td><td>Arco de Acre</td><td>Palo ×3, Tabla Acre ×5, Fibra Vegetal ×2</td><td>Arco de Acre</td></tr>
+<tr><td>100</td><td>Ballesta de Acre</td><td>Palo ×3, Tabla Acre ×5, Fibra Vegetal ×2</td><td>Ballesta de Acre</td></tr>
+<tr><td>100</td><td>Bastón de Acre</td><td>Palo ×2, Tabla Acre ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Acre</td></tr>
+<tr><td>100</td><td>Varita de Acre</td><td>Palo ×2, Tabla Acre ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Acre</td></tr>
+<tr><td>100</td><td>Escudo Ligero de Acre</td><td>Tabla Acre ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Acre</td></tr>
+<tr><td>115</td><td>Tabla de Ebano</td><td>Ébano ×3</td><td>Tabla de Ebano</td></tr>
+<tr><td>115</td><td>Arco de Ebano</td><td>Palo ×3, Tabla Ebano ×5, Fibra Vegetal ×2</td><td>Arco de Ebano</td></tr>
+<tr><td>115</td><td>Ballesta de Ebano</td><td>Palo ×3, Tabla Ebano ×5, Fibra Vegetal ×2</td><td>Ballesta de Ebano</td></tr>
+<tr><td>115</td><td>Bastón de Ebano</td><td>Palo ×2, Tabla Ebano ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Ebano</td></tr>
+<tr><td>115</td><td>Varita de Ebano</td><td>Palo ×2, Tabla Ebano ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Ebano</td></tr>
+<tr><td>115</td><td>Escudo Ligero de Ebano</td><td>Tabla Ebano ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Ebano</td></tr>
+<tr><td>130</td><td>Tabla de Lignus Vitae</td><td>Lignus Vitae ×3</td><td>Tabla de Lignus Vitae</td></tr>
+<tr><td>130</td><td>Arco de Lignus Vitae</td><td>Palo ×3, Tabla Lignus Vitae ×5, Fibra Vegetal ×2</td><td>Arco de Lignus Vitae</td></tr>
+<tr><td>130</td><td>Ballesta de Lignus Vitae</td><td>Palo ×3, Tabla Lignus Vitae ×5, Fibra Vegetal ×2</td><td>Ballesta de Lignus Vitae</td></tr>
+<tr><td>130</td><td>Bastón de Lignus Vitae</td><td>Palo ×2, Tabla Lignus Vitae ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Lignus Vitae</td></tr>
+<tr><td>130</td><td>Varita de Lignus Vitae</td><td>Palo ×2, Tabla Lignus Vitae ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Lignus Vitae</td></tr>
+<tr><td>130</td><td>Escudo Ligero de Lignus Vitae</td><td>Tabla Lignus Vitae ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Lignus Vitae</td></tr>
+<tr><td>150</td><td>Tabla de Quebracho Colorado</td><td>Quebracho Colorado ×3</td><td>Tabla de Quebracho Colorado</td></tr>
+<tr><td>150</td><td>Arco de Quebracho Colorado</td><td>Palo ×3, Tabla Quebracho Colorado ×5, Fibra Vegetal ×2</td><td>Arco de Quebracho Colorado</td></tr>
+<tr><td>150</td><td>Ballesta de Quebracho Colorado</td><td>Palo ×3, Tabla Quebracho Colorado ×5, Fibra Vegetal ×2</td><td>Ballesta de Quebracho Colorado</td></tr>
+<tr><td>150</td><td>Bastón de Quebracho Colorado</td><td>Palo ×2, Tabla Quebracho Colorado ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Bastón de Quebracho Colorado</td></tr>
+<tr><td>150</td><td>Varita de Quebracho Colorado</td><td>Palo ×2, Tabla Quebracho Colorado ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Quebracho Colorado</td></tr>
+<tr><td>150</td><td>Escudo Ligero de Quebracho Colorado</td><td>Tabla Quebracho Colorado ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Quebracho Colorado</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Encantador</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Herrería</summary><div class="inner"><p><strong>242 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Briqueta de Carbón</td><td>Carbón ×3</td><td>Briqueta de Carbón</td></tr>
+<tr><td>10</td><td>Lingote de Hierro</td><td>Hierro ×2</td><td>Lingote de Hierro</td></tr>
+<tr><td>10</td><td>Espada de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×5, Piedra ×3</td><td>Espada de Hierro</td></tr>
+<tr><td>10</td><td>Mandoble de Hierro</td><td>Briqueta Carbon ×4, Lingote Hierro ×9, Piedra ×5</td><td>Mandoble de Hierro</td></tr>
+<tr><td>10</td><td>Maza de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×5, Piedra ×3</td><td>Maza de Hierro</td></tr>
+<tr><td>10</td><td>Martillo de Hierro</td><td>Briqueta Carbon ×4, Lingote Hierro ×9, Piedra ×5</td><td>Martillo de Hierro</td></tr>
+<tr><td>10</td><td>Hacha de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×5, Piedra ×3</td><td>Hacha de Hierro</td></tr>
+<tr><td>10</td><td>Hacha de Guerra de Hierro</td><td>Briqueta Carbon ×4, Lingote Hierro ×9, Piedra ×5</td><td>Hacha de Guerra de Hierro</td></tr>
+<tr><td>10</td><td>Lanza de Hierro</td><td>Briqueta Carbon ×4, Lingote Hierro ×9, Piedra ×5</td><td>Lanza de Hierro</td></tr>
+<tr><td>10</td><td>Alabarda de Hierro</td><td>Briqueta Carbon ×4, Lingote Hierro ×9, Piedra ×5</td><td>Alabarda de Hierro</td></tr>
+<tr><td>10</td><td>Daga de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×3, Piedra ×2</td><td>Daga de Hierro</td></tr>
+<tr><td>10</td><td>Cuchillo de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×3, Piedra ×2</td><td>Cuchillo de Hierro</td></tr>
+<tr><td>10</td><td>Espada Corta de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×5, Piedra ×3</td><td>Espada Corta de Hierro</td></tr>
+<tr><td>10</td><td>Yelmo de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×4, Piedra ×3</td><td>Yelmo de Hierro</td></tr>
+<tr><td>10</td><td>Pechera de Hierro</td><td>Briqueta Carbon ×6, Lingote Hierro ×13, Piedra ×12</td><td>Pechera de Hierro</td></tr>
+<tr><td>10</td><td>Hombreras de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×4, Piedra ×3</td><td>Hombreras de Hierro</td></tr>
+<tr><td>10</td><td>Guantes de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×3, Piedra ×2</td><td>Guantes de Hierro</td></tr>
+<tr><td>10</td><td>Pantalones de Hierro</td><td>Briqueta Carbon ×3, Lingote Hierro ×7, Piedra ×6</td><td>Pantalones de Hierro</td></tr>
+<tr><td>10</td><td>Botas de Hierro</td><td>Briqueta Carbon ×3, Lingote Hierro ×6, Piedra ×5</td><td>Botas de Hierro</td></tr>
+<tr><td>10</td><td>Katar de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×6, Piedra ×4</td><td>Katar de Hierro</td></tr>
+<tr><td>10</td><td>Tekko-kagi de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×6, Piedra ×4</td><td>Tekko-kagi de Hierro</td></tr>
+<tr><td>10</td><td>Nudilleras de Hierro</td><td>Briqueta Carbon ×2, Lingote Hierro ×6, Piedra ×4</td><td>Nudilleras de Hierro</td></tr>
+<tr><td>10</td><td>Escudo Pesado de Hierro</td><td>Briqueta Carbon ×5, Lingote Hierro ×10, Piedra ×8</td><td>Escudo Pesado de Hierro</td></tr>
+<tr><td>10</td><td>Set de Armadura de Hierro</td><td>Craft Yelmo Hierro ×1, Craft Pechera Hierro ×1, Craft Hombreras Hierro ×1, Craft Guantes Hierro ×1, Craft Pantalones Hierro ×1, Craft Botas Hierro ×1</td><td>Set de Armadura de Hierro</td></tr>
+<tr><td>15</td><td>Chisquero Pedernal</td><td>Hierro ×1, Carbón ×1</td><td>Chisquero Pedernal</td></tr>
+<tr><td>25</td><td>Lingote de Acero</td><td>Hierro ×2, Carbón Ardiente ×1</td><td>Lingote de Acero</td></tr>
+<tr><td>25</td><td>Espada de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×5, Piedra ×3</td><td>Espada de Acero</td></tr>
+<tr><td>25</td><td>Mandoble de Acero</td><td>Briqueta Carbon ×4, Lingote Acero ×9, Piedra ×5</td><td>Mandoble de Acero</td></tr>
+<tr><td>25</td><td>Maza de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×5, Piedra ×3</td><td>Maza de Acero</td></tr>
+<tr><td>25</td><td>Martillo de Acero</td><td>Briqueta Carbon ×4, Lingote Acero ×9, Piedra ×5</td><td>Martillo de Acero</td></tr>
+<tr><td>25</td><td>Hacha de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×5, Piedra ×3</td><td>Hacha de Acero</td></tr>
+<tr><td>25</td><td>Hacha de Guerra de Acero</td><td>Briqueta Carbon ×4, Lingote Acero ×9, Piedra ×5</td><td>Hacha de Guerra de Acero</td></tr>
+<tr><td>25</td><td>Lanza de Acero</td><td>Briqueta Carbon ×4, Lingote Acero ×9, Piedra ×5</td><td>Lanza de Acero</td></tr>
+<tr><td>25</td><td>Alabarda de Acero</td><td>Briqueta Carbon ×4, Lingote Acero ×9, Piedra ×5</td><td>Alabarda de Acero</td></tr>
+<tr><td>25</td><td>Daga de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×3, Piedra ×2</td><td>Daga de Acero</td></tr>
+<tr><td>25</td><td>Cuchillo de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×3, Piedra ×2</td><td>Cuchillo de Acero</td></tr>
+<tr><td>25</td><td>Espada Corta de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×5, Piedra ×3</td><td>Espada Corta de Acero</td></tr>
+<tr><td>25</td><td>Yelmo de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×4, Piedra ×3</td><td>Yelmo de Acero</td></tr>
+<tr><td>25</td><td>Pechera de Acero</td><td>Briqueta Carbon ×6, Lingote Acero ×13, Piedra ×12</td><td>Pechera de Acero</td></tr>
+<tr><td>25</td><td>Hombreras de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×4, Piedra ×3</td><td>Hombreras de Acero</td></tr>
+<tr><td>25</td><td>Guantes de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×3, Piedra ×2</td><td>Guantes de Acero</td></tr>
+<tr><td>25</td><td>Pantalones de Acero</td><td>Briqueta Carbon ×3, Lingote Acero ×7, Piedra ×6</td><td>Pantalones de Acero</td></tr>
+<tr><td>25</td><td>Botas de Acero</td><td>Briqueta Carbon ×3, Lingote Acero ×6, Piedra ×5</td><td>Botas de Acero</td></tr>
+<tr><td>25</td><td>Katar de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×6, Piedra ×4</td><td>Katar de Acero</td></tr>
+<tr><td>25</td><td>Tekko-kagi de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×6, Piedra ×4</td><td>Tekko-kagi de Acero</td></tr>
+<tr><td>25</td><td>Nudilleras de Acero</td><td>Briqueta Carbon ×2, Lingote Acero ×6, Piedra ×4</td><td>Nudilleras de Acero</td></tr>
+<tr><td>25</td><td>Escudo Pesado de Acero</td><td>Briqueta Carbon ×5, Lingote Acero ×10, Piedra ×8</td><td>Escudo Pesado de Acero</td></tr>
+<tr><td>25</td><td>Set de Armadura de Acero</td><td>Craft Yelmo Acero ×1, Craft Pechera Acero ×1, Craft Hombreras Acero ×1, Craft Guantes Acero ×1, Craft Pantalones Acero ×1, Craft Botas Acero ×1</td><td>Set de Armadura de Acero</td></tr>
+<tr><td>30</td><td>Metal Conductor</td><td>Plata ×2, Acero ×1</td><td>Metal Conductor</td></tr>
+<tr><td>40</td><td>Lingote de Plata</td><td>Plata ×2, Carbón Ardiente ×1</td><td>Lingote de Plata</td></tr>
+<tr><td>40</td><td>Espada de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×5, Piedra ×3</td><td>Espada de Plata</td></tr>
+<tr><td>40</td><td>Mandoble de Plata</td><td>Briqueta Carbon ×4, Lingote Plata ×9, Piedra ×5</td><td>Mandoble de Plata</td></tr>
+<tr><td>40</td><td>Maza de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×5, Piedra ×3</td><td>Maza de Plata</td></tr>
+<tr><td>40</td><td>Martillo de Plata</td><td>Briqueta Carbon ×4, Lingote Plata ×9, Piedra ×5</td><td>Martillo de Plata</td></tr>
+<tr><td>40</td><td>Hacha de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×5, Piedra ×3</td><td>Hacha de Plata</td></tr>
+<tr><td>40</td><td>Hacha de Guerra de Plata</td><td>Briqueta Carbon ×4, Lingote Plata ×9, Piedra ×5</td><td>Hacha de Guerra de Plata</td></tr>
+<tr><td>40</td><td>Lanza de Plata</td><td>Briqueta Carbon ×4, Lingote Plata ×9, Piedra ×5</td><td>Lanza de Plata</td></tr>
+<tr><td>40</td><td>Alabarda de Plata</td><td>Briqueta Carbon ×4, Lingote Plata ×9, Piedra ×5</td><td>Alabarda de Plata</td></tr>
+<tr><td>40</td><td>Daga de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×3, Piedra ×2</td><td>Daga de Plata</td></tr>
+<tr><td>40</td><td>Cuchillo de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×3, Piedra ×2</td><td>Cuchillo de Plata</td></tr>
+<tr><td>40</td><td>Espada Corta de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×5, Piedra ×3</td><td>Espada Corta de Plata</td></tr>
+<tr><td>40</td><td>Yelmo de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×4, Piedra ×3</td><td>Yelmo de Plata</td></tr>
+<tr><td>40</td><td>Pechera de Plata</td><td>Briqueta Carbon ×6, Lingote Plata ×13, Piedra ×12</td><td>Pechera de Plata</td></tr>
+<tr><td>40</td><td>Hombreras de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×4, Piedra ×3</td><td>Hombreras de Plata</td></tr>
+<tr><td>40</td><td>Guantes de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×3, Piedra ×2</td><td>Guantes de Plata</td></tr>
+<tr><td>40</td><td>Pantalones de Plata</td><td>Briqueta Carbon ×3, Lingote Plata ×7, Piedra ×6</td><td>Pantalones de Plata</td></tr>
+<tr><td>40</td><td>Botas de Plata</td><td>Briqueta Carbon ×3, Lingote Plata ×6, Piedra ×5</td><td>Botas de Plata</td></tr>
+<tr><td>40</td><td>Katar de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×6, Piedra ×4</td><td>Katar de Plata</td></tr>
+<tr><td>40</td><td>Tekko-kagi de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×6, Piedra ×4</td><td>Tekko-kagi de Plata</td></tr>
+<tr><td>40</td><td>Nudilleras de Plata</td><td>Briqueta Carbon ×2, Lingote Plata ×6, Piedra ×4</td><td>Nudilleras de Plata</td></tr>
+<tr><td>40</td><td>Escudo Pesado de Plata</td><td>Briqueta Carbon ×5, Lingote Plata ×10, Piedra ×8</td><td>Escudo Pesado de Plata</td></tr>
+<tr><td>40</td><td>Set de Armadura de Plata</td><td>Craft Yelmo Plata ×1, Craft Pechera Plata ×1, Craft Hombreras Plata ×1, Craft Guantes Plata ×1, Craft Pantalones Plata ×1, Craft Botas Plata ×1</td><td>Set de Armadura de Plata</td></tr>
+<tr><td>45</td><td>Escudo de Azufre</td><td>Lingote Acero ×3, Gema de Azufre ×2</td><td>Escudo de Azufre</td></tr>
+<tr><td>55</td><td>Lingote de Oro</td><td>Oro ×2, Gema de Azufre ×1</td><td>Lingote de Oro</td></tr>
+<tr><td>55</td><td>Espada de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×5, Piedra ×3</td><td>Espada de Oro</td></tr>
+<tr><td>55</td><td>Mandoble de Oro</td><td>Briqueta Carbon ×4, Lingote Oro ×9, Piedra ×5</td><td>Mandoble de Oro</td></tr>
+<tr><td>55</td><td>Maza de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×5, Piedra ×3</td><td>Maza de Oro</td></tr>
+<tr><td>55</td><td>Martillo de Oro</td><td>Briqueta Carbon ×4, Lingote Oro ×9, Piedra ×5</td><td>Martillo de Oro</td></tr>
+<tr><td>55</td><td>Hacha de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×5, Piedra ×3</td><td>Hacha de Oro</td></tr>
+<tr><td>55</td><td>Hacha de Guerra de Oro</td><td>Briqueta Carbon ×4, Lingote Oro ×9, Piedra ×5</td><td>Hacha de Guerra de Oro</td></tr>
+<tr><td>55</td><td>Lanza de Oro</td><td>Briqueta Carbon ×4, Lingote Oro ×9, Piedra ×5</td><td>Lanza de Oro</td></tr>
+<tr><td>55</td><td>Alabarda de Oro</td><td>Briqueta Carbon ×4, Lingote Oro ×9, Piedra ×5</td><td>Alabarda de Oro</td></tr>
+<tr><td>55</td><td>Daga de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×3, Piedra ×2</td><td>Daga de Oro</td></tr>
+<tr><td>55</td><td>Cuchillo de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×3, Piedra ×2</td><td>Cuchillo de Oro</td></tr>
+<tr><td>55</td><td>Espada Corta de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×5, Piedra ×3</td><td>Espada Corta de Oro</td></tr>
+<tr><td>55</td><td>Yelmo de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×4, Piedra ×3</td><td>Yelmo de Oro</td></tr>
+<tr><td>55</td><td>Pechera de Oro</td><td>Briqueta Carbon ×6, Lingote Oro ×13, Piedra ×12</td><td>Pechera de Oro</td></tr>
+<tr><td>55</td><td>Hombreras de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×4, Piedra ×3</td><td>Hombreras de Oro</td></tr>
+<tr><td>55</td><td>Guantes de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×3, Piedra ×2</td><td>Guantes de Oro</td></tr>
+<tr><td>55</td><td>Pantalones de Oro</td><td>Briqueta Carbon ×3, Lingote Oro ×7, Piedra ×6</td><td>Pantalones de Oro</td></tr>
+<tr><td>55</td><td>Botas de Oro</td><td>Briqueta Carbon ×3, Lingote Oro ×6, Piedra ×5</td><td>Botas de Oro</td></tr>
+<tr><td>55</td><td>Katar de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×6, Piedra ×4</td><td>Katar de Oro</td></tr>
+<tr><td>55</td><td>Tekko-kagi de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×6, Piedra ×4</td><td>Tekko-kagi de Oro</td></tr>
+<tr><td>55</td><td>Nudilleras de Oro</td><td>Briqueta Carbon ×2, Lingote Oro ×6, Piedra ×4</td><td>Nudilleras de Oro</td></tr>
+<tr><td>55</td><td>Escudo Pesado de Oro</td><td>Briqueta Carbon ×5, Lingote Oro ×10, Piedra ×8</td><td>Escudo Pesado de Oro</td></tr>
+<tr><td>55</td><td>Set de Armadura de Oro</td><td>Craft Yelmo Oro ×1, Craft Pechera Oro ×1, Craft Hombreras Oro ×1, Craft Guantes Oro ×1, Craft Pantalones Oro ×1, Craft Botas Oro ×1</td><td>Set de Armadura de Oro</td></tr>
+<tr><td>70</td><td>Lingote de Mitrilo</td><td>Mitrilo ×2, Cristal de Magma ×1</td><td>Lingote de Mitrilo</td></tr>
+<tr><td>70</td><td>Espada de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×5, Piedra ×3</td><td>Espada de Mitrilo</td></tr>
+<tr><td>70</td><td>Mandoble de Mitrilo</td><td>Briqueta Carbon ×4, Lingote Mitrilo ×9, Piedra ×5</td><td>Mandoble de Mitrilo</td></tr>
+<tr><td>70</td><td>Maza de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×5, Piedra ×3</td><td>Maza de Mitrilo</td></tr>
+<tr><td>70</td><td>Martillo de Mitrilo</td><td>Briqueta Carbon ×4, Lingote Mitrilo ×9, Piedra ×5</td><td>Martillo de Mitrilo</td></tr>
+<tr><td>70</td><td>Hacha de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×5, Piedra ×3</td><td>Hacha de Mitrilo</td></tr>
+<tr><td>70</td><td>Hacha de Guerra de Mitrilo</td><td>Briqueta Carbon ×4, Lingote Mitrilo ×9, Piedra ×5</td><td>Hacha de Guerra de Mitrilo</td></tr>
+<tr><td>70</td><td>Lanza de Mitrilo</td><td>Briqueta Carbon ×4, Lingote Mitrilo ×9, Piedra ×5</td><td>Lanza de Mitrilo</td></tr>
+<tr><td>70</td><td>Alabarda de Mitrilo</td><td>Briqueta Carbon ×4, Lingote Mitrilo ×9, Piedra ×5</td><td>Alabarda de Mitrilo</td></tr>
+<tr><td>70</td><td>Daga de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×3, Piedra ×2</td><td>Daga de Mitrilo</td></tr>
+<tr><td>70</td><td>Cuchillo de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×3, Piedra ×2</td><td>Cuchillo de Mitrilo</td></tr>
+<tr><td>70</td><td>Espada Corta de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×5, Piedra ×3</td><td>Espada Corta de Mitrilo</td></tr>
+<tr><td>70</td><td>Yelmo de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×4, Piedra ×3</td><td>Yelmo de Mitrilo</td></tr>
+<tr><td>70</td><td>Pechera de Mitrilo</td><td>Briqueta Carbon ×6, Lingote Mitrilo ×13, Piedra ×12</td><td>Pechera de Mitrilo</td></tr>
+<tr><td>70</td><td>Hombreras de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×4, Piedra ×3</td><td>Hombreras de Mitrilo</td></tr>
+<tr><td>70</td><td>Guantes de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×3, Piedra ×2</td><td>Guantes de Mitrilo</td></tr>
+<tr><td>70</td><td>Pantalones de Mitrilo</td><td>Briqueta Carbon ×3, Lingote Mitrilo ×7, Piedra ×6</td><td>Pantalones de Mitrilo</td></tr>
+<tr><td>70</td><td>Botas de Mitrilo</td><td>Briqueta Carbon ×3, Lingote Mitrilo ×6, Piedra ×5</td><td>Botas de Mitrilo</td></tr>
+<tr><td>70</td><td>Katar de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×6, Piedra ×4</td><td>Katar de Mitrilo</td></tr>
+<tr><td>70</td><td>Tekko-kagi de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×6, Piedra ×4</td><td>Tekko-kagi de Mitrilo</td></tr>
+<tr><td>70</td><td>Nudilleras de Mitrilo</td><td>Briqueta Carbon ×2, Lingote Mitrilo ×6, Piedra ×4</td><td>Nudilleras de Mitrilo</td></tr>
+<tr><td>70</td><td>Escudo Pesado de Mitrilo</td><td>Briqueta Carbon ×5, Lingote Mitrilo ×10, Piedra ×8</td><td>Escudo Pesado de Mitrilo</td></tr>
+<tr><td>70</td><td>Set de Armadura de Mitrilo</td><td>Craft Yelmo Mitrilo ×1, Craft Pechera Mitrilo ×1, Craft Hombreras Mitrilo ×1, Craft Guantes Mitrilo ×1, Craft Pantalones Mitrilo ×1, Craft Botas Mitrilo ×1</td><td>Set de Armadura de Mitrilo</td></tr>
+<tr><td>70</td><td>Espada de Obsidiana</td><td>Lingote Mitrilo ×5, Obsidiana Pura ×3, Cristal de Magma ×2</td><td>Espada de Obsidiana</td></tr>
+<tr><td>70</td><td>Mandoble de Obsidiana</td><td>Lingote Mitrilo ×9, Obsidiana Pura ×5, Cristal de Magma ×3</td><td>Mandoble de Obsidiana</td></tr>
+<tr><td>70</td><td>Maza de Obsidiana</td><td>Lingote Mitrilo ×5, Obsidiana Pura ×3, Cristal de Magma ×2</td><td>Maza de Obsidiana</td></tr>
+<tr><td>70</td><td>Martillo de Obsidiana</td><td>Lingote Mitrilo ×9, Obsidiana Pura ×5, Cristal de Magma ×3</td><td>Martillo de Obsidiana</td></tr>
+<tr><td>70</td><td>Hacha de Obsidiana</td><td>Lingote Mitrilo ×5, Obsidiana Pura ×3, Cristal de Magma ×2</td><td>Hacha de Obsidiana</td></tr>
+<tr><td>70</td><td>Hacha de Guerra de Obsidiana</td><td>Lingote Mitrilo ×9, Obsidiana Pura ×5, Cristal de Magma ×3</td><td>Hacha de Guerra de Obsidiana</td></tr>
+<tr><td>70</td><td>Lanza de Obsidiana</td><td>Lingote Mitrilo ×9, Obsidiana Pura ×5, Cristal de Magma ×3</td><td>Lanza de Obsidiana</td></tr>
+<tr><td>70</td><td>Alabarda de Obsidiana</td><td>Lingote Mitrilo ×9, Obsidiana Pura ×6, Cristal de Magma ×4</td><td>Alabarda de Obsidiana</td></tr>
+<tr><td>85</td><td>Lingote de Adamantita</td><td>Adamantita ×2, Obsidiana Pura ×1</td><td>Lingote de Adamantita</td></tr>
+<tr><td>85</td><td>Espada de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×5, Piedra ×3</td><td>Espada de Adamantita</td></tr>
+<tr><td>85</td><td>Mandoble de Adamantita</td><td>Briqueta Carbon ×4, Lingote Adamantita ×9, Piedra ×5</td><td>Mandoble de Adamantita</td></tr>
+<tr><td>85</td><td>Maza de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×5, Piedra ×3</td><td>Maza de Adamantita</td></tr>
+<tr><td>85</td><td>Martillo de Adamantita</td><td>Briqueta Carbon ×4, Lingote Adamantita ×9, Piedra ×5</td><td>Martillo de Adamantita</td></tr>
+<tr><td>85</td><td>Hacha de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×5, Piedra ×3</td><td>Hacha de Adamantita</td></tr>
+<tr><td>85</td><td>Hacha de Guerra de Adamantita</td><td>Briqueta Carbon ×4, Lingote Adamantita ×9, Piedra ×5</td><td>Hacha de Guerra de Adamantita</td></tr>
+<tr><td>85</td><td>Lanza de Adamantita</td><td>Briqueta Carbon ×4, Lingote Adamantita ×9, Piedra ×5</td><td>Lanza de Adamantita</td></tr>
+<tr><td>85</td><td>Alabarda de Adamantita</td><td>Briqueta Carbon ×4, Lingote Adamantita ×9, Piedra ×5</td><td>Alabarda de Adamantita</td></tr>
+<tr><td>85</td><td>Daga de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×3, Piedra ×2</td><td>Daga de Adamantita</td></tr>
+<tr><td>85</td><td>Cuchillo de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×3, Piedra ×2</td><td>Cuchillo de Adamantita</td></tr>
+<tr><td>85</td><td>Espada Corta de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×5, Piedra ×3</td><td>Espada Corta de Adamantita</td></tr>
+<tr><td>85</td><td>Yelmo de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×4, Piedra ×3</td><td>Yelmo de Adamantita</td></tr>
+<tr><td>85</td><td>Pechera de Adamantita</td><td>Briqueta Carbon ×6, Lingote Adamantita ×13, Piedra ×12</td><td>Pechera de Adamantita</td></tr>
+<tr><td>85</td><td>Hombreras de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×4, Piedra ×3</td><td>Hombreras de Adamantita</td></tr>
+<tr><td>85</td><td>Guantes de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×3, Piedra ×2</td><td>Guantes de Adamantita</td></tr>
+<tr><td>85</td><td>Pantalones de Adamantita</td><td>Briqueta Carbon ×3, Lingote Adamantita ×7, Piedra ×6</td><td>Pantalones de Adamantita</td></tr>
+<tr><td>85</td><td>Botas de Adamantita</td><td>Briqueta Carbon ×3, Lingote Adamantita ×6, Piedra ×5</td><td>Botas de Adamantita</td></tr>
+<tr><td>85</td><td>Katar de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×6, Piedra ×4</td><td>Katar de Adamantita</td></tr>
+<tr><td>85</td><td>Tekko-kagi de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×6, Piedra ×4</td><td>Tekko-kagi de Adamantita</td></tr>
+<tr><td>85</td><td>Nudilleras de Adamantita</td><td>Briqueta Carbon ×2, Lingote Adamantita ×6, Piedra ×4</td><td>Nudilleras de Adamantita</td></tr>
+<tr><td>85</td><td>Escudo Pesado de Adamantita</td><td>Briqueta Carbon ×5, Lingote Adamantita ×10, Piedra ×8</td><td>Escudo Pesado de Adamantita</td></tr>
+<tr><td>85</td><td>Set de Armadura de Adamantita</td><td>Craft Yelmo Adamantita ×1, Craft Pechera Adamantita ×1, Craft Hombreras Adamantita ×1, Craft Guantes Adamantita ×1, Craft Pantalones Adamantita ×1, Craft Botas Adamantita ×1</td><td>Set de Armadura de Adamantita</td></tr>
+<tr><td>100</td><td>Lingote de Titanita</td><td>Titanita ×2</td><td>Lingote de Titanita</td></tr>
+<tr><td>100</td><td>Espada de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×5, Piedra ×3</td><td>Espada de Titanita</td></tr>
+<tr><td>100</td><td>Mandoble de Titanita</td><td>Briqueta Carbon ×4, Lingote Titanita ×9, Piedra ×5</td><td>Mandoble de Titanita</td></tr>
+<tr><td>100</td><td>Maza de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×5, Piedra ×3</td><td>Maza de Titanita</td></tr>
+<tr><td>100</td><td>Martillo de Titanita</td><td>Briqueta Carbon ×4, Lingote Titanita ×9, Piedra ×5</td><td>Martillo de Titanita</td></tr>
+<tr><td>100</td><td>Hacha de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×5, Piedra ×3</td><td>Hacha de Titanita</td></tr>
+<tr><td>100</td><td>Hacha de Guerra de Titanita</td><td>Briqueta Carbon ×4, Lingote Titanita ×9, Piedra ×5</td><td>Hacha de Guerra de Titanita</td></tr>
+<tr><td>100</td><td>Lanza de Titanita</td><td>Briqueta Carbon ×4, Lingote Titanita ×9, Piedra ×5</td><td>Lanza de Titanita</td></tr>
+<tr><td>100</td><td>Alabarda de Titanita</td><td>Briqueta Carbon ×4, Lingote Titanita ×9, Piedra ×5</td><td>Alabarda de Titanita</td></tr>
+<tr><td>100</td><td>Daga de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×3, Piedra ×2</td><td>Daga de Titanita</td></tr>
+<tr><td>100</td><td>Cuchillo de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×3, Piedra ×2</td><td>Cuchillo de Titanita</td></tr>
+<tr><td>100</td><td>Espada Corta de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×5, Piedra ×3</td><td>Espada Corta de Titanita</td></tr>
+<tr><td>100</td><td>Yelmo de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×4, Piedra ×3</td><td>Yelmo de Titanita</td></tr>
+<tr><td>100</td><td>Pechera de Titanita</td><td>Briqueta Carbon ×6, Lingote Titanita ×13, Piedra ×12</td><td>Pechera de Titanita</td></tr>
+<tr><td>100</td><td>Hombreras de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×4, Piedra ×3</td><td>Hombreras de Titanita</td></tr>
+<tr><td>100</td><td>Guantes de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×3, Piedra ×2</td><td>Guantes de Titanita</td></tr>
+<tr><td>100</td><td>Pantalones de Titanita</td><td>Briqueta Carbon ×3, Lingote Titanita ×7, Piedra ×6</td><td>Pantalones de Titanita</td></tr>
+<tr><td>100</td><td>Botas de Titanita</td><td>Briqueta Carbon ×3, Lingote Titanita ×6, Piedra ×5</td><td>Botas de Titanita</td></tr>
+<tr><td>100</td><td>Katar de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×6, Piedra ×4</td><td>Katar de Titanita</td></tr>
+<tr><td>100</td><td>Tekko-kagi de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×6, Piedra ×4</td><td>Tekko-kagi de Titanita</td></tr>
+<tr><td>100</td><td>Nudilleras de Titanita</td><td>Briqueta Carbon ×2, Lingote Titanita ×6, Piedra ×4</td><td>Nudilleras de Titanita</td></tr>
+<tr><td>100</td><td>Escudo Pesado de Titanita</td><td>Briqueta Carbon ×5, Lingote Titanita ×10, Piedra ×8</td><td>Escudo Pesado de Titanita</td></tr>
+<tr><td>100</td><td>Set de Armadura de Titanita</td><td>Craft Yelmo Titanita ×1, Craft Pechera Titanita ×1, Craft Hombreras Titanita ×1, Craft Guantes Titanita ×1, Craft Pantalones Titanita ×1, Craft Botas Titanita ×1</td><td>Set de Armadura de Titanita</td></tr>
+<tr><td>115</td><td>Lingote de Brimuro</td><td>Brimuro ×2</td><td>Lingote de Brimuro</td></tr>
+<tr><td>115</td><td>Espada de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×5, Piedra ×3</td><td>Espada de Brimuro</td></tr>
+<tr><td>115</td><td>Mandoble de Brimuro</td><td>Briqueta Carbon ×4, Lingote Brimuro ×9, Piedra ×5</td><td>Mandoble de Brimuro</td></tr>
+<tr><td>115</td><td>Maza de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×5, Piedra ×3</td><td>Maza de Brimuro</td></tr>
+<tr><td>115</td><td>Martillo de Brimuro</td><td>Briqueta Carbon ×4, Lingote Brimuro ×9, Piedra ×5</td><td>Martillo de Brimuro</td></tr>
+<tr><td>115</td><td>Hacha de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×5, Piedra ×3</td><td>Hacha de Brimuro</td></tr>
+<tr><td>115</td><td>Hacha de Guerra de Brimuro</td><td>Briqueta Carbon ×4, Lingote Brimuro ×9, Piedra ×5</td><td>Hacha de Guerra de Brimuro</td></tr>
+<tr><td>115</td><td>Lanza de Brimuro</td><td>Briqueta Carbon ×4, Lingote Brimuro ×9, Piedra ×5</td><td>Lanza de Brimuro</td></tr>
+<tr><td>115</td><td>Alabarda de Brimuro</td><td>Briqueta Carbon ×4, Lingote Brimuro ×9, Piedra ×5</td><td>Alabarda de Brimuro</td></tr>
+<tr><td>115</td><td>Daga de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×3, Piedra ×2</td><td>Daga de Brimuro</td></tr>
+<tr><td>115</td><td>Cuchillo de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×3, Piedra ×2</td><td>Cuchillo de Brimuro</td></tr>
+<tr><td>115</td><td>Espada Corta de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×5, Piedra ×3</td><td>Espada Corta de Brimuro</td></tr>
+<tr><td>115</td><td>Yelmo de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×4, Piedra ×3</td><td>Yelmo de Brimuro</td></tr>
+<tr><td>115</td><td>Pechera de Brimuro</td><td>Briqueta Carbon ×6, Lingote Brimuro ×13, Piedra ×12</td><td>Pechera de Brimuro</td></tr>
+<tr><td>115</td><td>Hombreras de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×4, Piedra ×3</td><td>Hombreras de Brimuro</td></tr>
+<tr><td>115</td><td>Guantes de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×3, Piedra ×2</td><td>Guantes de Brimuro</td></tr>
+<tr><td>115</td><td>Pantalones de Brimuro</td><td>Briqueta Carbon ×3, Lingote Brimuro ×7, Piedra ×6</td><td>Pantalones de Brimuro</td></tr>
+<tr><td>115</td><td>Botas de Brimuro</td><td>Briqueta Carbon ×3, Lingote Brimuro ×6, Piedra ×5</td><td>Botas de Brimuro</td></tr>
+<tr><td>115</td><td>Katar de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×6, Piedra ×4</td><td>Katar de Brimuro</td></tr>
+<tr><td>115</td><td>Tekko-kagi de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×6, Piedra ×4</td><td>Tekko-kagi de Brimuro</td></tr>
+<tr><td>115</td><td>Nudilleras de Brimuro</td><td>Briqueta Carbon ×2, Lingote Brimuro ×6, Piedra ×4</td><td>Nudilleras de Brimuro</td></tr>
+<tr><td>115</td><td>Escudo Pesado de Brimuro</td><td>Briqueta Carbon ×5, Lingote Brimuro ×10, Piedra ×8</td><td>Escudo Pesado de Brimuro</td></tr>
+<tr><td>115</td><td>Set de Armadura de Brimuro</td><td>Craft Yelmo Brimuro ×1, Craft Pechera Brimuro ×1, Craft Hombreras Brimuro ×1, Craft Guantes Brimuro ×1, Craft Pantalones Brimuro ×1, Craft Botas Brimuro ×1</td><td>Set de Armadura de Brimuro</td></tr>
+<tr><td>130</td><td>Lingote de Anticito</td><td>Anticito ×2</td><td>Lingote de Anticito</td></tr>
+<tr><td>130</td><td>Espada de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×5, Piedra ×3</td><td>Espada de Anticito</td></tr>
+<tr><td>130</td><td>Mandoble de Anticito</td><td>Briqueta Carbon ×4, Lingote Anticito ×9, Piedra ×5</td><td>Mandoble de Anticito</td></tr>
+<tr><td>130</td><td>Maza de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×5, Piedra ×3</td><td>Maza de Anticito</td></tr>
+<tr><td>130</td><td>Martillo de Anticito</td><td>Briqueta Carbon ×4, Lingote Anticito ×9, Piedra ×5</td><td>Martillo de Anticito</td></tr>
+<tr><td>130</td><td>Hacha de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×5, Piedra ×3</td><td>Hacha de Anticito</td></tr>
+<tr><td>130</td><td>Hacha de Guerra de Anticito</td><td>Briqueta Carbon ×4, Lingote Anticito ×9, Piedra ×5</td><td>Hacha de Guerra de Anticito</td></tr>
+<tr><td>130</td><td>Lanza de Anticito</td><td>Briqueta Carbon ×4, Lingote Anticito ×9, Piedra ×5</td><td>Lanza de Anticito</td></tr>
+<tr><td>130</td><td>Alabarda de Anticito</td><td>Briqueta Carbon ×4, Lingote Anticito ×9, Piedra ×5</td><td>Alabarda de Anticito</td></tr>
+<tr><td>130</td><td>Daga de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×3, Piedra ×2</td><td>Daga de Anticito</td></tr>
+<tr><td>130</td><td>Cuchillo de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×3, Piedra ×2</td><td>Cuchillo de Anticito</td></tr>
+<tr><td>130</td><td>Espada Corta de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×5, Piedra ×3</td><td>Espada Corta de Anticito</td></tr>
+<tr><td>130</td><td>Yelmo de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×4, Piedra ×3</td><td>Yelmo de Anticito</td></tr>
+<tr><td>130</td><td>Pechera de Anticito</td><td>Briqueta Carbon ×6, Lingote Anticito ×13, Piedra ×12</td><td>Pechera de Anticito</td></tr>
+<tr><td>130</td><td>Hombreras de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×4, Piedra ×3</td><td>Hombreras de Anticito</td></tr>
+<tr><td>130</td><td>Guantes de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×3, Piedra ×2</td><td>Guantes de Anticito</td></tr>
+<tr><td>130</td><td>Pantalones de Anticito</td><td>Briqueta Carbon ×3, Lingote Anticito ×7, Piedra ×6</td><td>Pantalones de Anticito</td></tr>
+<tr><td>130</td><td>Botas de Anticito</td><td>Briqueta Carbon ×3, Lingote Anticito ×6, Piedra ×5</td><td>Botas de Anticito</td></tr>
+<tr><td>130</td><td>Katar de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×6, Piedra ×4</td><td>Katar de Anticito</td></tr>
+<tr><td>130</td><td>Tekko-kagi de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×6, Piedra ×4</td><td>Tekko-kagi de Anticito</td></tr>
+<tr><td>130</td><td>Nudilleras de Anticito</td><td>Briqueta Carbon ×2, Lingote Anticito ×6, Piedra ×4</td><td>Nudilleras de Anticito</td></tr>
+<tr><td>130</td><td>Escudo Pesado de Anticito</td><td>Briqueta Carbon ×5, Lingote Anticito ×10, Piedra ×8</td><td>Escudo Pesado de Anticito</td></tr>
+<tr><td>130</td><td>Set de Armadura de Anticito</td><td>Craft Yelmo Anticito ×1, Craft Pechera Anticito ×1, Craft Hombreras Anticito ×1, Craft Guantes Anticito ×1, Craft Pantalones Anticito ×1, Craft Botas Anticito ×1</td><td>Set de Armadura de Anticito</td></tr>
+<tr><td>150</td><td>Lingote de Eternato</td><td>Eternato ×2</td><td>Lingote de Eternato</td></tr>
+<tr><td>150</td><td>Espada de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×5, Piedra ×3</td><td>Espada de Eternato</td></tr>
+<tr><td>150</td><td>Mandoble de Eternato</td><td>Briqueta Carbon ×4, Lingote Eternato ×9, Piedra ×5</td><td>Mandoble de Eternato</td></tr>
+<tr><td>150</td><td>Maza de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×5, Piedra ×3</td><td>Maza de Eternato</td></tr>
+<tr><td>150</td><td>Martillo de Eternato</td><td>Briqueta Carbon ×4, Lingote Eternato ×9, Piedra ×5</td><td>Martillo de Eternato</td></tr>
+<tr><td>150</td><td>Hacha de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×5, Piedra ×3</td><td>Hacha de Eternato</td></tr>
+<tr><td>150</td><td>Hacha de Guerra de Eternato</td><td>Briqueta Carbon ×4, Lingote Eternato ×9, Piedra ×5</td><td>Hacha de Guerra de Eternato</td></tr>
+<tr><td>150</td><td>Lanza de Eternato</td><td>Briqueta Carbon ×4, Lingote Eternato ×9, Piedra ×5</td><td>Lanza de Eternato</td></tr>
+<tr><td>150</td><td>Alabarda de Eternato</td><td>Briqueta Carbon ×4, Lingote Eternato ×9, Piedra ×5</td><td>Alabarda de Eternato</td></tr>
+<tr><td>150</td><td>Daga de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×3, Piedra ×2</td><td>Daga de Eternato</td></tr>
+<tr><td>150</td><td>Cuchillo de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×3, Piedra ×2</td><td>Cuchillo de Eternato</td></tr>
+<tr><td>150</td><td>Espada Corta de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×5, Piedra ×3</td><td>Espada Corta de Eternato</td></tr>
+<tr><td>150</td><td>Yelmo de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×4, Piedra ×3</td><td>Yelmo de Eternato</td></tr>
+<tr><td>150</td><td>Pechera de Eternato</td><td>Briqueta Carbon ×6, Lingote Eternato ×13, Piedra ×12</td><td>Pechera de Eternato</td></tr>
+<tr><td>150</td><td>Hombreras de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×4, Piedra ×3</td><td>Hombreras de Eternato</td></tr>
+<tr><td>150</td><td>Guantes de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×3, Piedra ×2</td><td>Guantes de Eternato</td></tr>
+<tr><td>150</td><td>Pantalones de Eternato</td><td>Briqueta Carbon ×3, Lingote Eternato ×7, Piedra ×6</td><td>Pantalones de Eternato</td></tr>
+<tr><td>150</td><td>Botas de Eternato</td><td>Briqueta Carbon ×3, Lingote Eternato ×6, Piedra ×5</td><td>Botas de Eternato</td></tr>
+<tr><td>150</td><td>Katar de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×6, Piedra ×4</td><td>Katar de Eternato</td></tr>
+<tr><td>150</td><td>Tekko-kagi de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×6, Piedra ×4</td><td>Tekko-kagi de Eternato</td></tr>
+<tr><td>150</td><td>Nudilleras de Eternato</td><td>Briqueta Carbon ×2, Lingote Eternato ×6, Piedra ×4</td><td>Nudilleras de Eternato</td></tr>
+<tr><td>150</td><td>Escudo Pesado de Eternato</td><td>Briqueta Carbon ×5, Lingote Eternato ×10, Piedra ×8</td><td>Escudo Pesado de Eternato</td></tr>
+<tr><td>150</td><td>Set de Armadura de Eternato</td><td>Craft Yelmo Eternato ×1, Craft Pechera Eternato ×1, Craft Hombreras Eternato ×1, Craft Guantes Eternato ×1, Craft Pantalones Eternato ×1, Craft Botas Eternato ×1</td><td>Set de Armadura de Eternato</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Ingeniería Mágica</summary><div class="inner"><p><strong>43 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Engranaje Simple</td><td>Hierro ×2</td><td>Engranaje Simple</td></tr>
+<tr><td>1</td><td>Linterna Mecánica</td><td>Hierro ×2, Piedra ×1, Fibra Vegetal ×1</td><td>Linterna Mecánica</td></tr>
+<tr><td>5</td><td>Caja de Herramientas</td><td>Hierro ×4, Rama ×3, Cuero Curtido ×1</td><td>Caja de Herramientas</td></tr>
+<tr><td>10</td><td>Pistola Basica</td><td>Hierro ×5, Acero ×2, Rama ×2, Engranaje Simple ×1</td><td>Pistola Basica</td></tr>
+<tr><td>10</td><td>Brújula Mecánica</td><td>Hierro ×2, Plata ×1, Cuarzo ×1</td><td>Brújula Mecánica</td></tr>
+<tr><td>10</td><td>Remaches</td><td>Hierro ×1</td><td>Remaches</td></tr>
+<tr><td>10</td><td>Tornillos</td><td>Hierro ×1</td><td>Tornillos</td></tr>
+<tr><td>15</td><td>Mosquete Basica</td><td>Hierro ×7, Acero ×3, Rama ×4, Engranaje Simple ×2</td><td>Mosquete Basica</td></tr>
+<tr><td>15</td><td>Kit de Ingeniero</td><td>Hierro ×3, Rama ×2, Cuero Curtido ×1, Engranaje Simple ×2</td><td>Kit de Ingeniero</td></tr>
+<tr><td>15</td><td>Trampa de Presión</td><td>Hierro ×3, Resorte ×1, Fibra Vegetal ×1</td><td>Trampa de Presión</td></tr>
+<tr><td>15</td><td>Engranajes</td><td>Hierro ×1</td><td>Engranajes</td></tr>
+<tr><td>20</td><td>Resorte</td><td>Acero ×2</td><td>Resorte</td></tr>
+<tr><td>20</td><td>Carabina Basica</td><td>Acero ×6, Plata ×2, Rama ×3, Engranaje Simple ×1</td><td>Carabina Basica</td></tr>
+<tr><td>20</td><td>Tubo Metálico</td><td>Hierro ×2</td><td>Tubo Metálico</td></tr>
+<tr><td>25</td><td>Trampa de Alarma</td><td>Hierro ×2, Resorte ×1, Cuarzo ×1, Esencia Mágica ×1</td><td>Trampa de Alarma</td></tr>
+<tr><td>25</td><td>Placa Mecánica</td><td>Hierro ×2</td><td>Placa Mecánica</td></tr>
+<tr><td>30</td><td>Bomba Polvora</td><td>Hierro ×1, Polvora ×3, Fibra Vegetal ×1</td><td>Bomba Polvora</td></tr>
+<tr><td>30</td><td>Mecanismo de Chispa</td><td>Acero ×2, Hierro ×1, Chisquero Pedernal ×1</td><td>Mecanismo de Chispa</td></tr>
+<tr><td>30</td><td>Cristal Arcano</td><td>Cuarzo ×1, Esencia Mágica ×1</td><td>Cristal Arcano</td></tr>
+<tr><td>35</td><td>Bomba Cegadora</td><td>Hierro ×1, Polvora ×2, Esencia Mágica ×1</td><td>Bomba Cegadora</td></tr>
+<tr><td>40</td><td>Circuito Runico</td><td>Plata ×1, Oro ×1, Esencia Mágica ×1</td><td>Circuito Runico</td></tr>
+<tr><td>40</td><td>Bomba Humo</td><td>Hierro ×1, Polvora ×2, Hongo Lunar ×1</td><td>Bomba Humo</td></tr>
+<tr><td>40</td><td>Mina Arcana</td><td>Hierro ×3, Plata ×1, Esencia Mágica ×2, Carbón ×1</td><td>Mina Arcana</td></tr>
+<tr><td>45</td><td>Bomba Incendiaria</td><td>Hierro ×1, Polvora ×2, Flor de Medianoche ×1</td><td>Bomba Incendiaria</td></tr>
+<tr><td>45</td><td>Bomba de Azufre</td><td>Hierro ×1, Polvora ×2, Gema de Azufre ×1</td><td>Bomba de Azufre</td></tr>
+<tr><td>50</td><td>Pistola Media</td><td>Mitrilo ×3, Acero ×2, Oro ×1, Circuito Runico ×1</td><td>Pistola Media</td></tr>
+<tr><td>50</td><td>Visor Arcano</td><td>Mitrilo ×1, Amatista ×1, Oro ×1, Esencia Mágica ×1</td><td>Visor Arcano</td></tr>
+<tr><td>50</td><td>Esencia Concentrada</td><td>Esencia Mágica ×3</td><td>Esencia Concentrada</td></tr>
+<tr><td>55</td><td>Mosquete Media</td><td>Mitrilo ×4, Acero ×3, Oro ×2, Circuito Runico ×1</td><td>Mosquete Media</td></tr>
+<tr><td>60</td><td>Carabina Media</td><td>Mitrilo ×5, Plata ×2, Oro ×2, Circuito Runico ×2</td><td>Carabina Media</td></tr>
+<tr><td>60</td><td>Núcleo Mecánico</td><td>Acero ×3, Mitrilo ×1, Engranajes ×4, Resorte ×2</td><td>Núcleo Mecánico</td></tr>
+<tr><td>75</td><td>Bomba Arcana</td><td>Mitrilo ×2, Polvora ×3, Esencia Arcana ×1</td><td>Bomba Arcana</td></tr>
+<tr><td>80</td><td>Nucleo Arcano</td><td>Mitrilo ×2, Amatista ×1, Esencia Arcana ×1</td><td>Nucleo Arcano</td></tr>
+<tr><td>80</td><td>Circuito Rúnico Avanzado</td><td>Mitrilo ×1, Oro ×1, Esencia Mágica ×1</td><td>Circuito Rúnico Avanzado</td></tr>
+<tr><td>90</td><td>Pistola Avanzada</td><td>Adamantita ×3, Mitrilo ×2, Nucleo Arcano ×1</td><td>Pistola Avanzada</td></tr>
+<tr><td>100</td><td>Mosquete Avanzada</td><td>Adamantita ×4, Mitrilo ×3, Nucleo Arcano ×1</td><td>Mosquete Avanzada</td></tr>
+<tr><td>100</td><td>Esencia Superior</td><td>Esencia Concentrada ×2, Cristal Arcano ×1</td><td>Esencia Superior</td></tr>
+<tr><td>110</td><td>Carabina Avanzada</td><td>Adamantita ×5, Mitrilo ×4, Nucleo Arcano ×2</td><td>Carabina Avanzada</td></tr>
+<tr><td>110</td><td>Cristal Arcano Superior</td><td>Amatista ×1, Esencia Superior ×2</td><td>Cristal Arcano Superior</td></tr>
+<tr><td>125</td><td>Circuito Rúnico Maestro</td><td>Titanita ×1, Oro ×2, Esencia Superior ×2</td><td>Circuito Rúnico Maestro</td></tr>
+<tr><td>130</td><td>Núcleo Arcano Superior</td><td>Adamantita ×2, Cristal Arcano Superior ×2, Esencia Superior ×3, Circuito Runico Avanzado ×2</td><td>Núcleo Arcano Superior</td></tr>
+<tr><td>145</td><td>Esencia Primordial</td><td>Esencia Superior ×3, Fragmento Primordial ×1</td><td>Esencia Primordial</td></tr>
+<tr><td>150</td><td>Núcleo de Energía Arcana</td><td>Eternato ×1, Anticito ×2, Brimuro ×2, Esencia Primordial ×3, Cristal Arcano Superior ×3, Oro ×5</td><td>Núcleo de Energía Arcana</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Inscripción</summary><div class="inner"><p><strong>18 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>0</td><td>Tinta Arcana</td><td>Hierba Curativa ×2, Esencia Mágica ×1</td><td>Tinta Arcana</td></tr>
+<tr><td>0</td><td>Pergamino Simple</td><td>Fibra Vegetal ×2</td><td>Pergamino Simple</td></tr>
+<tr><td>0</td><td>Placa Arcana</td><td>Tinta Arcana ×1, Piedra ×1</td><td>Placa Arcana</td></tr>
+<tr><td>30</td><td>Tinta Prestigio</td><td>Tinta Arcana ×2, Esencia Mágica ×2, Cristal Arcano ×1</td><td>Tinta Prestigio</td></tr>
+<tr><td>30</td><td>Tinta Calamidad</td><td>Tinta Arcana ×2, Esencia Arcana ×2, Belladona ×1</td><td>Tinta Calamidad</td></tr>
+<tr><td>30</td><td>Tinta Milagro</td><td>Tinta Arcana ×2, Esencia Superior ×2, Flor Silvestre ×1</td><td>Tinta Milagro</td></tr>
+<tr><td>30</td><td>Runa de Prestigio Menor</td><td>Tinta Prestigio ×1, Pergamino Simple ×1</td><td>Runa de Prestigio Menor</td></tr>
+<tr><td>30</td><td>Runa de Calamidad Menor</td><td>Tinta Calamidad ×1, Pergamino Simple ×1</td><td>Runa de Calamidad Menor</td></tr>
+<tr><td>30</td><td>Runa de Milagro Menor</td><td>Tinta Milagro ×1, Pergamino Simple ×1</td><td>Runa de Milagro Menor</td></tr>
+<tr><td>70</td><td>Runa de Prestigio Media</td><td>Tinta Prestigio ×2, Placa Arcana ×1</td><td>Runa de Prestigio Media</td></tr>
+<tr><td>70</td><td>Runa de Calamidad Media</td><td>Tinta Calamidad ×2, Placa Arcana ×1</td><td>Runa de Calamidad Media</td></tr>
+<tr><td>70</td><td>Runa de Milagro Media</td><td>Tinta Milagro ×2, Placa Arcana ×1</td><td>Runa de Milagro Media</td></tr>
+<tr><td>110</td><td>Runa de Prestigio Mayor</td><td>Tinta Prestigio ×3, Cristal Arcano ×1</td><td>Runa de Prestigio Mayor</td></tr>
+<tr><td>110</td><td>Runa de Calamidad Mayor</td><td>Tinta Calamidad ×3, Cristal Arcano ×1</td><td>Runa de Calamidad Mayor</td></tr>
+<tr><td>110</td><td>Runa de Milagro Mayor</td><td>Tinta Milagro ×3, Cristal Arcano ×1</td><td>Runa de Milagro Mayor</td></tr>
+<tr><td>150</td><td>Runa de Prestigio Superior</td><td>Tinta Prestigio ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Prestigio Superior</td></tr>
+<tr><td>150</td><td>Runa de Calamidad Superior</td><td>Tinta Calamidad ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Calamidad Superior</td></tr>
+<tr><td>150</td><td>Runa de Milagro Superior</td><td>Tinta Milagro ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Milagro Superior</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Joyería</summary><div class="inner"><p><strong>52 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Anillo de Hierro con Cuarzo</td><td>Lingote Hierro ×1, Cuarzo ×1</td><td>Anillo de Hierro con Cuarzo</td></tr>
+<tr><td>1</td><td>Amuleto de Hierro con Cuarzo</td><td>Lingote Hierro ×2, Cuarzo ×1, Esencia Mágica ×1</td><td>Amuleto de Hierro con Cuarzo</td></tr>
+<tr><td>1</td><td>Colgante de Hierro con Cuarzo</td><td>Lingote Hierro ×1, Cuarzo ×1</td><td>Colgante de Hierro con Cuarzo</td></tr>
+<tr><td>1</td><td>Pendientes de Hierro con Cuarzo</td><td>Lingote Hierro ×1, Cuarzo ×1</td><td>Pendientes de Hierro con Cuarzo</td></tr>
+<tr><td>1</td><td>Conjunto de Joyería de Hierro</td><td>Craft Anillo Hierro ×1, Craft Amuleto Hierro ×1, Craft Colgante Hierro ×1, Craft Pendientes Hierro ×1</td><td>Conjunto de Joyería de Hierro</td></tr>
+<tr><td>10</td><td>Anillo de Acero con Cuarzo</td><td>Lingote Acero ×1, Cuarzo ×1</td><td>Anillo de Acero con Cuarzo</td></tr>
+<tr><td>10</td><td>Amuleto de Acero con Cuarzo</td><td>Lingote Acero ×2, Cuarzo ×1, Esencia Mágica ×1</td><td>Amuleto de Acero con Cuarzo</td></tr>
+<tr><td>10</td><td>Colgante de Acero con Cuarzo</td><td>Lingote Acero ×1, Cuarzo ×1, Amatista ×1</td><td>Colgante de Acero con Cuarzo</td></tr>
+<tr><td>10</td><td>Pendientes de Acero con Cuarzo</td><td>Lingote Acero ×1, Cuarzo ×1</td><td>Pendientes de Acero con Cuarzo</td></tr>
+<tr><td>10</td><td>Conjunto de Joyería de Acero</td><td>Craft Anillo Acero ×1, Craft Amuleto Acero ×1, Craft Colgante Acero ×1, Craft Pendientes Acero ×1</td><td>Conjunto de Joyería de Acero</td></tr>
+<tr><td>25</td><td>Anillo de Plata con Amatista</td><td>Lingote Plata ×1, Amatista ×1</td><td>Anillo de Plata con Amatista</td></tr>
+<tr><td>25</td><td>Amuleto de Plata con Amatista</td><td>Lingote Plata ×2, Amatista ×1, Esencia Mágica ×1</td><td>Amuleto de Plata con Amatista</td></tr>
+<tr><td>25</td><td>Colgante de Plata con Amatista</td><td>Lingote Plata ×1, Amatista ×1, Topacio ×1</td><td>Colgante de Plata con Amatista</td></tr>
+<tr><td>25</td><td>Pendientes de Plata con Amatista</td><td>Lingote Plata ×1, Amatista ×1</td><td>Pendientes de Plata con Amatista</td></tr>
+<tr><td>25</td><td>Conjunto de Joyería de Plata</td><td>Craft Anillo Plata ×1, Craft Amuleto Plata ×1, Craft Colgante Plata ×1, Craft Pendientes Plata ×1</td><td>Conjunto de Joyería de Plata</td></tr>
+<tr><td>40</td><td>Anillo de Oro con Topacio</td><td>Lingote Oro ×1, Topacio ×1</td><td>Anillo de Oro con Topacio</td></tr>
+<tr><td>40</td><td>Amuleto de Oro con Topacio</td><td>Lingote Oro ×2, Topacio ×1, Esencia Mágica ×1</td><td>Amuleto de Oro con Topacio</td></tr>
+<tr><td>40</td><td>Colgante de Oro con Topacio</td><td>Lingote Oro ×1, Topacio ×1, Amatista ×1</td><td>Colgante de Oro con Topacio</td></tr>
+<tr><td>40</td><td>Pendientes de Oro con Topacio</td><td>Lingote Oro ×1, Topacio ×1</td><td>Pendientes de Oro con Topacio</td></tr>
+<tr><td>40</td><td>Conjunto de Joyería de Oro</td><td>Craft Anillo Oro ×1, Craft Amuleto Oro ×1, Craft Colgante Oro ×1, Craft Pendientes Oro ×1</td><td>Conjunto de Joyería de Oro</td></tr>
+<tr><td>55</td><td>Anillo de Mitrilo con Rubi</td><td>Lingote Mitrilo ×1, Rubí ×1</td><td>Anillo de Mitrilo con Rubi</td></tr>
+<tr><td>55</td><td>Amuleto de Mitrilo con Rubi</td><td>Lingote Mitrilo ×2, Rubí ×1, Esencia Mágica ×1</td><td>Amuleto de Mitrilo con Rubi</td></tr>
+<tr><td>55</td><td>Colgante de Mitrilo con Rubi</td><td>Lingote Mitrilo ×1, Rubí ×1, Topacio ×1</td><td>Colgante de Mitrilo con Rubi</td></tr>
+<tr><td>55</td><td>Pendientes de Mitrilo con Rubi</td><td>Lingote Mitrilo ×1, Rubí ×1</td><td>Pendientes de Mitrilo con Rubi</td></tr>
+<tr><td>55</td><td>Conjunto de Joyería de Mitrilo</td><td>Craft Anillo Mitrilo ×1, Craft Amuleto Mitrilo ×1, Craft Colgante Mitrilo ×1, Craft Pendientes Mitrilo ×1</td><td>Conjunto de Joyería de Mitrilo</td></tr>
+<tr><td>70</td><td>Anillo de Adamantita con Zafiro</td><td>Lingote Adamantita ×1, Zafiro ×1</td><td>Anillo de Adamantita con Zafiro</td></tr>
+<tr><td>70</td><td>Amuleto de Adamantita con Zafiro</td><td>Lingote Adamantita ×2, Zafiro ×1, Esencia Mágica ×1</td><td>Amuleto de Adamantita con Zafiro</td></tr>
+<tr><td>70</td><td>Colgante de Adamantita con Zafiro</td><td>Lingote Adamantita ×1, Zafiro ×1, Rubí ×1</td><td>Colgante de Adamantita con Zafiro</td></tr>
+<tr><td>70</td><td>Pendientes de Adamantita con Zafiro</td><td>Lingote Adamantita ×1, Zafiro ×1</td><td>Pendientes de Adamantita con Zafiro</td></tr>
+<tr><td>70</td><td>Conjunto de Joyería de Adamantita</td><td>Craft Anillo Adamantita ×1, Craft Amuleto Adamantita ×1, Craft Colgante Adamantita ×1, Craft Pendientes Adamantita ×1</td><td>Conjunto de Joyería de Adamantita</td></tr>
+<tr><td>70</td><td>Anillo de Cristal de Magma</td><td>Lingote Mitrilo ×1, Cristal de Magma ×1, Cuarzo ×1</td><td>Anillo de Cristal de Magma</td></tr>
+<tr><td>85</td><td>Anillo de Titanita con Esmeralda</td><td>Lingote Titanita ×1, Esmeralda ×1</td><td>Anillo de Titanita con Esmeralda</td></tr>
+<tr><td>85</td><td>Amuleto de Titanita con Esmeralda</td><td>Lingote Titanita ×2, Esmeralda ×1, Esencia Mágica ×1</td><td>Amuleto de Titanita con Esmeralda</td></tr>
+<tr><td>85</td><td>Colgante de Titanita con Esmeralda</td><td>Lingote Titanita ×1, Esmeralda ×1, Zafiro ×1</td><td>Colgante de Titanita con Esmeralda</td></tr>
+<tr><td>85</td><td>Pendientes de Titanita con Esmeralda</td><td>Lingote Titanita ×1, Esmeralda ×1</td><td>Pendientes de Titanita con Esmeralda</td></tr>
+<tr><td>85</td><td>Conjunto de Joyería de Titanita</td><td>Craft Anillo Titanita ×1, Craft Amuleto Titanita ×1, Craft Colgante Titanita ×1, Craft Pendientes Titanita ×1</td><td>Conjunto de Joyería de Titanita</td></tr>
+<tr><td>100</td><td>Anillo de Brimuro con Esmeralda</td><td>Lingote Brimuro ×1, Esmeralda ×1</td><td>Anillo de Brimuro con Esmeralda</td></tr>
+<tr><td>100</td><td>Amuleto de Brimuro con Esmeralda</td><td>Lingote Brimuro ×2, Esmeralda ×1, Esencia Mágica ×1</td><td>Amuleto de Brimuro con Esmeralda</td></tr>
+<tr><td>100</td><td>Colgante de Brimuro con Esmeralda</td><td>Lingote Brimuro ×1, Esmeralda ×1, Rubí ×1</td><td>Colgante de Brimuro con Esmeralda</td></tr>
+<tr><td>100</td><td>Pendientes de Brimuro con Esmeralda</td><td>Lingote Brimuro ×1, Esmeralda ×1</td><td>Pendientes de Brimuro con Esmeralda</td></tr>
+<tr><td>100</td><td>Conjunto de Joyería de Brimuro</td><td>Craft Anillo Brimuro ×1, Craft Amuleto Brimuro ×1, Craft Colgante Brimuro ×1, Craft Pendientes Brimuro ×1</td><td>Conjunto de Joyería de Brimuro</td></tr>
+<tr><td>100</td><td>Colgante de Cuerno de Quimera</td><td>Lingote Adamantita ×1, Cuerno de Quimera ×1, Zafiro ×1</td><td>Colgante de Cuerno de Quimera</td></tr>
+<tr><td>115</td><td>Anillo de Anticito con Diamante</td><td>Lingote Anticito ×1, Diamante ×1</td><td>Anillo de Anticito con Diamante</td></tr>
+<tr><td>115</td><td>Amuleto de Anticito con Diamante</td><td>Lingote Anticito ×2, Diamante ×1, Esencia Mágica ×1</td><td>Amuleto de Anticito con Diamante</td></tr>
+<tr><td>115</td><td>Colgante de Anticito con Diamante</td><td>Lingote Anticito ×1, Diamante ×1, Esmeralda ×1</td><td>Colgante de Anticito con Diamante</td></tr>
+<tr><td>115</td><td>Pendientes de Anticito con Diamante</td><td>Lingote Anticito ×1, Diamante ×1</td><td>Pendientes de Anticito con Diamante</td></tr>
+<tr><td>115</td><td>Conjunto de Joyería de Anticito</td><td>Craft Anillo Anticito ×1, Craft Amuleto Anticito ×1, Craft Colgante Anticito ×1, Craft Pendientes Anticito ×1</td><td>Conjunto de Joyería de Anticito</td></tr>
+<tr><td>130</td><td>Anillo de Eternato con Gema Primordial</td><td>Lingote Eternato ×1, Gema Primordial ×1</td><td>Anillo de Eternato con Gema Primordial</td></tr>
+<tr><td>130</td><td>Amuleto de Eternato con Gema Primordial</td><td>Lingote Eternato ×2, Gema Primordial ×1, Esencia Mágica ×1</td><td>Amuleto de Eternato con Gema Primordial</td></tr>
+<tr><td>130</td><td>Colgante de Eternato con Gema Primordial</td><td>Lingote Eternato ×1, Gema Primordial ×1, Diamante ×1</td><td>Colgante de Eternato con Gema Primordial</td></tr>
+<tr><td>130</td><td>Pendientes de Eternato con Gema Primordial</td><td>Lingote Eternato ×1, Gema Primordial ×1</td><td>Pendientes de Eternato con Gema Primordial</td></tr>
+<tr><td>130</td><td>Conjunto de Joyería de Eternato</td><td>Craft Anillo Eternato ×1, Craft Amuleto Eternato ×1, Craft Colgante Eternato ×1, Craft Pendientes Eternato ×1</td><td>Conjunto de Joyería de Eternato</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Peletería</summary><div class="inner"><p><strong>66 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Cuero Curtido</td><td>Piel de Conejo ×1</td><td>Cuero Curtido</td></tr>
+<tr><td>1</td><td>Gorro de Cuero Curtido</td><td>Cuero Curtido ×3, Piedra ×1, Ceniza Fértil ×1</td><td>Gorro de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Camisa de Cuero Curtido</td><td>Cuero Curtido ×5, Piedra ×2, Ceniza Fértil ×1</td><td>Camisa de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Hombreras de Cuero Curtido</td><td>Cuero Curtido ×3, Piedra ×1, Ceniza Fértil ×1</td><td>Hombreras de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Guantes de Cuero Curtido</td><td>Cuero Curtido ×2, Piedra ×1, Ceniza Fértil ×1</td><td>Guantes de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Pantalones de Cuero Curtido</td><td>Cuero Curtido ×4, Piedra ×1, Ceniza Fértil ×1</td><td>Pantalones de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Botas de Cuero Curtido</td><td>Cuero Curtido ×3, Piedra ×1, Ceniza Fértil ×1</td><td>Botas de Cuero Curtido</td></tr>
+<tr><td>1</td><td>Set de Armadura de Cuero Curtido</td><td>Craft Gorro Cuero Curtido ×1, Craft Camisa Cuero Curtido ×1, Craft Hombreras Cuero Curtido ×1, Craft Guantes Cuero Curtido ×1, Craft Pantalones Cuero Curtido ×1, Craft Botas Cuero Curtido ×1</td><td>Set de Armadura de Cuero Curtido</td></tr>
+<tr><td>15</td><td>Piel Zorro Curtida</td><td>Piel de Zorro ×1</td><td>Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Gorro de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×3, Piedra ×1, Carbón Ardiente ×1</td><td>Gorro de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Camisa de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×5, Piedra ×2, Carbón Ardiente ×1</td><td>Camisa de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Hombreras de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×3, Piedra ×1, Carbón Ardiente ×1</td><td>Hombreras de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Guantes de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×2, Piedra ×1, Carbón Ardiente ×1</td><td>Guantes de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Pantalones de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×4, Piedra ×1, Carbón Ardiente ×1</td><td>Pantalones de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Botas de Piel Zorro Curtida</td><td>Piel Zorro Curtida ×3, Piedra ×1, Carbón Ardiente ×1</td><td>Botas de Piel Zorro Curtida</td></tr>
+<tr><td>15</td><td>Set de Armadura de Piel Zorro Curtida</td><td>Craft Gorro Piel Zorro Curtida ×1, Craft Camisa Piel Zorro Curtida ×1, Craft Hombreras Piel Zorro Curtida ×1, Craft Guantes Piel Zorro Curtida ×1, Craft Pantalones Piel Zorro Curtida ×1, Craft Botas Piel Zorro Curtida ×1</td><td>Set de Armadura de Piel Zorro Curtida</td></tr>
+<tr><td>25</td><td>Gorro de Cuero y Quitina</td><td>Cuero Curtido ×3, Quitina de Ceniza ×2, Carbón Ardiente ×1</td><td>Gorro de Cuero y Quitina</td></tr>
+<tr><td>25</td><td>Camisa de Cuero y Quitina</td><td>Cuero Curtido ×5, Quitina de Ceniza ×3, Carbón Ardiente ×2</td><td>Camisa de Cuero y Quitina</td></tr>
+<tr><td>25</td><td>Hombreras de Cuero y Quitina</td><td>Cuero Curtido ×3, Quitina de Ceniza ×2</td><td>Hombreras de Cuero y Quitina</td></tr>
+<tr><td>25</td><td>Guantes de Cuero y Quitina</td><td>Cuero Curtido ×2, Quitina de Ceniza ×2</td><td>Guantes de Cuero y Quitina</td></tr>
+<tr><td>25</td><td>Pantalones de Cuero y Quitina</td><td>Cuero Curtido ×4, Quitina de Ceniza ×3, Carbón Ardiente ×1</td><td>Pantalones de Cuero y Quitina</td></tr>
+<tr><td>25</td><td>Botas de Cuero y Quitina</td><td>Cuero Curtido ×3, Quitina de Ceniza ×2</td><td>Botas de Cuero y Quitina</td></tr>
+<tr><td>30</td><td>Piel Lobo Curtida</td><td>Piel de Lobo ×1</td><td>Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Gorro de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×3, Piedra ×1, Piedra Pómez ×1</td><td>Gorro de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Camisa de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×5, Piedra ×2, Piedra Pómez ×1</td><td>Camisa de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Hombreras de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×3, Piedra ×1, Piedra Pómez ×1</td><td>Hombreras de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Guantes de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×2, Piedra ×1, Piedra Pómez ×1</td><td>Guantes de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Pantalones de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×4, Piedra ×1, Piedra Pómez ×1</td><td>Pantalones de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Botas de Piel Lobo Curtida</td><td>Piel Lobo Curtida ×3, Piedra ×1, Piedra Pómez ×1</td><td>Botas de Piel Lobo Curtida</td></tr>
+<tr><td>30</td><td>Set de Armadura de Piel Lobo Curtida</td><td>Craft Gorro Piel Lobo Curtida ×1, Craft Camisa Piel Lobo Curtida ×1, Craft Hombreras Piel Lobo Curtida ×1, Craft Guantes Piel Lobo Curtida ×1, Craft Pantalones Piel Lobo Curtida ×1, Craft Botas Piel Lobo Curtida ×1</td><td>Set de Armadura de Piel Lobo Curtida</td></tr>
+<tr><td>40</td><td>Gorro de Cuero IgnEO</td><td>Piel de Rata Volcánica ×1, Piel Abrasada ×2, Carbón Ardiente ×1</td><td>Gorro de Cuero IgnEO</td></tr>
+<tr><td>40</td><td>Camisa de Cuero IgnEO</td><td>Piel de Rata Volcánica ×2, Piel Abrasada ×3, Carbón Ardiente ×2</td><td>Camisa de Cuero IgnEO</td></tr>
+<tr><td>40</td><td>Hombreras de Cuero IgnEO</td><td>Piel de Rata Volcánica ×2, Piel Abrasada ×1, Carbón Ardiente ×1</td><td>Hombreras de Cuero IgnEO</td></tr>
+<tr><td>40</td><td>Guantes de Cuero IgnEO</td><td>Piel de Rata Volcánica ×1, Piel Abrasada ×2, Carbón Ardiente ×1</td><td>Guantes de Cuero IgnEO</td></tr>
+<tr><td>40</td><td>Pantalones de Cuero IgnEO</td><td>Piel de Rata Volcánica ×2, Piel Abrasada ×2, Carbón Ardiente ×2</td><td>Pantalones de Cuero IgnEO</td></tr>
+<tr><td>40</td><td>Botas de Cuero IgnEO</td><td>Piel de Rata Volcánica ×1, Piel Abrasada ×2, Carbón Ardiente ×1</td><td>Botas de Cuero IgnEO</td></tr>
+<tr><td>50</td><td>Cuero Jabali Curtido</td><td>Cuero de Jabalí ×1</td><td>Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Gorro de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×3, Piedra ×1, Gema de Azufre ×1</td><td>Gorro de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Camisa de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×5, Piedra ×2, Gema de Azufre ×1</td><td>Camisa de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Hombreras de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×3, Piedra ×1, Gema de Azufre ×1</td><td>Hombreras de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Guantes de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×2, Piedra ×1, Gema de Azufre ×1</td><td>Guantes de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Pantalones de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×4, Piedra ×1, Gema de Azufre ×1</td><td>Pantalones de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Botas de Cuero Jabali Curtido</td><td>Cuero Jabali Curtido ×3, Piedra ×1, Gema de Azufre ×1</td><td>Botas de Cuero Jabali Curtido</td></tr>
+<tr><td>50</td><td>Set de Armadura de Cuero Jabali Curtido</td><td>Craft Gorro Cuero Jabali Curtido ×1, Craft Camisa Cuero Jabali Curtido ×1, Craft Hombreras Cuero Jabali Curtido ×1, Craft Guantes Cuero Jabali Curtido ×1, Craft Pantalones Cuero Jabali Curtido ×1, Craft Botas Cuero Jabali Curtido ×1</td><td>Set de Armadura de Cuero Jabali Curtido</td></tr>
+<tr><td>70</td><td>Piel Oso Curtida</td><td>Piel de Oso ×1</td><td>Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Gorro de Piel Oso Curtida</td><td>Piel Oso Curtida ×3, Piedra ×1, Obsidiana Pura ×1</td><td>Gorro de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Camisa de Piel Oso Curtida</td><td>Piel Oso Curtida ×5, Piedra ×2, Obsidiana Pura ×1</td><td>Camisa de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Hombreras de Piel Oso Curtida</td><td>Piel Oso Curtida ×3, Piedra ×1, Obsidiana Pura ×1</td><td>Hombreras de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Guantes de Piel Oso Curtida</td><td>Piel Oso Curtida ×2, Piedra ×1, Obsidiana Pura ×1</td><td>Guantes de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Pantalones de Piel Oso Curtida</td><td>Piel Oso Curtida ×4, Piedra ×1, Obsidiana Pura ×1</td><td>Pantalones de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Botas de Piel Oso Curtida</td><td>Piel Oso Curtida ×3, Piedra ×1, Obsidiana Pura ×1</td><td>Botas de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Set de Armadura de Piel Oso Curtida</td><td>Craft Gorro Piel Oso Curtida ×1, Craft Camisa Piel Oso Curtida ×1, Craft Hombreras Piel Oso Curtida ×1, Craft Guantes Piel Oso Curtida ×1, Craft Pantalones Piel Oso Curtida ×1, Craft Botas Piel Oso Curtida ×1</td><td>Set de Armadura de Piel Oso Curtida</td></tr>
+<tr><td>70</td><td>Gorro de Escamas Volcanicas</td><td>Escama de Obsidiana ×2, Escama de Magma ×1, Piel Abrasada ×2</td><td>Gorro de Escamas Volcanicas</td></tr>
+<tr><td>70</td><td>Camisa de Escamas Volcanicas</td><td>Escama de Obsidiana ×3, Escama de Magma ×2, Piel Abrasada ×3</td><td>Camisa de Escamas Volcanicas</td></tr>
+<tr><td>70</td><td>Hombreras de Escamas Volcanicas</td><td>Escama de Obsidiana ×2, Escama de Magma ×1, Piel Abrasada ×2</td><td>Hombreras de Escamas Volcanicas</td></tr>
+<tr><td>70</td><td>Guantes de Escamas Volcanicas</td><td>Escama de Obsidiana ×2, Escama de Magma ×2, Piel Abrasada ×1</td><td>Guantes de Escamas Volcanicas</td></tr>
+<tr><td>70</td><td>Pantalones de Escamas Volcanicas</td><td>Escama de Obsidiana ×3, Escama de Magma ×2, Piel Abrasada ×2</td><td>Pantalones de Escamas Volcanicas</td></tr>
+<tr><td>70</td><td>Botas de Escamas Volcanicas</td><td>Escama de Obsidiana ×2, Escama de Magma ×1, Piel Abrasada ×2</td><td>Botas de Escamas Volcanicas</td></tr>
+<tr><td>100</td><td>Cuero Grueso Curtido</td><td>Cuero Grueso ×1</td><td>Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Gorro de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×3, Piedra ×1, Cristal de Magma ×1</td><td>Gorro de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Camisa de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×5, Piedra ×2, Cristal de Magma ×1</td><td>Camisa de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Hombreras de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×3, Piedra ×1, Cristal de Magma ×1</td><td>Hombreras de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Guantes de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×2, Piedra ×1, Cristal de Magma ×1</td><td>Guantes de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Pantalones de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×4, Piedra ×1, Cristal de Magma ×1</td><td>Pantalones de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Botas de Cuero Grueso Curtido</td><td>Cuero Grueso Curtido ×3, Piedra ×1, Cristal de Magma ×1</td><td>Botas de Cuero Grueso Curtido</td></tr>
+<tr><td>100</td><td>Set de Armadura de Cuero Grueso Curtido</td><td>Craft Gorro Cuero Grueso Curtido ×1, Craft Camisa Cuero Grueso Curtido ×1, Craft Hombreras Cuero Grueso Curtido ×1, Craft Guantes Cuero Grueso Curtido ×1, Craft Pantalones Cuero Grueso Curtido ×1, Craft Botas Cuero Grueso Curtido ×1</td><td>Set de Armadura de Cuero Grueso Curtido</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Sastrería</summary><div class="inner"><p><strong>56 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Madeja de Lino</td><td>Tela de Lino ×2</td><td>Madeja de Lino</td></tr>
+<tr><td>1</td><td>Gorro de Lino</td><td>Madeja de Lino ×1, Hilo Lino ×2, Piedra ×1</td><td>Gorro de Lino</td></tr>
+<tr><td>1</td><td>Túnica de Lino</td><td>Madeja de Lino ×2, Hilo Lino ×3, Piedra ×2</td><td>Túnica de Lino</td></tr>
+<tr><td>1</td><td>Hombreras de Lino</td><td>Madeja de Lino ×1, Hilo Lino ×2, Piedra ×1</td><td>Hombreras de Lino</td></tr>
+<tr><td>1</td><td>Guantes de Lino</td><td>Madeja de Lino ×1, Hilo Lino ×1, Piedra ×1</td><td>Guantes de Lino</td></tr>
+<tr><td>1</td><td>Pantalones de Lino</td><td>Madeja de Lino ×2, Hilo Lino ×1, Piedra ×1</td><td>Pantalones de Lino</td></tr>
+<tr><td>1</td><td>Botas de Lino</td><td>Madeja de Lino ×1, Hilo Lino ×2, Piedra ×1</td><td>Botas de Lino</td></tr>
+<tr><td>15</td><td>Madeja de Lana</td><td>Tela de Lana ×2</td><td>Madeja de Lana</td></tr>
+<tr><td>15</td><td>Gorro de Lana</td><td>Madeja de Lana ×1, Hilo Lana ×2, Piedra ×1</td><td>Gorro de Lana</td></tr>
+<tr><td>15</td><td>Túnica de Lana</td><td>Madeja de Lana ×2, Hilo Lana ×3, Piedra ×2</td><td>Túnica de Lana</td></tr>
+<tr><td>15</td><td>Hombreras de Lana</td><td>Madeja de Lana ×1, Hilo Lana ×2, Piedra ×1</td><td>Hombreras de Lana</td></tr>
+<tr><td>15</td><td>Guantes de Lana</td><td>Madeja de Lana ×1, Hilo Lana ×1, Piedra ×1</td><td>Guantes de Lana</td></tr>
+<tr><td>15</td><td>Pantalones de Lana</td><td>Madeja de Lana ×2, Hilo Lana ×1, Piedra ×1</td><td>Pantalones de Lana</td></tr>
+<tr><td>15</td><td>Botas de Lana</td><td>Madeja de Lana ×1, Hilo Lana ×2, Piedra ×1</td><td>Botas de Lana</td></tr>
+<tr><td>30</td><td>Madeja de Seda</td><td>Tela de Seda ×2</td><td>Madeja de Seda</td></tr>
+<tr><td>30</td><td>Gorro de Seda</td><td>Madeja de Seda ×1, Hilo Seda ×2, Piedra ×1</td><td>Gorro de Seda</td></tr>
+<tr><td>30</td><td>Túnica de Seda</td><td>Madeja de Seda ×2, Hilo Seda ×3, Piedra ×2</td><td>Túnica de Seda</td></tr>
+<tr><td>30</td><td>Hombreras de Seda</td><td>Madeja de Seda ×1, Hilo Seda ×2, Piedra ×1</td><td>Hombreras de Seda</td></tr>
+<tr><td>30</td><td>Guantes de Seda</td><td>Madeja de Seda ×1, Hilo Seda ×1, Piedra ×1</td><td>Guantes de Seda</td></tr>
+<tr><td>30</td><td>Pantalones de Seda</td><td>Madeja de Seda ×2, Hilo Seda ×1, Piedra ×1</td><td>Pantalones de Seda</td></tr>
+<tr><td>30</td><td>Botas de Seda</td><td>Madeja de Seda ×1, Hilo Seda ×2, Piedra ×1</td><td>Botas de Seda</td></tr>
+<tr><td>50</td><td>Madeja de Mágico</td><td>Tejido Mágico ×2</td><td>Madeja de Mágico</td></tr>
+<tr><td>50</td><td>Gorro de Mágico</td><td>Madeja Magico ×1, Hilo Magico ×2, Piedra ×1</td><td>Gorro de Mágico</td></tr>
+<tr><td>50</td><td>Túnica de Mágico</td><td>Madeja Magico ×2, Hilo Magico ×3, Piedra ×2</td><td>Túnica de Mágico</td></tr>
+<tr><td>50</td><td>Hombreras de Mágico</td><td>Madeja Magico ×1, Hilo Magico ×2, Piedra ×1</td><td>Hombreras de Mágico</td></tr>
+<tr><td>50</td><td>Guantes de Mágico</td><td>Madeja Magico ×1, Hilo Magico ×1, Piedra ×1</td><td>Guantes de Mágico</td></tr>
+<tr><td>50</td><td>Pantalones de Mágico</td><td>Madeja Magico ×2, Hilo Magico ×1, Piedra ×1</td><td>Pantalones de Mágico</td></tr>
+<tr><td>50</td><td>Botas de Mágico</td><td>Madeja Magico ×1, Hilo Magico ×2, Piedra ×1</td><td>Botas de Mágico</td></tr>
+<tr><td>70</td><td>Madeja de Rúnico</td><td>Tela Rúnica ×2</td><td>Madeja de Rúnico</td></tr>
+<tr><td>70</td><td>Gorro de Rúnico</td><td>Madeja Runico ×1, Hilo Runico ×2, Piedra ×1</td><td>Gorro de Rúnico</td></tr>
+<tr><td>70</td><td>Túnica de Rúnico</td><td>Madeja Runico ×2, Hilo Runico ×3, Piedra ×2</td><td>Túnica de Rúnico</td></tr>
+<tr><td>70</td><td>Hombreras de Rúnico</td><td>Madeja Runico ×1, Hilo Runico ×2, Piedra ×1</td><td>Hombreras de Rúnico</td></tr>
+<tr><td>70</td><td>Guantes de Rúnico</td><td>Madeja Runico ×1, Hilo Runico ×1, Piedra ×1</td><td>Guantes de Rúnico</td></tr>
+<tr><td>70</td><td>Pantalones de Rúnico</td><td>Madeja Runico ×2, Hilo Runico ×1, Piedra ×1</td><td>Pantalones de Rúnico</td></tr>
+<tr><td>70</td><td>Botas de Rúnico</td><td>Madeja Runico ×1, Hilo Runico ×2, Piedra ×1</td><td>Botas de Rúnico</td></tr>
+<tr><td>90</td><td>Madeja de Lunar</td><td>Tejido Lunar ×2</td><td>Madeja de Lunar</td></tr>
+<tr><td>90</td><td>Gorro de Lunar</td><td>Madeja Lunar ×1, Hilo Lunar ×2, Piedra ×1</td><td>Gorro de Lunar</td></tr>
+<tr><td>90</td><td>Túnica de Lunar</td><td>Madeja Lunar ×2, Hilo Lunar ×3, Piedra ×2</td><td>Túnica de Lunar</td></tr>
+<tr><td>90</td><td>Hombreras de Lunar</td><td>Madeja Lunar ×1, Hilo Lunar ×2, Piedra ×1</td><td>Hombreras de Lunar</td></tr>
+<tr><td>90</td><td>Guantes de Lunar</td><td>Madeja Lunar ×1, Hilo Lunar ×1, Piedra ×1</td><td>Guantes de Lunar</td></tr>
+<tr><td>90</td><td>Pantalones de Lunar</td><td>Madeja Lunar ×2, Hilo Lunar ×1, Piedra ×1</td><td>Pantalones de Lunar</td></tr>
+<tr><td>90</td><td>Botas de Lunar</td><td>Madeja Lunar ×1, Hilo Lunar ×2, Piedra ×1</td><td>Botas de Lunar</td></tr>
+<tr><td>110</td><td>Madeja de Espectral</td><td>Tejido Espectral ×2</td><td>Madeja de Espectral</td></tr>
+<tr><td>110</td><td>Gorro de Espectral</td><td>Madeja Espectral ×1, Hilo Espectral ×2, Piedra ×1</td><td>Gorro de Espectral</td></tr>
+<tr><td>110</td><td>Túnica de Espectral</td><td>Madeja Espectral ×2, Hilo Espectral ×3, Piedra ×2</td><td>Túnica de Espectral</td></tr>
+<tr><td>110</td><td>Hombreras de Espectral</td><td>Madeja Espectral ×1, Hilo Espectral ×2, Piedra ×1</td><td>Hombreras de Espectral</td></tr>
+<tr><td>110</td><td>Guantes de Espectral</td><td>Madeja Espectral ×1, Hilo Espectral ×1, Piedra ×1</td><td>Guantes de Espectral</td></tr>
+<tr><td>110</td><td>Pantalones de Espectral</td><td>Madeja Espectral ×2, Hilo Espectral ×1, Piedra ×1</td><td>Pantalones de Espectral</td></tr>
+<tr><td>110</td><td>Botas de Espectral</td><td>Madeja Espectral ×1, Hilo Espectral ×2, Piedra ×1</td><td>Botas de Espectral</td></tr>
+<tr><td>130</td><td>Madeja de Primordial</td><td>Tejido Primordial ×2</td><td>Madeja de Primordial</td></tr>
+<tr><td>130</td><td>Gorro de Primordial</td><td>Madeja Primordial ×1, Hilo Primordial ×2, Piedra ×1</td><td>Gorro de Primordial</td></tr>
+<tr><td>130</td><td>Túnica de Primordial</td><td>Madeja Primordial ×2, Hilo Primordial ×3, Piedra ×2</td><td>Túnica de Primordial</td></tr>
+<tr><td>130</td><td>Hombreras de Primordial</td><td>Madeja Primordial ×1, Hilo Primordial ×2, Piedra ×1</td><td>Hombreras de Primordial</td></tr>
+<tr><td>130</td><td>Guantes de Primordial</td><td>Madeja Primordial ×1, Hilo Primordial ×1, Piedra ×1</td><td>Guantes de Primordial</td></tr>
+<tr><td>130</td><td>Pantalones de Primordial</td><td>Madeja Primordial ×2, Hilo Primordial ×1, Piedra ×1</td><td>Pantalones de Primordial</td></tr>
+<tr><td>130</td><td>Botas de Primordial</td><td>Madeja Primordial ×1, Hilo Primordial ×2, Piedra ×1</td><td>Botas de Primordial</td></tr>
+</tbody></table></div></details>
+<h3>🌐 Profesiones Universales</h3>
+<details class=""><summary>Cocina</summary><div class="inner"><p><strong>12 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
+<tr><td>1</td><td>Carne Asada</td><td>Carne Cruda ×1</td><td>Carne Asada</td></tr>
+<tr><td>10</td><td>Carne Salada</td><td>Carne Cruda ×1, Sal ×1</td><td>Carne Salada</td></tr>
+<tr><td>15</td><td>Pescado Asado</td><td>Pezc00000001 ×1</td><td>Pescado Asado</td></tr>
+<tr><td>20</td><td>Carne a la Brasa</td><td>Carne Cruda ×2, Carbón ×1</td><td>Carne a la Brasa</td></tr>
+<tr><td>30</td><td>Estofado Simple</td><td>Carne Cruda ×2, Raíz Común ×1</td><td>Estofado Simple</td></tr>
+<tr><td>40</td><td>Sopa Nutritiva</td><td>Carne Cruda ×2, Menta Silvestre ×2</td><td>Sopa Nutritiva</td></tr>
+<tr><td>50</td><td>Guiso de Hierbas</td><td>Carne Cruda ×3, Romero de Montaña ×2</td><td>Guiso de Hierbas</td></tr>
+<tr><td>70</td><td>Festín del Cazador</td><td>Carne Cruda ×4, Hongo Lunar ×1</td><td>Festín del Cazador</td></tr>
+<tr><td>90</td><td>Estofado Arcano</td><td>Carne Cruda ×5, Hongo Arcano ×1</td><td>Estofado Arcano</td></tr>
+<tr><td>100</td><td>Festín del Guerrero</td><td>Carne Cruda ×6, Raíz de Mandrágora ×1</td><td>Festín del Guerrero</td></tr>
+<tr><td>120</td><td>Banquete Real</td><td>Carne Cruda ×8, Flor de Escarcha ×2</td><td>Banquete Real</td></tr>
+<tr><td>150</td><td>Festín Legendario</td><td>Carne Cruda ×10, Loto Negro ×2, Esencia Primordial ×1</td><td>Festín Legendario</td></tr>
+</tbody></table></div></details>
+<details class=""><summary>Constructor</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Domador</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details class=""><summary>Pesca</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+</section>
+<section id="s5"><h2>5. Habilidades</h2>
+<p>Las habilidades activas se aprenden en el <strong>Instructor de los Cuarteles</strong>. Cada clase tiene su propio catálogo, dividido por niveles de clase (5, 10 y 15).</p>
+<p>Para aprender una necesitás:</p>
+<ul>
+<li>Estar en el nivel de clase requerido (tier).</li>
+<li>Tener la maestría de arma al nivel necesario (si aplica).</li>
+<li>Tener el arma específica equipada (si aplica).</li>
+<li>Pagar oro + puntos de clase.</li>
+</ul>
+<div class="callout"><p>📌 <strong>Referencia completa:</strong> andá al Cuarteles y hablá con el <strong>Instructor</strong>. Ahí ves el panel de habilidades activas y pasivas, dividido por tier, con toda la info de cada una.</p></div>
+<h3>Habilidades activas</h3>
+<p>Se equipan (máximo 4) y se usan desde el combate. Cada una tiene coste de energía, cooldown y efectos propios.</p>
+<h3>Habilidades pasivas</h3>
+<p>Se equipan (máximo 4) y actúan automáticamente. Dan bonos permanentes (defensa, HP, crítico, procs, regeneración, etc.).</p>
+<h3>¿Cómo las equipás?</h3>
+<p>Desde tu ficha (<strong>Personaje → Habilidades</strong>) vas a ver todas las que aprendiste. Comandos rápidos:</p>
+<ul>
+<li><code>/skill_&lt;id&gt;</code> para equipar una activa.</li>
+<li><code>/unskill_&lt;id&gt;</code> para desequiparla.</li>
+<li><code>/pasiva_&lt;id&gt;</code> para equipar una pasiva.</li>
+<li><code>/unpasiva_&lt;id&gt;</code> para desequiparla.</li>
+<li><code>/skillinfo_&lt;id&gt;</code> para ver el detalle.</li>
+</ul>
+</section>
+<section id="s6"><h2>6. Zonas y criaturas</h2>
+<p>Esta sección detalla cada zona: qué actividades podés hacer, qué recursos encontrás y qué criaturas habitan el lugar.</p>
+<div class="callout warn"><p>⚠️ <strong>Nota sobre acumulación:</strong> en el Bosque, las zonas 1 a 4 <strong>comparten sus criaturas</strong> — si estás en la zona 3 también podés encontrarte mobs de las zonas 1 y 2. La <strong>zona 5 (Claro Prohibido) es la excepción</strong>: solo tiene sus 3 criaturas exclusivas.</p></div>
+<h3 id="s6-bosque">🌳 Bosque del Alba</h3>
+<p>Al norte de la Ciudadela. Dividido en 5 zonas concéntricas. En las zonas 1, 2, 3 y 5 <strong>no hay minerales</strong> — la única zona del bosque con minería es la 4 (Corazón Rocoso).</p>
+<div class="zone-header">
+<h4>Zona 1 — Claros del Alba</h4>
+<p><strong>Nivel:</strong> 1-5 · <strong>Peligro:</strong> 🟢 Muy bajo · <strong>Nodos:</strong> 16</p>
+<p class="horario">Nodos: n1_0, n1_1, n1_10, n1_11, n1_12, n1_13, n1_14, n1_15, n1_2, n1_3, n1_4, n1_5, n1_6, n1_7, n1_8, n1_9</p>
+</div>
+<div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity ">🪓 Talar ✅</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity ">🧺 Recolección genérica ✅</div>
+</div>
+<h5>🪓 Maderas (Tala)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Abeto</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Álamo</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Olmo</td><td><span class="badge comun">Común</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierba Curativa</td><td><span class="badge comun">Común</span></td><td>70%</td><td>1-3</td></tr>
+<tr><td>Raíz Común</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Menta Silvestre</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Hoja de Ortiga</td><td><span class="badge comun">Común</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Flor Silvestre</td><td><span class="badge media">Media</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🧺 Recolección genérica</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Piedra</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Rama</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Hoja</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-3</td></tr>
+<tr><td>Hierba Curativa</td><td><span class="badge comun">Común</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🐾 Criaturas</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Conejo Salvaje</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>veloz</td><td>86</td><td>22</td><td>—</td><td>Piel de Conejo (50%), Carne Cruda (40%)</td></tr>
+<tr><td>recio</td><td>92</td><td>18</td><td>—</td><td>Piel Gruesa de Conejo (20%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+<tr><td>mistico</td><td>83</td><td>22</td><td>—</td><td>Polvo de Luna (15%), Piel de Conejo (15%), Carne Cruda (40%)</td></tr>
+<tr><td>roedor</td><td>86</td><td>21</td><td>—</td><td>Diente de Excavador (18%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Slime del Bosque</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>base</td><td>98</td><td>16</td><td>—</td><td>Gelatina de Slime (85%), Núcleo Brillante (55%)</td></tr>
+<tr><td>acido</td><td>89</td><td>18</td><td>—</td><td>Gelatina de Slime (85%), Baba Ácida (40%)</td></tr>
+<tr><td>cristalino</td><td>86</td><td>19</td><td>🌙 Noche</td><td>Gelatina de Slime (85%), Perla de Gel (12%)</td></tr>
+<tr><td>carronero</td><td>92</td><td>19</td><td>—</td><td>Gelatina de Slime (85%), Colmillo Podrido (10%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟢 Zorro Astuto</span><span class="mob-meta">Rango E</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>ladron</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>ilusionista</td><td>96</td><td>33</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
+</tbody></table></div></details>
+<div class="zone-header">
+<h4>Zona 2 — Maleza Espinosa</h4>
+<p><strong>Nivel:</strong> 5-15 · <strong>Peligro:</strong> 🟢 Bajo · <strong>Nodos:</strong> 12</p>
+<p class="horario">Nodos: n2_0, n2_1, n2_10, n2_11, n2_2, n2_3, n2_4, n2_5, n2_6, n2_7, n2_8, n2_9</p>
+</div>
+<div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity ">🪓 Talar ✅</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity ">🧺 Recolección genérica ✅</div>
+</div>
+<h5>🪓 Maderas (Tala)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Pino</td><td><span class="badge comun">Común</span></td><td>60%</td><td>1-3</td></tr>
+<tr><td>Nogal</td><td><span class="badge media">Media</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Roble</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierba Curativa</td><td><span class="badge comun">Común</span></td><td>60%</td><td>1-3</td></tr>
+<tr><td>Raíz Común</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+<tr><td>Menta Silvestre</td><td><span class="badge comun">Común</span></td><td>45%</td><td>1-2</td></tr>
+<tr><td>Romero de Montaña</td><td><span class="badge media">Media</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Trébol de Cuatro Hojas</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🧺 Recolección genérica</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Piedra</td><td><span class="badge comun">Común</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Fibra Vegetal</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Hierba Curativa</td><td><span class="badge comun">Común</span></td><td>20%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🐾 Criaturas</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Conejo Salvaje</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>veloz</td><td>86</td><td>22</td><td>—</td><td>Piel de Conejo (50%), Carne Cruda (40%)</td></tr>
+<tr><td>recio</td><td>92</td><td>18</td><td>—</td><td>Piel Gruesa de Conejo (20%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+<tr><td>mistico</td><td>83</td><td>22</td><td>—</td><td>Polvo de Luna (15%), Piel de Conejo (15%), Carne Cruda (40%)</td></tr>
+<tr><td>roedor</td><td>86</td><td>21</td><td>—</td><td>Diente de Excavador (18%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔷 Goblin Chamán</span><span class="mob-meta">Rango D+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
+<tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
+<tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
+<tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
+<tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Slime del Bosque</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>base</td><td>98</td><td>16</td><td>—</td><td>Gelatina de Slime (85%), Núcleo Brillante (55%)</td></tr>
+<tr><td>acido</td><td>89</td><td>18</td><td>—</td><td>Gelatina de Slime (85%), Baba Ácida (40%)</td></tr>
+<tr><td>cristalino</td><td>86</td><td>19</td><td>🌙 Noche</td><td>Gelatina de Slime (85%), Perla de Gel (12%)</td></tr>
+<tr><td>carronero</td><td>92</td><td>19</td><td>—</td><td>Gelatina de Slime (85%), Colmillo Podrido (10%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟢 Zorro Astuto</span><span class="mob-meta">Rango E</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>ladron</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>ilusionista</td><td>96</td><td>33</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
+</tbody></table></div></details>
+<div class="zone-header">
+<h4>Zona 3 — Arboleda de los Colmillos</h4>
+<p><strong>Nivel:</strong> 15-35 · <strong>Peligro:</strong> 🟡 Medio · <strong>Nodos:</strong> 8</p>
+<p class="horario">Nodos: n3_0, n3_1, n3_2, n3_3, n3_4, n3_5, n3_6, n3_7</p>
+</div>
+<div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity ">🪓 Talar ✅</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity ">🧺 Recolección genérica ✅</div>
+</div>
+<h5>🪓 Maderas (Tala)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Roble</td><td><span class="badge media">Media</span></td><td>60%</td><td>1-3</td></tr>
+<tr><td>Acre</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Nogal</td><td><span class="badge media">Media</span></td><td>25%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Romero de Montaña</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Raíz de Valeriana</td><td><span class="badge media">Media</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Flor Silvestre</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Hongo Lunar</td><td><span class="badge raro">Raro</span></td><td>20%</td><td>1-1</td></tr>
+<tr><td>Raíz de Mandrágora</td><td><span class="badge raro">Raro</span></td><td>8%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🧺 Recolección genérica</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Fibra Vegetal</td><td><span class="badge comun">Común</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Hoja</td><td><span class="badge comun">Común</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Rama</td><td><span class="badge comun">Común</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🐾 Criaturas</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Conejo Salvaje</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>veloz</td><td>86</td><td>22</td><td>—</td><td>Piel de Conejo (50%), Carne Cruda (40%)</td></tr>
+<tr><td>recio</td><td>92</td><td>18</td><td>—</td><td>Piel Gruesa de Conejo (20%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+<tr><td>mistico</td><td>83</td><td>22</td><td>—</td><td>Polvo de Luna (15%), Piel de Conejo (15%), Carne Cruda (40%)</td></tr>
+<tr><td>roedor</td><td>86</td><td>21</td><td>—</td><td>Diente de Excavador (18%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔷 Goblin Chamán</span><span class="mob-meta">Rango D+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
+<tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
+<tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
+<tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
+<tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟪 Hobgoblin Escolta</span><span class="mob-meta">Rango C+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>capitan</td><td>216</td><td>47</td><td>—</td><td>Lanza Hobgoblin (15%)</td></tr>
+<tr><td>guardia_real</td><td>240</td><td>43</td><td>—</td><td>Escudo Agrietado (20%)</td></tr>
+<tr><td>estratega</td><td>204</td><td>52</td><td>—</td><td>Mapa de Tácticas (8%)</td></tr>
+<tr><td>berserker</td><td>222</td><td>55</td><td>—</td><td>Brazaletes de Sangre (6%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Jabalí Furioso</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cargador</td><td>195</td><td>43</td><td>—</td><td>Colmillo de Jabalí (40%), Carne Cruda (70%)</td></tr>
+<tr><td>colmillo_blanco</td><td>192</td><td>49</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo Perforante (8%), Carne Cruda (70%)</td></tr>
+<tr><td>barro</td><td>204</td><td>40</td><td>—</td><td>Colmillo de Jabalí (35%), Lodo Viscoso (18%), Carne Cruda (70%)</td></tr>
+<tr><td>manadero</td><td>195</td><td>41</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo de Llamada (4%), Carne Cruda (70%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Slime del Bosque</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>base</td><td>98</td><td>16</td><td>—</td><td>Gelatina de Slime (85%), Núcleo Brillante (55%)</td></tr>
+<tr><td>acido</td><td>89</td><td>18</td><td>—</td><td>Gelatina de Slime (85%), Baba Ácida (40%)</td></tr>
+<tr><td>cristalino</td><td>86</td><td>19</td><td>🌙 Noche</td><td>Gelatina de Slime (85%), Perla de Gel (12%)</td></tr>
+<tr><td>carronero</td><td>92</td><td>19</td><td>—</td><td>Gelatina de Slime (85%), Colmillo Podrido (10%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟢 Zorro Astuto</span><span class="mob-meta">Rango E</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>ladron</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>ilusionista</td><td>96</td><td>33</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
+</tbody></table></div></details>
+<div class="zone-header">
+<h4>Zona 4 — Corazón Rocoso</h4>
+<p><strong>Nivel:</strong> 35-55 · <strong>Peligro:</strong> 🟠 Alto · <strong>Nodos:</strong> 4</p>
+<p class="horario">Nodos: n4_0, n4_1, n4_2, n4_3</p>
+</div>
+<div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity ">🧺 Recolección genérica ✅</div>
+</div>
+<h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Carbón</td><td><span class="badge comun">Común</span></td><td>60%</td><td>1-3</td></tr>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table>
+<h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Medianoche</td><td><span class="badge raro">Raro</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Belladona</td><td><span class="badge raro">Raro</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Raíz de Mandrágora</td><td><span class="badge raro">Raro</span></td><td>25%</td><td>1-1</td></tr>
+<tr><td>Hongo Lunar</td><td><span class="badge raro">Raro</span></td><td>20%</td><td>1-1</td></tr>
+<tr><td>Flor de Escarcha</td><td><span class="badge epico">Muy raro</span></td><td>5%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🧺 Recolección genérica</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Piedra</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Rama</td><td><span class="badge comun">Común</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🐾 Criaturas</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Conejo Salvaje</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>veloz</td><td>86</td><td>22</td><td>—</td><td>Piel de Conejo (50%), Carne Cruda (40%)</td></tr>
+<tr><td>recio</td><td>92</td><td>18</td><td>—</td><td>Piel Gruesa de Conejo (20%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+<tr><td>mistico</td><td>83</td><td>22</td><td>—</td><td>Polvo de Luna (15%), Piel de Conejo (15%), Carne Cruda (40%)</td></tr>
+<tr><td>roedor</td><td>86</td><td>21</td><td>—</td><td>Diente de Excavador (18%), Piel de Conejo (20%), Carne Cruda (40%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔷 Goblin Chamán</span><span class="mob-meta">Rango D+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
+<tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
+<tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
+<tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
+<tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟪 Hobgoblin Escolta</span><span class="mob-meta">Rango C+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>capitan</td><td>216</td><td>47</td><td>—</td><td>Lanza Hobgoblin (15%)</td></tr>
+<tr><td>guardia_real</td><td>240</td><td>43</td><td>—</td><td>Escudo Agrietado (20%)</td></tr>
+<tr><td>estratega</td><td>204</td><td>52</td><td>—</td><td>Mapa de Tácticas (8%)</td></tr>
+<tr><td>berserker</td><td>222</td><td>55</td><td>—</td><td>Brazaletes de Sangre (6%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Jabalí Furioso</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cargador</td><td>195</td><td>43</td><td>—</td><td>Colmillo de Jabalí (40%), Carne Cruda (70%)</td></tr>
+<tr><td>colmillo_blanco</td><td>192</td><td>49</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo Perforante (8%), Carne Cruda (70%)</td></tr>
+<tr><td>barro</td><td>204</td><td>40</td><td>—</td><td>Colmillo de Jabalí (35%), Lodo Viscoso (18%), Carne Cruda (70%)</td></tr>
+<tr><td>manadero</td><td>195</td><td>41</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo de Llamada (4%), Carne Cruda (70%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Lobo Gris</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>aullador</td><td>325</td><td>59</td><td>—</td><td>Piel de Lobo (50%), Carne Cruda (50%)</td></tr>
+<tr><td>alfa</td><td>334</td><td>56</td><td>—</td><td>Colmillo de Alfa (10%), Carne Cruda (50%)</td></tr>
+<tr><td>rastreador</td><td>322</td><td>65</td><td>—</td><td>Garras de Rastreador (12%), Carne Cruda (50%)</td></tr>
+<tr><td>espectral</td><td>316</td><td>56</td><td>🌙 Noche</td><td>Esencia Espectral (15%), Carne Cruda (50%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟧 Oso Pardo</span><span class="mob-meta">Rango B+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>devastador</td><td>440</td><td>66</td><td>☀️ Día</td><td>Garras de Oso (30%), Carne Cruda (90%)</td></tr>
+<tr><td>guardian_bosque</td><td>452</td><td>57</td><td>☀️ Día</td><td>Corteza Viva (8%), Carne Cruda (90%)</td></tr>
+<tr><td>hibernado</td><td>464</td><td>63</td><td>☀️ Día</td><td>Grasa Sólida (30%), Carne Cruda (90%)</td></tr>
+<tr><td>sabio</td><td>434</td><td>60</td><td>☀️ Día</td><td>Colmillo Rúnico (6%), Carne Cruda (90%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Slime del Bosque</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>base</td><td>98</td><td>16</td><td>—</td><td>Gelatina de Slime (85%), Núcleo Brillante (55%)</td></tr>
+<tr><td>acido</td><td>89</td><td>18</td><td>—</td><td>Gelatina de Slime (85%), Baba Ácida (40%)</td></tr>
+<tr><td>cristalino</td><td>86</td><td>19</td><td>🌙 Noche</td><td>Gelatina de Slime (85%), Perla de Gel (12%)</td></tr>
+<tr><td>carronero</td><td>92</td><td>19</td><td>—</td><td>Gelatina de Slime (85%), Colmillo Podrido (10%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟢 Zorro Astuto</span><span class="mob-meta">Rango E</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>ladron</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>ilusionista</td><td>96</td><td>33</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
+<tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
+</tbody></table></div></details>
+<div class="zone-header">
+<h4>Zona 5 — Claro Prohibido</h4>
+<p><strong>Nivel:</strong> 55+ · <strong>Peligro:</strong> 💀 Jefe único · <strong>Nodos:</strong> 1</p>
+<p class="horario">Nodos: n5_0</p>
+</div>
+<div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity ">🧺 Recolección genérica ✅</div>
+</div>
+<h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Escarcha</td><td><span class="badge epico">Muy raro</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Hongo Arcano</td><td><span class="badge epico">Muy raro</span></td><td>25%</td><td>1-1</td></tr>
+<tr><td>Raíz de Dragón</td><td><span class="badge epico">Muy raro</span></td><td>15%</td><td>1-1</td></tr>
+<tr><td>Loto Negro</td><td><span class="badge epico">Muy raro</span></td><td>8%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🧺 Recolección genérica</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Piedra</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-2</td></tr>
+<tr><td>Hoja</td><td><span class="badge comun">Común</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table>
+<h5>🐾 Criaturas</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔺 Grifo Real</span><span class="mob-meta">Rango A+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cazador_tormentas</td><td>740</td><td>78</td><td>☀️ Día</td><td>Pluma de Grifo (50%), Carne Cruda (40%)</td></tr>
+<tr><td>rayo</td><td>734</td><td>87</td><td>☀️ Día</td><td>Pluma Eléctrica (15%), Carne Cruda (40%)</td></tr>
+<tr><td>vendaval</td><td>728</td><td>78</td><td>☀️ Día</td><td>Pluma de Viento (12%), Carne Cruda (40%)</td></tr>
+<tr><td>hierro</td><td>734</td><td>84</td><td>—</td><td>Pluma de Acero (8%), Carne Cruda (40%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">💠 Treant Ancestral</span><span class="mob-meta">Rango S · Jefe único</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>unica</td><td>1530</td><td>132</td><td>—</td><td>Savia Ancestral (40%), Ramas del Tiempo (25%), Fruta Ámbar (20%), Corazón de la Arboleda (8%), Aliento de la Tierra (3%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔴 Treant Vigía</span><span class="mob-meta">Rango A</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>guardabosques</td><td>605</td><td>69</td><td>☀️ Día</td><td>Madera de Treant (40%)</td></tr>
+<tr><td>quemado</td><td>614</td><td>72</td><td>—</td><td>Carbón de Treant (15%)</td></tr>
+<tr><td>sabio_antiguo</td><td>596</td><td>81</td><td>—</td><td>Runa de Enraizar (5%)</td></tr>
+<tr><td>castigador</td><td>608</td><td>75</td><td>☀️ Día</td><td>Mazo de Raíces (4%)</td></tr>
+</tbody></table></div></details>
+<h3 id="s6-forja">🌋 Forja de Pyraen</h3>
+<p>Zona volcánica al sur del bosque. A diferencia del bosque, <strong>cada nodo tiene su propia tabla de recursos</strong>. Tocá un anillo para ver sus nodos; tocá un nodo para ver sus recursos.</p>
+<details class="nested"><summary>Zona 1 — Páramos de Ceniza</summary><div class="inner"><p><strong>Rango:</strong> D · <strong>Peligro:</strong> 🟠 Alto · <strong>Nodos:</strong> 16</p>
+<details class="subnested"><summary>📍 Páramos de Ceniza Nornoreste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Ceniza</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Oessuroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Ceniza</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Oeste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Carbón</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Oesnoroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Noroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Ceniza</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Noreste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Carbón</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Este</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Ceniza</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Estesureste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Sursureste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Carbón</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Sur</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity ">🌸 Recolectar hierbas ✅</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🌸 Hierbas (Herboristería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Flor de Ceniza</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-2</td></tr>
+</tbody></table>
+<h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Páramos de Ceniza Sursuroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Ceniza Fértil</td><td><span class="badge comun">Común</span></td><td>55%</td><td>1-3</td></tr>
+<tr><td>Carbón Ardiente</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+</tbody></table></div></details>
+<h5>🐾 Criaturas del anillo</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Escarabajo de Ceniza</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cascaron</td><td>136</td><td>32</td><td>—</td><td>Quitina de Ceniza (60%), Fragmento de Caparazón (35%), Carbón Ardiente (20%), Hierro (15%), Tela de Seda (25%)</td></tr>
+<tr><td>igneo</td><td>124</td><td>35</td><td>—</td><td>Quitina Ígnea (60%), Núcleo de Brasa Menor (30%), Carbón Ardiente (25%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>minero</td><td>118</td><td>33</td><td>—</td><td>Garra Minera (40%), Caparazón Perforador (55%), Piedra Volcánica (30%), Fragmento de Veta (20%), Hierro (25%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Rata de Magma</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>118</td><td>35</td><td>—</td><td>Piel de Rata Volcánica (60%), Colmillo Pequeño (45%), Ceniza Fértil (25%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>ignea</td><td>118</td><td>32</td><td>—</td><td>Piel Abrasada (60%), Colmillo Incandescente (40%), Carbón Ardiente (30%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>portadora</td><td>115</td><td>38</td><td>—</td><td>Piel de Rata (55%), Bolsa Robada (25%), Hierro (35%), Fragmento Mineral (20%), Tela de Seda (20%)</td></tr>
+</tbody></table></div></details></div></details>
+<details class="nested"><summary>Zona 2 — Grietas de Lava</summary><div class="inner"><p><strong>Rango:</strong> C · <strong>Peligro:</strong> 🟠 Alto · <strong>Nodos:</strong> 12</p>
+<details class="subnested"><summary>📍 Grietas de Lava Norte</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Piedra Pómez</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Sangre de Salamandra</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Nornoreste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Oesnoroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Noroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Piedra Pómez</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Sangre de Salamandra</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Este</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Piedra Pómez</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Sangre de Salamandra</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Estesureste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Sureste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Sur</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Sursuroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+<tr><td>Piedra Pómez</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Sangre de Salamandra</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Suroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Gema de Azufre</td><td><span class="badge media">Media</span></td><td>50%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Grietas de Lava Oeste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>50%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Cuarzo</td><td><span class="badge comun">Común</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>15%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<h5>🐾 Criaturas del anillo</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Escarabajo de Ceniza</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cascaron</td><td>136</td><td>32</td><td>—</td><td>Quitina de Ceniza (60%), Fragmento de Caparazón (35%), Carbón Ardiente (20%), Hierro (15%), Tela de Seda (25%)</td></tr>
+<tr><td>igneo</td><td>124</td><td>35</td><td>—</td><td>Quitina Ígnea (60%), Núcleo de Brasa Menor (30%), Carbón Ardiente (25%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>minero</td><td>118</td><td>33</td><td>—</td><td>Garra Minera (40%), Caparazón Perforador (55%), Piedra Volcánica (30%), Fragmento de Veta (20%), Hierro (25%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Murciélago Ígneo</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>168</td><td>49</td><td>—</td><td>Ala de Murciélago (65%), Colmillo de Murciélago (40%), Membrana (30%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>fuego</td><td>168</td><td>46</td><td>—</td><td>Ala Ígnea (65%), Colmillo Ardiente (40%), Membrana Quemada (30%), Carbón Ardiente (25%), Plata (10%), Tela de Seda (25%)</td></tr>
+<tr><td>sombrio</td><td>168</td><td>43</td><td>🌙 Noche</td><td>Ala Sombría (60%), Esencia Oscura (25%), Colmillo Oscuro (35%), Plata (10%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Rata de Magma</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>118</td><td>35</td><td>—</td><td>Piel de Rata Volcánica (60%), Colmillo Pequeño (45%), Ceniza Fértil (25%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>ignea</td><td>118</td><td>32</td><td>—</td><td>Piel Abrasada (60%), Colmillo Incandescente (40%), Carbón Ardiente (30%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>portadora</td><td>115</td><td>38</td><td>—</td><td>Piel de Rata (55%), Bolsa Robada (25%), Hierro (35%), Fragmento Mineral (20%), Tela de Seda (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Salamandra de Fuego</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>roja</td><td>174</td><td>43</td><td>—</td><td>Piel de Salamandra (65%), Escama Roja (45%), Glándula Ígnea (25%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>obsidiana</td><td>174</td><td>46</td><td>—</td><td>Escama de Obsidiana (70%), Garra Negra (45%), Fragmento de Obsidiana (35%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>azufre</td><td>168</td><td>43</td><td>—</td><td>Escama Amarilla (60%), Glándula de Azufre (40%), Gema de Azufre (20%), Hierro (15%), Plata (12%), Tejido Mágico (25%)</td></tr>
+</tbody></table></div></details></div></details>
+<details class="nested"><summary>Zona 3 — Cañón de Obsidiana</summary><div class="inner"><p><strong>Rango:</strong> B · <strong>Peligro:</strong> 🔴 Muy alto · <strong>Nodos:</strong> 8</p>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Norte</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>45%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Oro</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Topacio</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Noreste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Obsidiana Pura</td><td><span class="badge raro">Raro</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Cristal de Magma</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Núcleo de Golem</td><td><span class="badge raro">Raro</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Este</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Obsidiana Pura</td><td><span class="badge raro">Raro</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Cristal de Magma</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Sureste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>45%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Oro</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Topacio</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Sur</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Obsidiana Pura</td><td><span class="badge raro">Raro</span></td><td>35%</td><td>1-2</td></tr>
+<tr><td>Cristal de Magma</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Suroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Cristal de Magma</td><td><span class="badge media">Media</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Oeste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>45%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>25%</td><td>1-2</td></tr>
+<tr><td>Oro</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+<tr><td>Amatista</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Topacio</td><td><span class="badge media">Media</span></td><td>10%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Cañón de Obsidiana Noroeste</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Obsidiana Pura</td><td><span class="badge raro">Raro</span></td><td>35%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<h5>🐾 Criaturas del anillo</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Elemental de Magma</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>brasa</td><td>334</td><td>59</td><td>—</td><td>Esencia de Brasa (60%), Núcleo de Fuego Menor (35%), Carbón Ardiente (40%), Plata (15%), Tejido Mágico (20%)</td></tr>
+<tr><td>magma</td><td>334</td><td>65</td><td>—</td><td>Esencia de Magma (65%), Núcleo de Magma (40%), Cristal de Magma (35%), Plata (20%), Oro (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>obsidiana_ignea</td><td>328</td><td>62</td><td>—</td><td>Fragmento de Obsidiana Ígnea (70%), Núcleo Oscuro (35%), Obsidiana Pura (35%), Plata (20%), Oro (10%), Tejido Mágico (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Escarabajo de Ceniza</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cascaron</td><td>136</td><td>32</td><td>—</td><td>Quitina de Ceniza (60%), Fragmento de Caparazón (35%), Carbón Ardiente (20%), Hierro (15%), Tela de Seda (25%)</td></tr>
+<tr><td>igneo</td><td>124</td><td>35</td><td>—</td><td>Quitina Ígnea (60%), Núcleo de Brasa Menor (30%), Carbón Ardiente (25%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>minero</td><td>118</td><td>33</td><td>—</td><td>Garra Minera (40%), Caparazón Perforador (55%), Piedra Volcánica (30%), Fragmento de Veta (20%), Hierro (25%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Golem de Obsidiana</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>basico</td><td>352</td><td>62</td><td>—</td><td>Fragmento de Obsidiana (75%), Núcleo Pétreo (45%), Obsidiana Pura (20%), Hierro (20%), Plata (15%), Tela Rúnica (15%)</td></tr>
+<tr><td>lava</td><td>346</td><td>65</td><td>—</td><td>Núcleo de Lava (50%), Fragmento de Obsidiana Caliente (60%), Cristal de Magma (20%), Hierro (15%), Plata (15%), Oro (5%), Tela Rúnica (15%)</td></tr>
+<tr><td>antiguo</td><td>334</td><td>59</td><td>—</td><td>Fragmento Rúnico (50%), Núcleo Antiguo (35%), Cristal Arcano (20%), Plata (15%), Oro (8%), Tela Rúnica (15%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Lagarto de Lava</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>agil</td><td>328</td><td>59</td><td>—</td><td>Piel de Lagarto (65%), Garra de Lagarto (40%), Escama Roja (30%), Hierro (15%), Plata (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>magma</td><td>334</td><td>59</td><td>—</td><td>Escama de Magma (70%), Glándula de Magma (40%), Cristal de Magma (25%), Plata (15%), Oro (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>cristal</td><td>322</td><td>56</td><td>—</td><td>Escama Cristalina (65%), Garra Cristalina (45%), Cristal de Magma (30%), Plata (15%), Oro (10%), Tejido Mágico (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Murciélago Ígneo</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>168</td><td>49</td><td>—</td><td>Ala de Murciélago (65%), Colmillo de Murciélago (40%), Membrana (30%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>fuego</td><td>168</td><td>46</td><td>—</td><td>Ala Ígnea (65%), Colmillo Ardiente (40%), Membrana Quemada (30%), Carbón Ardiente (25%), Plata (10%), Tela de Seda (25%)</td></tr>
+<tr><td>sombrio</td><td>168</td><td>43</td><td>🌙 Noche</td><td>Ala Sombría (60%), Esencia Oscura (25%), Colmillo Oscuro (35%), Plata (10%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Rata de Magma</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>118</td><td>35</td><td>—</td><td>Piel de Rata Volcánica (60%), Colmillo Pequeño (45%), Ceniza Fértil (25%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>ignea</td><td>118</td><td>32</td><td>—</td><td>Piel Abrasada (60%), Colmillo Incandescente (40%), Carbón Ardiente (30%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>portadora</td><td>115</td><td>38</td><td>—</td><td>Piel de Rata (55%), Bolsa Robada (25%), Hierro (35%), Fragmento Mineral (20%), Tela de Seda (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Salamandra de Fuego</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>roja</td><td>174</td><td>43</td><td>—</td><td>Piel de Salamandra (65%), Escama Roja (45%), Glándula Ígnea (25%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>obsidiana</td><td>174</td><td>46</td><td>—</td><td>Escama de Obsidiana (70%), Garra Negra (45%), Fragmento de Obsidiana (35%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>azufre</td><td>168</td><td>43</td><td>—</td><td>Escama Amarilla (60%), Glándula de Azufre (40%), Gema de Azufre (20%), Hierro (15%), Plata (12%), Tejido Mágico (25%)</td></tr>
+</tbody></table></div></details></div></details>
+<details class="nested"><summary>Zona 4 — Laderas del Coloso</summary><div class="inner"><p><strong>Rango:</strong> A · <strong>Peligro:</strong> 🔴 Extremo · <strong>Nodos:</strong> 4</p>
+<details class="subnested"><summary>📍 Laderas del Coloso Norte</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Corazón de Lava</td><td><span class="badge epico">Épico</span></td><td>15%</td><td>1-1</td></tr>
+<tr><td>Pluma de Fénix</td><td><span class="badge raro">Raro</span></td><td>15%</td><td>1-1</td></tr>
+<tr><td>Cuerno de Quimera</td><td><span class="badge raro">Raro</span></td><td>12%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Laderas del Coloso Este</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Oro</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Topacio</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Laderas del Coloso Sur</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Corazón de Lava</td><td><span class="badge epico">Épico</span></td><td>15%</td><td>1-1</td></tr>
+<tr><td>Pluma de Fénix</td><td><span class="badge raro">Raro</span></td><td>15%</td><td>1-1</td></tr>
+<tr><td>Cuerno de Quimera</td><td><span class="badge raro">Raro</span></td><td>12%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<details class="subnested"><summary>📍 Laderas del Coloso Oeste</summary><div class="inner"><div class="activities">
+<div class="activity ">⛏️ Minar ✅</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity no">🔎 Explorar ❌</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>⛏️ Minerales (Minería)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Hierro</td><td><span class="badge comun">Común</span></td><td>40%</td><td>1-3</td></tr>
+<tr><td>Plata</td><td><span class="badge media">Media</span></td><td>30%</td><td>1-2</td></tr>
+<tr><td>Oro</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+<tr><td>Topacio</td><td><span class="badge media">Media</span></td><td>20%</td><td>1-2</td></tr>
+</tbody></table></div></details>
+<h5>🐾 Criaturas del anillo</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔴 Coloso Magmático</span><span class="mob-meta">Rango A</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>basalto</td><td>614</td><td>75</td><td>—</td><td>Fragmento de Coloso (70%), Basalto Ancestral (55%), Obsidiana Pura (30%), Plata (20%), Oro (15%), Tela Rúnica (25%)</td></tr>
+<tr><td>magma</td><td>602</td><td>78</td><td>—</td><td>Fragmento de Magma (65%), Núcleo Volcánico Menor (30%), Corazón de Lava (25%), Plata (25%), Oro (20%), Tela Rúnica (25%)</td></tr>
+<tr><td>oro</td><td>602</td><td>72</td><td>—</td><td>Fragmento Dorado (65%), Núcleo Metálico (45%), Oro (35%), Plata (25%), Tela Rúnica (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Elemental de Magma</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>brasa</td><td>334</td><td>59</td><td>—</td><td>Esencia de Brasa (60%), Núcleo de Fuego Menor (35%), Carbón Ardiente (40%), Plata (15%), Tejido Mágico (20%)</td></tr>
+<tr><td>magma</td><td>334</td><td>65</td><td>—</td><td>Esencia de Magma (65%), Núcleo de Magma (40%), Cristal de Magma (35%), Plata (20%), Oro (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>obsidiana_ignea</td><td>328</td><td>62</td><td>—</td><td>Fragmento de Obsidiana Ígnea (70%), Núcleo Oscuro (35%), Obsidiana Pura (35%), Plata (20%), Oro (10%), Tejido Mágico (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Escarabajo de Ceniza</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>cascaron</td><td>136</td><td>32</td><td>—</td><td>Quitina de Ceniza (60%), Fragmento de Caparazón (35%), Carbón Ardiente (20%), Hierro (15%), Tela de Seda (25%)</td></tr>
+<tr><td>igneo</td><td>124</td><td>35</td><td>—</td><td>Quitina Ígnea (60%), Núcleo de Brasa Menor (30%), Carbón Ardiente (25%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>minero</td><td>118</td><td>33</td><td>—</td><td>Garra Minera (40%), Caparazón Perforador (55%), Piedra Volcánica (30%), Fragmento de Veta (20%), Hierro (25%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔴 Fénix Joven</span><span class="mob-meta">Rango A</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>rojo</td><td>548</td><td>72</td><td>☀️ Día</td><td>Pluma Ígnea (70%), Gema de Fuego (30%), Ceniza de Fénix (25%), Corazón de Lava (10%), Oro (20%), Tela Rúnica (25%)</td></tr>
+<tr><td>dorado</td><td>548</td><td>75</td><td>☀️ Día</td><td>Pluma Dorada (70%), Pluma de Fénix (30%), Ceniza Dorada (25%), Oro (30%), Tela Rúnica (25%)</td></tr>
+<tr><td>sombrio</td><td>542</td><td>75</td><td>—</td><td>Pluma Sombría (65%), Ceniza Oscura (35%), Esencia Oscura (25%), Oro (20%), Tela Rúnica (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Golem de Obsidiana</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>basico</td><td>352</td><td>62</td><td>—</td><td>Fragmento de Obsidiana (75%), Núcleo Pétreo (45%), Obsidiana Pura (20%), Hierro (20%), Plata (15%), Tela Rúnica (15%)</td></tr>
+<tr><td>lava</td><td>346</td><td>65</td><td>—</td><td>Núcleo de Lava (50%), Fragmento de Obsidiana Caliente (60%), Cristal de Magma (20%), Hierro (15%), Plata (15%), Oro (5%), Tela Rúnica (15%)</td></tr>
+<tr><td>antiguo</td><td>334</td><td>59</td><td>—</td><td>Fragmento Rúnico (50%), Núcleo Antiguo (35%), Cristal Arcano (20%), Plata (15%), Oro (8%), Tela Rúnica (15%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟠 Lagarto de Lava</span><span class="mob-meta">Rango B</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>agil</td><td>328</td><td>59</td><td>—</td><td>Piel de Lagarto (65%), Garra de Lagarto (40%), Escama Roja (30%), Hierro (15%), Plata (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>magma</td><td>334</td><td>59</td><td>—</td><td>Escama de Magma (70%), Glándula de Magma (40%), Cristal de Magma (25%), Plata (15%), Oro (10%), Tejido Mágico (20%)</td></tr>
+<tr><td>cristal</td><td>322</td><td>56</td><td>—</td><td>Escama Cristalina (65%), Garra Cristalina (45%), Cristal de Magma (30%), Plata (15%), Oro (10%), Tejido Mágico (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Murciélago Ígneo</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>168</td><td>49</td><td>—</td><td>Ala de Murciélago (65%), Colmillo de Murciélago (40%), Membrana (30%), Hierro (10%), Tela de Seda (25%)</td></tr>
+<tr><td>fuego</td><td>168</td><td>46</td><td>—</td><td>Ala Ígnea (65%), Colmillo Ardiente (40%), Membrana Quemada (30%), Carbón Ardiente (25%), Plata (10%), Tela de Seda (25%)</td></tr>
+<tr><td>sombrio</td><td>168</td><td>43</td><td>🌙 Noche</td><td>Ala Sombría (60%), Esencia Oscura (25%), Colmillo Oscuro (35%), Plata (10%), Tela de Seda (25%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔴 Quimera Volcánica</span><span class="mob-meta">Rango A</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>fuego</td><td>560</td><td>75</td><td>—</td><td>Cuerno Volcánico (55%), Colmillo de Quimera (50%), Escama Ígnea (45%), Corazón de Lava (15%), Oro (25%), Tela Rúnica (20%)</td></tr>
+<tr><td>hielo</td><td>554</td><td>72</td><td>—</td><td>Cuerno Helado (55%), Escama Congelada (45%), Esencia de Hielo (30%), Oro (20%), Tela Rúnica (20%)</td></tr>
+<tr><td>tormenta</td><td>548</td><td>72</td><td>—</td><td>Cuerno de Tormenta (55%), Escama Eléctrica (45%), Núcleo de Tormenta (25%), Oro (20%), Tela Rúnica (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Rata de Magma</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>comun</td><td>118</td><td>35</td><td>—</td><td>Piel de Rata Volcánica (60%), Colmillo Pequeño (45%), Ceniza Fértil (25%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>ignea</td><td>118</td><td>32</td><td>—</td><td>Piel Abrasada (60%), Colmillo Incandescente (40%), Carbón Ardiente (30%), Ceniza Volcánica (20%), Hierro (10%), Tela de Seda (20%)</td></tr>
+<tr><td>portadora</td><td>115</td><td>38</td><td>—</td><td>Piel de Rata (55%), Bolsa Robada (25%), Hierro (35%), Fragmento Mineral (20%), Tela de Seda (20%)</td></tr>
+</tbody></table></div></details>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Salamandra de Fuego</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>roja</td><td>174</td><td>43</td><td>—</td><td>Piel de Salamandra (65%), Escama Roja (45%), Glándula Ígnea (25%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>obsidiana</td><td>174</td><td>46</td><td>—</td><td>Escama de Obsidiana (70%), Garra Negra (45%), Fragmento de Obsidiana (35%), Hierro (15%), Plata (10%), Tejido Mágico (25%)</td></tr>
+<tr><td>azufre</td><td>168</td><td>43</td><td>—</td><td>Escama Amarilla (60%), Glándula de Azufre (40%), Gema de Azufre (20%), Hierro (15%), Plata (12%), Tejido Mágico (25%)</td></tr>
+</tbody></table></div></details></div></details>
+<details class="nested"><summary>Zona 5 — Cráter del Dragón</summary><div class="inner"><p><strong>Rango:</strong> S+ · <strong>Peligro:</strong> 💀 Jefe único · <strong>Nodos:</strong> 1</p>
+<details class="subnested"><summary>📍 Cráter del Dragón Centro</summary><div class="inner"><div class="activities">
+<div class="activity no">⛏️ Minar ❌</div>
+<div class="activity no">🪓 Talar ❌</div>
+<div class="activity no">🌸 Recolectar hierbas ❌</div>
+<div class="activity ">🔎 Explorar ✅</div>
+<div class="activity no">🧺 Recolección genérica ❌</div>
+</div><h5>🔎 Exploración (Cazador)</h5>
+<table><thead><tr><th>Recurso</th><th>Rareza</th><th>Frecuencia</th><th>Cantidad</th></tr></thead><tbody>
+<tr><td>Escama de Dragón Caída</td><td><span class="badge epico">Épico</span></td><td>10%</td><td>1-1</td></tr>
+<tr><td>Lágrima de Dragón</td><td><span class="badge legendario">Legendario</span></td><td>8%</td><td>1-1</td></tr>
+<tr><td>Ceniza Eterna</td><td><span class="badge epico">Épico</span></td><td>8%</td><td>1-1</td></tr>
+</tbody></table></div></details>
+<h5>🐾 Criaturas del anillo</h5>
+<p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
+<details class=""><summary><span class="mob-summary"><span class="mob-name">✨ Pyraxis, Guardián de la Forja</span><span class="mob-meta">Rango S+ · Jefe único</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
+<tr><td>unica</td><td>2844</td><td>159</td><td>—</td><td>Escama de Dragón (70%), Sangre de Dragón (50%), Corazón de Fuego (25%), Lágrima de Dragón (15%), Aliento Eterno (10%), Hueso de Dragón (5%), Núcleo del Dragón Eterno (2%)</td></tr>
+</tbody></table></div></details></div></details>
+</section>
+<section id="s7"><h2>7. Progresión</h2>
+<h3>Niveles de personaje</h3>
+<p>Tu personaje sube de nivel acumulando XP al matar criaturas y completar misiones. Cada nivel requiere más XP:</p>
+<table><thead><tr><th>Rango de niveles</th><th>XP por nivel</th></tr></thead><tbody>
+<tr><td>1-10</td><td>100 + (n-1) × 100</td></tr>
+<tr><td>11-30</td><td>1.000 + (n-10) × 300</td></tr>
+<tr><td>31-60</td><td>7.000 + (n-30) × 800</td></tr>
+<tr><td>61-100</td><td>31.000 + (n-60) × 2.000</td></tr>
+<tr><td>101+</td><td>111.000 + (n-100) × 5.000</td></tr>
+</tbody></table>
+<h3>XP por criatura</h3>
+<p>Cada criatura da una cantidad base de XP según su rango. Además, hay modificadores por diferencia de nivel:</p>
+<table><thead><tr><th>Rango</th><th>XP base</th><th>Nivel equivalente</th></tr></thead><tbody>
+<tr><td>F</td><td>3</td><td>1</td></tr>
+<tr><td>E</td><td>8</td><td>5</td></tr>
+<tr><td>D</td><td>15</td><td>10</td></tr>
+<tr><td>D+</td><td>20</td><td>15</td></tr>
+<tr><td>C</td><td>30</td><td>20</td></tr>
+<tr><td>C+</td><td>40</td><td>28</td></tr>
+<tr><td>B</td><td>60</td><td>35</td></tr>
+<tr><td>B+</td><td>75</td><td>45</td></tr>
+<tr><td>A</td><td>100</td><td>55</td></tr>
+<tr><td>A+</td><td>125</td><td>65</td></tr>
+<tr><td>S</td><td>250</td><td>80</td></tr>
+<tr><td>S+</td><td>1500</td><td>100</td></tr>
+</tbody></table>
+<h3>Modificadores por diferencia de nivel</h3>
+<ul>
+<li>Mob 10+ niveles más débil: <strong>× 0.05</strong>.</li>
+<li>Mob más débil (0 a 10): <strong>× (1 - dif × 0.08)</strong>, mín 0.1.</li>
+<li>Mob más fuerte: <strong>× (1 + dif × 0.15)</strong>, máx 3.0.</li>
+</ul>
+<h3>Rangos del Gremio</h3>
+<p>Además del nivel, tenés un <strong>rango del gremio</strong> (F, E, D, D+, C, C+, B, B+, A, A+, S) que sube completando misiones. A mayor rango, más misiones simultáneas.</p>
+<table><thead><tr><th>Rango</th><th>Misiones simultáneas</th></tr></thead><tbody>
+<tr><td>F / E</td><td>1</td></tr>
+<tr><td>D / D+</td><td>2</td></tr>
+<tr><td>C / C+</td><td>3</td></tr>
+<tr><td>B / B+</td><td>4</td></tr>
+<tr><td>A / A+</td><td>5</td></tr>
+<tr><td>S</td><td>6</td></tr>
+</tbody></table>
+<h3>Misiones</h3>
+<p>El Gremio ofrece misiones de <strong>caza</strong> y de <strong>recolección</strong>. Completar misiones da oro, XP y progreso hacia el siguiente rango.</p>
+<ul>
+<li>Las misiones tienen una <strong>cuota de aceptación</strong> (un % del oro de recompensa) que se paga al aceptarlas.</li>
+<li>Si abandonás una misión, perdés la cuota.</li>
+<li>Para subir de rango necesitás completar X misiones de tu rango actual Y X del siguiente.</li>
+</ul>
+<h3>XP de profesiones</h3>
+<p>Las profesiones suben con XP independiente. Cada una tiene su propia curva, con máximo en nivel 150.</p>
+<h3>Maestrías de arma</h3>
+<p>Cada tipo de arma tiene su propia <strong>maestría</strong> que sube al usarla en combate. A mayor maestría, más bonus de daño y desbloqueos. Hay 6 familias físicas (filo, contundente, asta, tensión, fuego_arma, cuerpo_a_cuerpo) y 7 elementales (fuego, agua, viento, tierra, arcano, sagrado, oscuro).</p>
+</section>
+
+<div class="footer">
+Generado el 2026-10-02 · Klurtenias RPG
+</div>
+</main></div></body></html>
