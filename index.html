@@ -94,6 +94,7 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <a href="#s6-bosque" class="sub-link">↳ Bosque del Alba</a>
 <a href="#s6-forja" class="sub-link">↳ Forja de Pyraen</a>
 <a href="#s7">7. Progresión</a>
+<a href="#s8">8. Encantamiento y Runas</a>
 </nav>
 </aside>
 <main class="content">
@@ -134,6 +135,14 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 </tbody></table>
 <div class="callout warn"><p>⚠️ El arma que elijas al principio define tu clase. Cambiarla requiere empezar un personaje nuevo.</p></div>
 </section>
+<h3>Comandos Rápidos</h3>
+<p>Además de los botones del teclado, podés usar estos comandos desde el chat para acceder rápido a tus menús:</p>
+<ul>
+<li><code>/me</code> — Abre tu ficha de personaje (Personaje).</li>
+<li><code>/class</code> — Abre el menú de Clase y Talentos.</li>
+<li><code>/skill</code> — Abre el menú de Habilidades (activas y pasivas).</li>
+<li><code>/lifeclass</code> — Abre el menú de Clases de Vida (profesiones).</li>
+</ul>
 <section id="s2"><h2>2. Movimiento</h2>
 <p>Te movés por el mundo a través de los <strong>botones de dirección</strong> que aparecen en cada zona. El mapa está dividido en zonas concéntricas: la Ciudadela y las zonas 1 son las más seguras, las zonas interiores son las más peligrosas.</p>
 <h3>El Bosque del Alba</h3>
@@ -147,6 +156,9 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 </tbody></table>
 <h3>La Forja de Pyraen</h3>
 <p>Más allá del bosque, la Forja de Pyraen es una zona volcánica con <strong>5 zonas concéntricas</strong>.</p>
+<div class="callout tip">
+<p>💡 <strong>Fix (19/10):</strong> Los viajes dentro de la Forja ya no se traban. Cuando el tiempo termine, recibirás automáticamente el mensaje de llegada con los botones de tu nueva ubicación. Ya no es necesario tocar "Personaje" o "Ubicación" para forzar la actualización.</p>
+</div>
 <table><thead><tr><th>Zona</th><th>Nodos</th><th>Rango</th><th>Peligro</th></tr></thead><tbody>
 <tr><td>1. Páramos de Ceniza</td><td>16</td><td>D</td><td>🟠 Alto</td></tr>
 <tr><td>2. Grietas de Lava</td><td>12</td><td>C</td><td>🟠 Alto</td></tr>
@@ -1743,19 +1755,72 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>S</td><td>6</td></tr>
 </tbody></table>
 <h3>Misiones</h3>
-<p>El Gremio ofrece misiones de <strong>caza</strong> y de <strong>recolección</strong>. Completar misiones da oro, XP y progreso hacia el siguiente rango.</p>
+<p>El Gremio ofrece dos tipos de misiones: <strong>Caza</strong> y <strong>Recolección</strong>. Aceptá las misiones desde la cartelera y entregalas en la recepción.</p>
+<div class="callout info">
+<p><strong>Balanceo actual (19/10):</strong></p>
 <ul>
-<li>Las misiones tienen una <strong>cuota de aceptación</strong> (un % del oro de recompensa) que se paga al aceptarlas.</li>
-<li>Si abandonás una misión, perdés la cuota.</li>
-<li>Para subir de rango necesitás completar X misiones de tu rango actual Y X del siguiente.</li>
+<li><strong>Misiones de Caza:</strong> Priorizan la Experiencia (XP).</li>
+<li><strong>Misiones de Recolección:</strong> Priorizan el Oro.</li>
+<li>Las recompensas ahora escalan correctamente por rango (E a S) sin romper la economía. Una misión S máxima da ~3.000 de oro o ~1.500 de XP.</li>
 </ul>
-<h3>XP de profesiones</h3>
-<p>Las profesiones suben con XP independiente. Cada una tiene su propia curva, con máximo en nivel 150.</p>
-<h3>Maestrías de arma</h3>
-<p>Cada tipo de arma tiene su propia <strong>maestría</strong> que sube al usarla en combate. A mayor maestría, más bonus de daño y desbloqueos. Hay 6 familias físicas (filo, contundente, asta, tensión, fuego_arma, cuerpo_a_cuerpo) y 7 elementales (fuego, agua, viento, tierra, arcano, sagrado, oscuro).</p>
+</div>
+<p>Cuando aceptás una misión, podés ver su progreso en la ficha (<code>/me</code>) o en <code>/misiones</code>. Al completarla, entregala en el Gremio para cobrar tu recompensa.</p>
 </section>
 
 <div class="footer">
 Generado el 2026-10-02 · Klurtenias RPG
 </div>
+
+<section id="s8">
+<h2>8. Encantamiento y Runas</h2>
+<p>El sistema de personalización de equipo te permite potenciar tus armas, armaduras y joyas más allá de su rareza base. Se divide en dos grandes mecánicas: <strong>Encantamientos</strong> (profesión de Encantador) y <strong>Runas y Marcas</strong> (Inscripción).</p>
+
+<h3>La Profesión de Encantador</h3>
+<p>El Encantador destruye objetos para obtener materiales místicos y luego los usa para crear pergaminos que aplican bonos permanentes a tu equipo.</p>
+<ol class="steps">
+<li><strong>Desencantar:</strong> Usá <code>/desencantar_&lt;id_item&gt;__&lt;uid&gt;</code> para destruir un ítem y obtener <strong>Polvo Espiritual</strong>, <strong>Esencia Rúnica</strong> o <strong>Fragmento de Vacío</strong> (según la rareza). También podés usar el botón <strong>"🗑️ Desencantar en masa"</strong> en tu menú de Clases de Vida para limpiar todos los ítems comunes, raros o mágicos de una sola vez.</li>
+<li><strong>Craftear:</strong> En la tienda de la Encantadora Lys comprás el <strong>Pergamino de Encantamiento (Vacío)</strong> por 50 de oro. Con ese pergamino + los materiales de desencantar, crafteás encantamientos específicos (ej: <code>/craftear_enc_filo_ardiente_menor</code>).</li>
+<li><strong>Aplicar:</strong> Abrís el <code>/info_&lt;item&gt;</code> de tu equipo, y usás <code>/encantar_&lt;id_pergamino&gt;_en_&lt;id_item&gt;__&lt;uid&gt;</code> para estampar el bono. El ítem mostrará <code>🌟 Encantamiento: &lt;nombre&gt;</code> en su ficha.</li>
+</ol>
+<div class="callout tip">
+<p>💡 <strong>El truco del trade:</strong> Como los ítems no están ligados, un amigo Encantador puede recibir tu espada por trade, aplicarle el encantamiento desde su inventario, y devolvértela lista para usar.</p>
+</div>
+
+<h3>Encantamientos Base (48)</h3>
+<p>Hay 4 tipos de encantamiento por slot (Arma, Armadura y Joyería) y cada uno tiene 4 calidades (Menor, Media, Mayor, Superior). A mayor calidad, mayor el bono.</p>
+<ul>
+<li><strong>Armas:</strong> Filo Elemental (Fuego/Agua/Viento), Sello Vampírico.</li>
+<li><strong>Armaduras:</strong> Piel de Titán (HP), Coraza de Dragón (Defensa), Piel Elemental (Defensiva reactiva).</li>
+<li><strong>Joyería:</strong> Sabiduría/Fuerza (Stats), Codicia (Oro), Aprendiz (XP).</li>
+</ul>
+
+<h3>Encantamientos Únicos (12)</h3>
+<p>Son encantamientos legendarios de nivel 150 que no se pueden comprar con oro; se craftean con <strong>Fragmentos de Vacío</strong> (obtenidos de desencantar ítems épicos/legendarios).</p>
+<ul>
+<li><strong>Eco de Sombras:</strong> 15% de hacer un segundo ataque básico (50% del daño).</li>
+<li><strong>Instinto de Pyraen:</strong> Al hacer crítico, ganás +20% Velocidad de Ataque.</li>
+<li><strong>Fervor de Aeternus:</strong> Chance de curarte y darte +10% de tu stat principal al atacar.</li>
+<li><strong>Puntería del Cazador:</strong> Chance de ignorar la defensa del enemigo (solo Exploradores).</li>
+<li><strong>Furia de Sangre:</strong> Acumulás cargas de daño al golpear (solo Guerreros).</li>
+<li><strong>Sobrecarga Arcana:</strong> Chance de que tu próximo hechizo sea gratis y crítico (solo Magos).</li>
+<li><strong>Égida del Vacío:</strong> Empezás el combate con un escudo del 15% de tu HP.</li>
+<li><strong>Yunque Eterno:</strong> Inmunidad total a Aturdimiento y Derribo.</li>
+<li><strong>Corazón de Titán:</strong> Chance de regenerar HP y defensa al recibir golpes.</li>
+<li><strong>Sello de Sangre:</strong> Los críticos te curan un 10% del daño infligido.</li>
+<li><strong>Prisa Arcana:</strong> Reduce el cooldown de tus habilidades en 1 turno.</li>
+<li><strong>Aliento de Nymara:</strong> Recuperás maná con cada ataque básico.</li>
+</ul>
+
+<h3>Runas y Marcas (Inscripción)</h3>
+<p>Las runas son equipables que se colocan en tres slots especiales: <strong>Prestigio, Calamidad y Milagro</strong>. Al craftearlas, tiran bonos aleatorios según su tipo y calidad. Las <strong>Marcas</strong> se aplican encima de una runa equipada usando <code>/usar_marca_&lt;id&gt;__&lt;uid&gt;</code>, reemplazando la marca anterior.</p>
+
+<h3>Pergaminos de Re-encantamiento</h3>
+<p>Si no te gustaron los encantamientos (skills) que salieron en tu equipo, podés cambiarlos. Abrís el <code>/info_&lt;item&gt;</code> y verás botones de re-encantamiento <em>(si tenés los pergaminos en tu inventario)</em>:</p>
+<ul>
+<li><strong>🔮 Total:</strong> Vuelve a tirar TODOS los encantamientos del ítem.</li>
+<li><strong>🎯 Parcial:</strong> Elegís UN encantamiento específico para cambiar.</li>
+<li><strong>⚔️ / 🛡️ / 💚 / ⚡ DPS/TNK/SPT/UTL:</strong> Igual que el Parcial, pero asegura que el nuevo encantamiento sea de la categoría elegida (Daño, Defensa, Soporte o Utilidad).</li>
+</ul>
+</section>
+
 </main></div></body></html>
