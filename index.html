@@ -89,12 +89,13 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <a href="#s2">2. Movimiento</a>
 <a href="#s3">3. Recolecciones</a>
 <a href="#s4">4. Profesiones</a>
+<a href="#s4-encantador" class="sub-link">↳ Encantador</a>
+<a href="#s4-inscripcion" class="sub-link">↳ Inscripción</a>
 <a href="#s5">5. Habilidades</a>
 <a href="#s6">6. Zonas y criaturas</a>
 <a href="#s6-bosque" class="sub-link">↳ Bosque del Alba</a>
 <a href="#s6-forja" class="sub-link">↳ Forja de Pyraen</a>
 <a href="#s7">7. Progresión</a>
-<a href="#s8">8. Encantamiento y Runas</a>
 </nav>
 </aside>
 <main class="content">
@@ -134,7 +135,6 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>🔮 <strong>Mago</strong></td><td>Bastón, varita, orbe</td><td>Hechizos elementales, soporte</td></tr>
 </tbody></table>
 <div class="callout warn"><p>⚠️ El arma que elijas al principio define tu clase. Cambiarla requiere empezar un personaje nuevo.</p></div>
-</section>
 <h3>Comandos Rápidos</h3>
 <p>Además de los botones del teclado, podés usar estos comandos desde el chat para acceder rápido a tus menús:</p>
 <ul>
@@ -143,6 +143,7 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <li><code>/skill</code> — Abre el menú de Habilidades (activas y pasivas).</li>
 <li><code>/lifeclass</code> — Abre el menú de Clases de Vida (profesiones).</li>
 </ul>
+</section>
 <section id="s2"><h2>2. Movimiento</h2>
 <p>Te movés por el mundo a través de los <strong>botones de dirección</strong> que aparecen en cada zona. El mapa está dividido en zonas concéntricas: la Ciudadela y las zonas 1 son las más seguras, las zonas interiores son las más peligrosas.</p>
 <h3>El Bosque del Alba</h3>
@@ -296,7 +297,55 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>150</td><td>Varita de Quebracho Colorado</td><td>Palo ×2, Tabla Quebracho Colorado ×5, Fibra Vegetal ×2, Esencia Mágica ×1</td><td>Varita de Quebracho Colorado</td></tr>
 <tr><td>150</td><td>Escudo Ligero de Quebracho Colorado</td><td>Tabla Quebracho Colorado ×4, Palo ×2, Hierro ×2</td><td>Escudo Ligero de Quebracho Colorado</td></tr>
 </tbody></table></div></details>
-<details class=""><summary>Encantador</summary><div class="inner"><p><em>Sin recetas registradas todavía.</em></p></div></details>
+<details id="s4-encantador" class="">
+<summary>Encantador (60 recetas)</summary>
+<div class="inner">
+<p>Profesión de producción. El Encantador destruye ítems para obtener materiales místicos y los usa para craftear pergaminos que aplican bonos permanentes al equipo.</p>
+<h5>Paso a paso</h5>
+<ol class="steps">
+<li><strong>Desencantar:</strong> <code>/desencantar_&lt;id_item&gt;__&lt;uid&gt;</code> destruye un ítem y devuelve materiales según su rareza. También existe <strong>🗑️ Desencantar en masa</strong> para limpiar ítems por rareza.</li>
+<li><strong>Comprar base:</strong> El <strong>Pergamino de Encantamiento (Vacío)</strong> se compra en la tienda de la Encantadora Lys por <strong>50 de oro</strong>.</li>
+<li><strong>Craftear:</strong> Con 1 pergamino base + los materiales de tu inventario crafteás el pergamino específico del encantamiento deseado (Menor, Media, Mayor o Superior).</li>
+<li><strong>Aplicar:</strong> Abrís <code>/info_&lt;item&gt;</code> del equipo objetivo y usás <code>/encantar_&lt;id_pergamino&gt;_en_&lt;id_item&gt;__&lt;uid&gt;</code>. El ítem muestra <code>🌟 Encantamiento: &lt;nombre&gt;</code>.</li>
+</ol>
+<h5>Materiales al desencantar</h5>
+<table><thead><tr><th>Rareza</th><th>Polvo Espiritual</th><th>Esencia Rúnica</th><th>Fragmento de Vacío</th></tr></thead><tbody>
+<tr><td>Común</td><td>1-3</td><td>—</td><td>—</td></tr>
+<tr><td>Raro</td><td>2-4</td><td>30% (1)</td><td>—</td></tr>
+<tr><td>Mágico</td><td>3-5</td><td>50% (1)</td><td>—</td></tr>
+<tr><td>Épico</td><td>5-7</td><td>70% (1-2)</td><td>20% (1)</td></tr>
+<tr><td>Legendario</td><td>8-12</td><td>100% (1-2)</td><td>50% (1)</td></tr>
+</tbody></table>
+<h5>Encantamientos Base (48 = 12 tipos × 4 tiers)</h5>
+<p>Se aplican en Arma, Armadura o Joyería según el tipo. Cada tier sube el valor del efecto y el costo de crafteo.</p>
+<details class="nested"><summary>🔥 Filo Elemental Ardiente <em>(Arma)</em></summary><div class="inner"><p>Probabilidad de aplicar Quemadura al golpear (4 daño/turno).</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Prob. Quemadura</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Prob. Quemadura</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Prob. Quemadura</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Prob. Quemadura</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>❄️ Filo Elemental Glacial <em>(Arma)</em></summary><div class="inner"><p>Probabilidad de aplicar Congelación al golpear.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Prob. Congelación</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Prob. Congelación</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Prob. Congelación</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Prob. Congelación</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🌪️ Filo Elemental Tempestuoso <em>(Arma)</em></summary><div class="inner"><p>Probabilidad de aplicar Desorientación al golpear.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Prob. Desorientación</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Prob. Desorientación</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Prob. Desorientación</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Prob. Desorientación</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🩸 Sello Vampírico <em>(Arma)</em></summary><div class="inner"><p>Roba vida al golpear.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+1% Robo de Vida</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+2% Robo de Vida</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+3% Robo de Vida</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+5% Robo de Vida</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🛡️ Piel de Titán <em>(Armadura)</em></summary><div class="inner"><p>Aumenta el HP máximo.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+2% HP Máximo</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+5% HP Máximo</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+8% HP Máximo</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+12% HP Máximo</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🐲 Coraza de Dragón <em>(Armadura)</em></summary><div class="inner"><p>Aumenta la defensa física.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Defensa Física</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Defensa Física</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Defensa Física</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Defensa Física</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🔥 Piel Elemental Ígnea <em>(Armadura)</em></summary><div class="inner"><p>Probabilidad de quemar al atacante al recibir golpes.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Prob. Quemadura reactiva</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Prob. Quemadura reactiva</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Prob. Quemadura reactiva</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Prob. Quemadura reactiva</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>❄️ Piel Elemental Glacial <em>(Armadura)</em></summary><div class="inner"><p>Probabilidad de congelar al atacante al recibir golpes.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+5% Prob. Congelación reactiva</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+10% Prob. Congelación reactiva</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+15% Prob. Congelación reactiva</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+20% Prob. Congelación reactiva</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>🧠 Sabiduría Antigua <em>(Joyería)</em></summary><div class="inner"><p>Aumenta la Inteligencia.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+1 Inteligencia</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+2 Inteligencia</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+3 Inteligencia</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+5 Inteligencia</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>💪 Fuerza del Titán <em>(Joyería)</em></summary><div class="inner"><p>Aumenta la Fuerza.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+1 Fuerza</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+2 Fuerza</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+3 Fuerza</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+5 Fuerza</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>💰 Codicia del Dragón <em>(Joyería)</em></summary><div class="inner"><p>Aumenta el oro obtenido.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+3% Oro Obtenido</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+5% Oro Obtenido</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+8% Oro Obtenido</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+12% Oro Obtenido</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<details class="nested"><summary>📖 Aprendiz de Titanes <em>(Joyería)</em></summary><div class="inner"><p>Aumenta la XP ganada.</p><table><thead><tr><th>Tier</th><th>Nv</th><th>Efecto</th><th>Ingredientes</th></tr></thead><tbody><tr><td>Menor</td><td>1</td><td>+3% XP Ganada</td><td>Pergamino base ×1, Esencia Menor ×1, Polvo Espiritual ×2</td></tr><tr><td>Media</td><td>30</td><td>+5% XP Ganada</td><td>Pergamino base ×1, Esencia Mágica ×1, Polvo Espiritual ×5, Esencia Rúnica ×1</td></tr><tr><td>Mayor</td><td>70</td><td>+8% XP Ganada</td><td>Pergamino base ×1, Esencia Concentrada ×1, Polvo Espiritual ×10, Esencia Rúnica ×3</td></tr><tr><td>Superior</td><td>110</td><td>+12% XP Ganada</td><td>Pergamino base ×1, Esencia Superior ×1, Polvo Espiritual ×20, Esencia Rúnica ×5, Fragmento de Vacío ×1</td></tr></tbody></table></div></details>
+<h5>Encantamientos Únicos (12)</h5>
+<p>Nivel 150. No se pueden comprar: se craftean con Fragmento de Vacío (obtenido al desencantar ítems Épicos/Legendarios).</p>
+<details class="nested"><summary>🌑 Eco de Sombras <em>(Arma · Único)</em></summary><div class="inner"><p>+15% Probabilidad de realizar un segundo ataque básico (50% del daño).</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>🔥 Instinto de Pyraen <em>(Arma · Único)</em></summary><div class="inner"><p>Al hacer crítico: +30% Velocidad de Ataque por 2 turnos.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>✨ Fervor de Aeternus <em>(Arma · Único)</em></summary><div class="inner"><p>+15% Probabilidad de curarte y +10% de tu stat principal al atacar.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>🎯 Puntería del Cazador <em>(Arma · Único)</em></summary><div class="inner"><p>+20% Ignorar Defensa del enemigo. <em>(Óptimo para Exploradores.)</em></p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>🩸 Furia de Sangre <em>(Arma · Único)</em></summary><div class="inner"><p>+5 cargas de furia por golpe (acumula daño). <em>(Óptimo para Guerreros.)</em></p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>⚡ Sobrecarga Arcana <em>(Arma · Único)</em></summary><div class="inner"><p>+15% Probabilidad de hechizo gratis y crítico. <em>(Óptimo para Magos.)</em></p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>🛡️ Égida del Vacío <em>(Armadura · Único)</em></summary><div class="inner"><p>Empiezas el combate con un escudo de +15% HP.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>⚒️ Yunque Eterno <em>(Armadura · Único)</em></summary><div class="inner"><p>Inmunidad total a Aturdimiento y Derribo.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>💗 Corazón de Titán <em>(Armadura · Único)</em></summary><div class="inner"><p>+10% Probabilidad de regenerar HP y defensa al recibir golpes.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>❤️ Sello de Sangre <em>(Joyería · Único)</em></summary><div class="inner"><p>Los críticos te curan +10% del daño infligido.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>⏱️ Prisa Arcana <em>(Joyería · Único)</em></summary><div class="inner"><p>Reduce el cooldown de tus habilidades en 1 turno.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+<details class="nested"><summary>💧 Aliento de Nymara <em>(Joyería · Único)</em></summary><div class="inner"><p>+3% Maná recuperado con cada ataque básico.</p><p><strong>Nivel:</strong> 150 · <strong>Ingredientes:</strong> Pergamino base ×1, Esencia Superior ×3, Esencia Rúnica ×10, Fragmento de Vacío ×2</p></div></details>
+</div>
+</details>
 <details class=""><summary>Herrería</summary><div class="inner"><p><strong>242 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
 <tr><td>1</td><td>Briqueta de Carbón</td><td>Carbón ×3</td><td>Briqueta de Carbón</td></tr>
 <tr><td>10</td><td>Lingote de Hierro</td><td>Hierro ×2</td><td>Lingote de Hierro</td></tr>
@@ -586,26 +635,398 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>145</td><td>Esencia Primordial</td><td>Esencia Superior ×3, Fragmento Primordial ×1</td><td>Esencia Primordial</td></tr>
 <tr><td>150</td><td>Núcleo de Energía Arcana</td><td>Eternato ×1, Anticito ×2, Brimuro ×2, Esencia Primordial ×3, Cristal Arcano Superior ×3, Oro ×5</td><td>Núcleo de Energía Arcana</td></tr>
 </tbody></table></div></details>
-<details class=""><summary>Inscripción</summary><div class="inner"><p><strong>18 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
-<tr><td>0</td><td>Tinta Arcana</td><td>Hierba Curativa ×2, Esencia Mágica ×1</td><td>Tinta Arcana</td></tr>
-<tr><td>0</td><td>Pergamino Simple</td><td>Fibra Vegetal ×2</td><td>Pergamino Simple</td></tr>
-<tr><td>0</td><td>Placa Arcana</td><td>Tinta Arcana ×1, Piedra ×1</td><td>Placa Arcana</td></tr>
-<tr><td>30</td><td>Tinta Prestigio</td><td>Tinta Arcana ×2, Esencia Mágica ×2, Cristal Arcano ×1</td><td>Tinta Prestigio</td></tr>
-<tr><td>30</td><td>Tinta Calamidad</td><td>Tinta Arcana ×2, Esencia Arcana ×2, Belladona ×1</td><td>Tinta Calamidad</td></tr>
-<tr><td>30</td><td>Tinta Milagro</td><td>Tinta Arcana ×2, Esencia Superior ×2, Flor Silvestre ×1</td><td>Tinta Milagro</td></tr>
-<tr><td>30</td><td>Runa de Prestigio Menor</td><td>Tinta Prestigio ×1, Pergamino Simple ×1</td><td>Runa de Prestigio Menor</td></tr>
-<tr><td>30</td><td>Runa de Calamidad Menor</td><td>Tinta Calamidad ×1, Pergamino Simple ×1</td><td>Runa de Calamidad Menor</td></tr>
-<tr><td>30</td><td>Runa de Milagro Menor</td><td>Tinta Milagro ×1, Pergamino Simple ×1</td><td>Runa de Milagro Menor</td></tr>
-<tr><td>70</td><td>Runa de Prestigio Media</td><td>Tinta Prestigio ×2, Placa Arcana ×1</td><td>Runa de Prestigio Media</td></tr>
-<tr><td>70</td><td>Runa de Calamidad Media</td><td>Tinta Calamidad ×2, Placa Arcana ×1</td><td>Runa de Calamidad Media</td></tr>
-<tr><td>70</td><td>Runa de Milagro Media</td><td>Tinta Milagro ×2, Placa Arcana ×1</td><td>Runa de Milagro Media</td></tr>
-<tr><td>110</td><td>Runa de Prestigio Mayor</td><td>Tinta Prestigio ×3, Cristal Arcano ×1</td><td>Runa de Prestigio Mayor</td></tr>
-<tr><td>110</td><td>Runa de Calamidad Mayor</td><td>Tinta Calamidad ×3, Cristal Arcano ×1</td><td>Runa de Calamidad Mayor</td></tr>
-<tr><td>110</td><td>Runa de Milagro Mayor</td><td>Tinta Milagro ×3, Cristal Arcano ×1</td><td>Runa de Milagro Mayor</td></tr>
-<tr><td>150</td><td>Runa de Prestigio Superior</td><td>Tinta Prestigio ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Prestigio Superior</td></tr>
-<tr><td>150</td><td>Runa de Calamidad Superior</td><td>Tinta Calamidad ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Calamidad Superior</td></tr>
-<tr><td>150</td><td>Runa de Milagro Superior</td><td>Tinta Milagro ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td><td>Runa de Milagro Superior</td></tr>
-</tbody></table></div></details>
+<details id="s4-inscripcion" class="">
+<summary>Inscripción (150 recetas)</summary>
+<div class="inner">
+<p>Profesión de producción. Craftea tintas, pergaminos, runas y marcas. Se complementa con Encantador.</p>
+<details class="nested"><summary>🖋️ Tintas e intermedios (18)</summary><div class="inner">
+<p>La <strong>Tinta Básica</strong> (15 oro) y el <strong>Pergamino Simple</strong> (25 oro) se compran en la tienda de Eron. Todo lo demás se craftea.</p>
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>0</td><td>Placa Arcana</td><td>Tinta Arcana ×1, Piedra ×1</td></tr>
+<tr><td>0</td><td>Tinta Arcana</td><td>Hierba Curativa ×2, Esencia Mágica ×1</td></tr>
+<tr><td>5</td><td>Tinta Magica Basica</td><td>Tinta Básica ×1, Esencia Menor ×1</td></tr>
+<tr><td>30</td><td>Tinta Imbuida Calamidad Menor</td><td>Tinta Magica Basica ×1, Esencia Oscura ×1, Belladona ×2</td></tr>
+<tr><td>30</td><td>Tinta Imbuida Milagro Menor</td><td>Tinta Magica Basica ×1, Esencia Arcana ×1, Flor Silvestre ×2</td></tr>
+<tr><td>30</td><td>Tinta Imbuida Prestigio Menor</td><td>Tinta Magica Basica ×1, Cristal Arcano ×1, Raíz Común ×2</td></tr>
+<tr><td>30</td><td>Tinta Magica Media</td><td>Tinta Básica ×1, Esencia Mágica ×1</td></tr>
+<tr><td>70</td><td>Tinta Imbuida Calamidad Media</td><td>Tinta Magica Media ×1, Colmillo Oscuro ×1, Belladona ×2</td></tr>
+<tr><td>70</td><td>Tinta Imbuida Milagro Media</td><td>Tinta Magica Media ×1, Pluma de Fénix ×1, Flor Silvestre ×2</td></tr>
+<tr><td>70</td><td>Tinta Imbuida Prestigio Media</td><td>Tinta Magica Media ×1, Fragmento Dorado ×1, Raíz Común ×2</td></tr>
+<tr><td>70</td><td>Tinta Magica Gran Calidad</td><td>Tinta Básica ×1, Esencia Concentrada ×1</td></tr>
+<tr><td>110</td><td>Tinta Imbuida Calamidad Mayor</td><td>Tinta Magica Gran Calidad ×1, Núcleo Oscuro ×1, Belladona ×2</td></tr>
+<tr><td>110</td><td>Tinta Imbuida Milagro Mayor</td><td>Tinta Magica Gran Calidad ×1, Ceniza de Fénix ×1, Flor Silvestre ×2</td></tr>
+<tr><td>110</td><td>Tinta Imbuida Prestigio Mayor</td><td>Tinta Magica Gran Calidad ×1, Moneda de Oro Antigua ×1, Raíz Común ×2</td></tr>
+<tr><td>110</td><td>Tinta Magica Superior</td><td>Tinta Básica ×1, Esencia Superior ×1</td></tr>
+<tr><td>150</td><td>Tinta Imbuida Calamidad Superior</td><td>Tinta Magica Superior ×1, Sangre de Dragón ×1, Belladona ×2</td></tr>
+<tr><td>150</td><td>Tinta Imbuida Milagro Superior</td><td>Tinta Magica Superior ×1, Esencia Primordial ×1, Flor Silvestre ×2</td></tr>
+<tr><td>150</td><td>Tinta Imbuida Prestigio Superior</td><td>Tinta Magica Superior ×1, Corona Olvidada ×1, Raíz Común ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="nested"><summary>📜 Pergaminos de Hechizo (24)</summary><div class="inner">
+<details class="subnested"><summary>✨ Bola Fuego</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Bola de Fuego (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor de Ceniza ×1, Hongo Arcano ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Rayo Hielo</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Rayo de Hielo (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor de Ceniza ×1, Hongo Arcano ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Bola De Fuego Frio</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Bola de Fuego Frío (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor de Ceniza ×1, Hongo Arcano ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Misil Arcano</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Misil Arcano (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor de Ceniza ×1, Hongo Arcano ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Rayo Divino</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Rayo Divino (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hongo Lunar ×1, Loto Negro ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Desintegrar</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Desintegrar (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hongo Lunar ×1, Loto Negro ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Tormenta</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Tormenta (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hongo Lunar ×1, Loto Negro ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Juicio Final</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Juicio Final (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hongo Lunar ×1, Loto Negro ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Sanacion Magica</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Sanación (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor Silvestre ×1, Menta Silvestre ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Bendicion</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Bendición (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor Silvestre ×1, Menta Silvestre ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Luz Curativa</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Luz Curativa (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor Silvestre ×1, Menta Silvestre ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Restauracion Arcana</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Restauración Arcana (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Flor Silvestre ×1, Menta Silvestre ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Fenix</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Fénix (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz de Valeriana ×1, Romero de Montaña ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Bendicion Mayor</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Bendición Mayor (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz de Valeriana ×1, Romero de Montaña ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Milagro</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Milagro (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz de Valeriana ×1, Romero de Montaña ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Diluvio Purificador</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Diluvio Purificador (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz de Valeriana ×1, Romero de Montaña ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Piel Piedra</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Piel de Piedra (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz Común ×1, Raíz de Mandrágora ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Mitigacion</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Mitigación (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz Común ×1, Raíz de Mandrágora ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Piel De Hierro</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Piel de Hierro (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz Común ×1, Raíz de Mandrágora ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Plegaria</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Plegaria (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz Común ×1, Raíz de Mandrágora ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Fortaleza</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Fortaleza (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hoja de Ortiga ×1, Flor de Escarcha ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Egida</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Égida (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hoja de Ortiga ×1, Flor de Escarcha ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Avatar De Fuego</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Avatar de Fuego (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hoja de Ortiga ×1, Flor de Escarcha ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>✨ Intervencion Divina</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Pergamino de Intervención Divina (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Hoja de Ortiga ×1, Flor de Escarcha ×1</td></tr>
+</tbody></table>
+</div></details>
+</div></details>
+<details class="nested"><summary>🔧 Pergaminos de Reparación (8)</summary><div class="inner">
+<details class="subnested"><summary>🛠️ Armas</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>10</td><td>Pergamino de Reparación de Armas (Básico)</td><td>Pergamino Vacío ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz de Dragón ×1</td></tr>
+<tr><td>40</td><td>Pergamino de Reparación de Armas (Medio)</td><td>Pergamino Vacío ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz de Dragón ×1</td></tr>
+<tr><td>80</td><td>Pergamino de Reparación de Armas (Gran)</td><td>Pergamino Vacío ×1, Tinta Magica Gran Calidad ×1, Esencia Concentrada ×2, Raíz de Dragón ×1</td></tr>
+<tr><td>120</td><td>Pergamino de Reparación de Armas (Superior)</td><td>Pergamino Vacío ×1, Tinta Magica Superior ×1, Esencia Superior ×2, Raíz de Dragón ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>🛠️ Armaduras</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>10</td><td>Pergamino de Reparación de Armaduras (Básico)</td><td>Pergamino Vacío ×1, Tinta Magica Basica ×1, Esencia Menor ×2, Raíz Común ×1</td></tr>
+<tr><td>40</td><td>Pergamino de Reparación de Armaduras (Medio)</td><td>Pergamino Vacío ×1, Tinta Magica Media ×1, Esencia Mágica ×2, Raíz Común ×1</td></tr>
+<tr><td>80</td><td>Pergamino de Reparación de Armaduras (Gran)</td><td>Pergamino Vacío ×1, Tinta Magica Gran Calidad ×1, Esencia Concentrada ×2, Raíz Común ×1</td></tr>
+<tr><td>120</td><td>Pergamino de Reparación de Armaduras (Superior)</td><td>Pergamino Vacío ×1, Tinta Magica Superior ×1, Esencia Superior ×2, Raíz Común ×1</td></tr>
+</tbody></table>
+</div></details>
+</div></details>
+<details class="nested"><summary>🎲 Pergaminos de Re-encantamiento (6)</summary><div class="inner">
+<p>Se aplican sobre ítems ya encantados desde <code>/info_&lt;item&gt;</code>.</p>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Parcial DPS</summary><div class="inner">
+<p><strong>Nivel:</strong> 70 · <strong>Ingredientes:</strong> Pergamino Vacío ×2, Tinta Magica Gran Calidad ×1, Esencia Superior ×2, Colmillo Oscuro ×2</p>
+</div></details>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Parcial TNK</summary><div class="inner">
+<p><strong>Nivel:</strong> 70 · <strong>Ingredientes:</strong> Pergamino Vacío ×2, Tinta Magica Gran Calidad ×1, Esencia Superior ×2, Ceniza de Fénix ×2</p>
+</div></details>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Parcial SPT</summary><div class="inner">
+<p><strong>Nivel:</strong> 70 · <strong>Ingredientes:</strong> Pergamino Vacío ×2, Tinta Magica Gran Calidad ×1, Esencia Concentrada ×3, Pluma de Fénix ×2</p>
+</div></details>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Parcial UTL</summary><div class="inner">
+<p><strong>Nivel:</strong> 70 · <strong>Ingredientes:</strong> Pergamino Vacío ×2, Tinta Magica Gran Calidad ×1, Esencia Superior ×2, Moneda de Oro Antigua ×3</p>
+</div></details>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Parcial</summary><div class="inner">
+<p><strong>Nivel:</strong> 80 · <strong>Ingredientes:</strong> Pergamino Vacío ×3, Tinta Magica Gran Calidad ×2, Esencia Superior ×3, Núcleo Oscuro ×1</p>
+</div></details>
+<details class="subnested"><summary>🎯 Pergamino de Re-encantamiento Total</summary><div class="inner">
+<p><strong>Nivel:</strong> 90 · <strong>Ingredientes:</strong> Pergamino Vacío ×5, Tinta Magica Superior ×1, Esencia Primordial ×3, Corona Olvidada ×1, Sangre de Dragón ×1</p>
+</div></details>
+</div></details>
+<details class="nested"><summary>📈 Pergaminos de Estadísticas (68)</summary><div class="inner">
+<p>17 stats × 4 tiers (Menor/Media/Mayor/Superior).</p>
+<details class="subnested"><summary>📊 Carisma</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Carisma (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Flor Silvestre ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Carisma (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Flor Silvestre ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Carisma (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Flor Silvestre ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Carisma (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Flor Silvestre ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Constitución</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Constitución (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Raíz de Mandrágora ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Constitución (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Raíz de Mandrágora ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Constitución (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Raíz de Mandrágora ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Constitución (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Raíz de Mandrágora ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Destreza</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Destreza (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Raíz de Valeriana ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Destreza (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Raíz de Valeriana ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Destreza (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Raíz de Valeriana ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Destreza (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Raíz de Valeriana ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Fuerza</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Fuerza (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Raíz de Dragón ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Fuerza (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Raíz de Dragón ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Fuerza (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Raíz de Dragón ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Fuerza (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Raíz de Dragón ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Inteligencia</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Inteligencia (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Hongo Arcano ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Inteligencia (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Hongo Arcano ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Inteligencia (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Hongo Arcano ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Inteligencia (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Hongo Arcano ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Maná</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Maná (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Menta Silvestre ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Maná (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Menta Silvestre ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Maná (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Menta Silvestre ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Maná (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Menta Silvestre ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Regen. Vida</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Regen. Vida (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Raíz Común ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Regen. Vida (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Raíz Común ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Regen. Vida (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Raíz Común ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Regen. Vida (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Raíz Común ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Regen. Maná</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Regen. Maná (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Romero de Montaña ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Regen. Maná (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Romero de Montaña ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Regen. Maná (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Romero de Montaña ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Regen. Maná (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Romero de Montaña ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Agua</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Agua (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Agua (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Agua (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Agua (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Hoja de Ortiga ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Arcano</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Arcano (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Hongo Arcano ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Arcano (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Hongo Arcano ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Arcano (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Hongo Arcano ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Arcano (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Hongo Arcano ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Fuego</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Fuego (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Flor de Escarcha ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Fuego (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Flor de Escarcha ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Fuego (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Flor de Escarcha ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Fuego (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Flor de Escarcha ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Oscuro</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Oscuro (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Loto Negro ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Oscuro (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Loto Negro ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Oscuro (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Loto Negro ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Oscuro (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Loto Negro ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Sagrado</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Sagrado (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Flor Silvestre ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Sagrado (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Flor Silvestre ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Sagrado (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Flor Silvestre ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Sagrado (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Flor Silvestre ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Tierra</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Tierra (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Raíz Común ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Tierra (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Raíz Común ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Tierra (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Raíz Común ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Tierra (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Raíz Común ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Resist. Viento</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Resist. Viento (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Flor Silvestre ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Resist. Viento (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Flor Silvestre ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Resist. Viento (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Flor Silvestre ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Resist. Viento (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Flor Silvestre ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Velocidad</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Velocidad (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Velocidad (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Velocidad (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Hoja de Ortiga ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Velocidad (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Hoja de Ortiga ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>📊 Vida</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>5</td><td>Pergamino de Vida (Básico)</td><td>Pergamino Simple ×1, Tinta Magica Basica ×1, Hierba Curativa ×2</td></tr>
+<tr><td>30</td><td>Pergamino de Vida (Medio)</td><td>Pergamino Simple ×1, Tinta Magica Media ×1, Hierba Curativa ×2</td></tr>
+<tr><td>70</td><td>Pergamino de Vida (Gran)</td><td>Pergamino Simple ×1, Tinta Magica Gran Calidad ×1, Hierba Curativa ×2</td></tr>
+<tr><td>110</td><td>Pergamino de Vida (Superior)</td><td>Pergamino Simple ×1, Tinta Magica Superior ×1, Hierba Curativa ×2</td></tr>
+</tbody></table>
+</div></details>
+</div></details>
+<details class="nested"><summary>🌀 Pergaminos de Teletransporte (2)</summary><div class="inner">
+<details class="subnested"><summary>🌀 Pergamino de Teletransporte a la Ciudadela</summary><div class="inner">
+<p><strong>Nivel:</strong> 20 · <strong>Ingredientes:</strong> Pergamino Vacío ×1, Esencia Mágica ×3, Tinta Magica Basica ×1</p>
+</div></details>
+<details class="subnested"><summary>🌀 Pergamino de Teletransporte al Refugio de la Ceniza</summary><div class="inner">
+<p><strong>Nivel:</strong> 40 · <strong>Ingredientes:</strong> Pergamino Vacío ×1, Esencia Concentrada ×3, Tinta Magica Basica ×1</p>
+</div></details>
+</div></details>
+<details class="nested"><summary>🗿 Runas equipables (12)</summary><div class="inner">
+<p>3 tipos × 4 tiers. Se equipan en Prestigio, Calamidad o Milagro.</p>
+<details class="subnested"><summary>🗿 Runa de Calamidad</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Runa de Calamidad Menor</td><td>Tinta Imbuida Calamidad Menor ×1, Pergamino Simple ×1</td></tr>
+<tr><td>70</td><td>Runa de Calamidad Media</td><td>Tinta Imbuida Calamidad Media ×2, Placa Arcana ×1</td></tr>
+<tr><td>110</td><td>Runa de Calamidad Mayor</td><td>Tinta Imbuida Calamidad Mayor ×3, Cristal Arcano ×1</td></tr>
+<tr><td>150</td><td>Runa de Calamidad Superior</td><td>Tinta Imbuida Calamidad Superior ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>🗿 Runa de Milagro</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Runa de Milagro Menor</td><td>Tinta Imbuida Milagro Menor ×1, Pergamino Simple ×1</td></tr>
+<tr><td>70</td><td>Runa de Milagro Media</td><td>Tinta Imbuida Milagro Media ×2, Placa Arcana ×1</td></tr>
+<tr><td>110</td><td>Runa de Milagro Mayor</td><td>Tinta Imbuida Milagro Mayor ×3, Cristal Arcano ×1</td></tr>
+<tr><td>150</td><td>Runa de Milagro Superior</td><td>Tinta Imbuida Milagro Superior ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>🗿 Runa de Prestigio</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Runa de Prestigio Menor</td><td>Tinta Imbuida Prestigio Menor ×1, Pergamino Simple ×1</td></tr>
+<tr><td>70</td><td>Runa de Prestigio Media</td><td>Tinta Imbuida Prestigio Media ×2, Placa Arcana ×1</td></tr>
+<tr><td>110</td><td>Runa de Prestigio Mayor</td><td>Tinta Imbuida Prestigio Mayor ×3, Cristal Arcano ×1</td></tr>
+<tr><td>150</td><td>Runa de Prestigio Superior</td><td>Tinta Imbuida Prestigio Superior ×5, Cristal Arcano Superior ×1, Esencia Primordial ×1</td></tr>
+</tbody></table>
+</div></details>
+</div></details>
+<details class="nested"><summary>🔮 Marcas consumibles (12)</summary><div class="inner">
+<p>Se aplican con <code>/usar_marca_&lt;id&gt;__&lt;uid&gt;</code> sobre una runa equipada.</p>
+<details class="subnested"><summary>🔮 Marca de Calamidad</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Marca de Calamidad Menor</td><td>Tinta Imbuida Calamidad Menor ×1, Esencia Oscura ×1, Belladona ×2</td></tr>
+<tr><td>70</td><td>Marca de Calamidad Media</td><td>Tinta Imbuida Calamidad Media ×1, Colmillo Oscuro ×1, Belladona ×2</td></tr>
+<tr><td>110</td><td>Marca de Calamidad Mayor</td><td>Tinta Imbuida Calamidad Mayor ×1, Núcleo Oscuro ×1, Belladona ×2</td></tr>
+<tr><td>150</td><td>Marca de Calamidad Superior</td><td>Tinta Imbuida Calamidad Superior ×1, Sangre de Dragón ×1, Belladona ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>🔮 Marca de Milagro</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Marca de Milagro Menor</td><td>Tinta Imbuida Milagro Menor ×1, Esencia Arcana ×1, Flor Silvestre ×2</td></tr>
+<tr><td>70</td><td>Marca de Milagro Media</td><td>Tinta Imbuida Milagro Media ×1, Pluma de Fénix ×1, Flor Silvestre ×2</td></tr>
+<tr><td>110</td><td>Marca de Milagro Mayor</td><td>Tinta Imbuida Milagro Mayor ×1, Ceniza de Fénix ×1, Flor Silvestre ×2</td></tr>
+<tr><td>150</td><td>Marca de Milagro Superior</td><td>Tinta Imbuida Milagro Superior ×1, Esencia Primordial ×1, Flor Silvestre ×2</td></tr>
+</tbody></table>
+</div></details>
+<details class="subnested"><summary>🔮 Marca de Prestigio</summary><div class="inner">
+<table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th></tr></thead><tbody>
+<tr><td>30</td><td>Marca de Prestigio Menor</td><td>Tinta Imbuida Prestigio Menor ×1, Cristal Arcano ×1, Raíz Común ×2</td></tr>
+<tr><td>70</td><td>Marca de Prestigio Media</td><td>Tinta Imbuida Prestigio Media ×1, Fragmento Dorado ×1, Raíz Común ×2</td></tr>
+<tr><td>110</td><td>Marca de Prestigio Mayor</td><td>Tinta Imbuida Prestigio Mayor ×1, Moneda de Oro Antigua ×1, Raíz Común ×2</td></tr>
+<tr><td>150</td><td>Marca de Prestigio Superior</td><td>Tinta Imbuida Prestigio Superior ×1, Corona Olvidada ×1, Raíz Común ×2</td></tr>
+</tbody></table>
+</div></details>
+</div></details>
+</div>
+</details>
+
 <details class=""><summary>Joyería</summary><div class="inner"><p><strong>52 recetas disponibles.</strong></p><table><thead><tr><th>Nv</th><th>Receta</th><th>Ingredientes</th><th>Produce</th></tr></thead><tbody>
 <tr><td>1</td><td>Anillo de Hierro con Cuarzo</td><td>Lingote Hierro ×1, Cuarzo ×1</td><td>Anillo de Hierro con Cuarzo</td></tr>
 <tr><td>1</td><td>Amuleto de Hierro con Cuarzo</td><td>Lingote Hierro ×2, Cuarzo ×1, Esencia Mágica ×1</td><td>Amuleto de Hierro con Cuarzo</td></tr>
@@ -834,11 +1255,9 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <div class="callout warn"><p>⚠️ <strong>Nota sobre acumulación:</strong> en el Bosque, las zonas 1 a 4 <strong>comparten sus criaturas</strong> — si estás en la zona 3 también podés encontrarte mobs de las zonas 1 y 2. La <strong>zona 5 (Claro Prohibido) es la excepción</strong>: solo tiene sus 3 criaturas exclusivas.</p></div>
 <h3 id="s6-bosque">🌳 Bosque del Alba</h3>
 <p>Al norte de la Ciudadela. Dividido en 5 zonas concéntricas. En las zonas 1, 2, 3 y 5 <strong>no hay minerales</strong> — la única zona del bosque con minería es la 4 (Corazón Rocoso).</p>
-<div class="zone-header">
-<h4>Zona 1 — Claros del Alba</h4>
+<details class="nested"><summary>🌳 Zona 1 — Claros del Alba</summary><div class="inner">
 <p><strong>Nivel:</strong> 1-5 · <strong>Peligro:</strong> 🟢 Muy bajo · <strong>Nodos:</strong> 16</p>
 <p class="horario">Nodos: n1_0, n1_1, n1_10, n1_11, n1_12, n1_13, n1_14, n1_15, n1_2, n1_3, n1_4, n1_5, n1_6, n1_7, n1_8, n1_9</p>
-</div>
 <div class="activities">
 <div class="activity no">⛏️ Minar ❌</div>
 <div class="activity ">🪓 Talar ✅</div>
@@ -887,11 +1306,10 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
 <tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
 </tbody></table></div></details>
-<div class="zone-header">
-<h4>Zona 2 — Maleza Espinosa</h4>
+</div></details>
+<details class="nested"><summary>🌳 Zona 2 — Maleza Espinosa</summary><div class="inner">
 <p><strong>Nivel:</strong> 5-15 · <strong>Peligro:</strong> 🟢 Bajo · <strong>Nodos:</strong> 12</p>
 <p class="horario">Nodos: n2_0, n2_1, n2_10, n2_11, n2_2, n2_3, n2_4, n2_5, n2_6, n2_7, n2_8, n2_9</p>
-</div>
 <div class="activities">
 <div class="activity no">⛏️ Minar ❌</div>
 <div class="activity ">🪓 Talar ✅</div>
@@ -931,12 +1349,12 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
 <tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
 <tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
 <tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
 <tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">⚪ Slime del Bosque</span><span class="mob-meta">Rango F</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>base</td><td>98</td><td>16</td><td>—</td><td>Gelatina de Slime (85%), Núcleo Brillante (55%)</td></tr>
 <tr><td>acido</td><td>89</td><td>18</td><td>—</td><td>Gelatina de Slime (85%), Baba Ácida (40%)</td></tr>
@@ -949,11 +1367,10 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
 <tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
 </tbody></table></div></details>
-<div class="zone-header">
-<h4>Zona 3 — Arboleda de los Colmillos</h4>
+</div></details>
+<details class="nested"><summary>🌳 Zona 3 — Arboleda de los Colmillos</summary><div class="inner">
 <p><strong>Nivel:</strong> 15-35 · <strong>Peligro:</strong> 🟡 Medio · <strong>Nodos:</strong> 8</p>
 <p class="horario">Nodos: n3_0, n3_1, n3_2, n3_3, n3_4, n3_5, n3_6, n3_7</p>
-</div>
 <div class="activities">
 <div class="activity no">⛏️ Minar ❌</div>
 <div class="activity ">🪓 Talar ✅</div>
@@ -993,18 +1410,18 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
 <tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
 <tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
 <tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
 <tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🟪 Hobgoblin Escolta</span><span class="mob-meta">Rango C+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>capitan</td><td>216</td><td>47</td><td>—</td><td>Lanza Hobgoblin (15%)</td></tr>
 <tr><td>guardia_real</td><td>240</td><td>43</td><td>—</td><td>Escudo Agrietado (20%)</td></tr>
 <tr><td>estratega</td><td>204</td><td>52</td><td>—</td><td>Mapa de Tácticas (8%)</td></tr>
 <tr><td>berserker</td><td>222</td><td>55</td><td>—</td><td>Brazaletes de Sangre (6%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Jabalí Furioso</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>cargador</td><td>195</td><td>43</td><td>—</td><td>Colmillo de Jabalí (40%), Carne Cruda (70%)</td></tr>
 <tr><td>colmillo_blanco</td><td>192</td><td>49</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo Perforante (8%), Carne Cruda (70%)</td></tr>
@@ -1023,11 +1440,10 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
 <tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
 </tbody></table></div></details>
-<div class="zone-header">
-<h4>Zona 4 — Corazón Rocoso</h4>
+</div></details>
+<details class="nested"><summary>🌳 Zona 4 — Corazón Rocoso</summary><div class="inner">
 <p><strong>Nivel:</strong> 35-55 · <strong>Peligro:</strong> 🟠 Alto · <strong>Nodos:</strong> 4</p>
 <p class="horario">Nodos: n4_0, n4_1, n4_2, n4_3</p>
-</div>
 <div class="activities">
 <div class="activity ">⛏️ Minar ✅</div>
 <div class="activity no">🪓 Talar ❌</div>
@@ -1065,18 +1481,18 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>maestro_maldiciones</td><td>135</td><td>40</td><td>—</td><td>Amuleto de Chamán (12%)</td></tr>
 <tr><td>maestro_venenos</td><td>147</td><td>41</td><td>🌙 Noche</td><td>Veneno de Chamán (15%)</td></tr>
 <tr><td>jefe_chaman</td><td>183</td><td>57</td><td>—</td><td>Amuleto de Chamán (20%), Veneno de Chamán (25%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🔵 Goblin Rastrero</span><span class="mob-meta">Rango D</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>acechador</td><td>118</td><td>32</td><td>—</td><td>Daga Oxidada (20%)</td></tr>
 <tr><td>bruto</td><td>130</td><td>38</td><td>—</td><td>Maza Goblin (25%)</td></tr>
 <tr><td>explorador</td><td>112</td><td>35</td><td>—</td><td>Cuerda de Tripas (20%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🟪 Hobgoblin Escolta</span><span class="mob-meta">Rango C+</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>capitan</td><td>216</td><td>47</td><td>—</td><td>Lanza Hobgoblin (15%)</td></tr>
 <tr><td>guardia_real</td><td>240</td><td>43</td><td>—</td><td>Escudo Agrietado (20%)</td></tr>
 <tr><td>estratega</td><td>204</td><td>52</td><td>—</td><td>Mapa de Tácticas (8%)</td></tr>
 <tr><td>berserker</td><td>222</td><td>55</td><td>—</td><td>Brazaletes de Sangre (6%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 10% Moneda de Oro Antigua.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🟣 Jabalí Furioso</span><span class="mob-meta">Rango C</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>cargador</td><td>195</td><td>43</td><td>—</td><td>Colmillo de Jabalí (40%), Carne Cruda (70%)</td></tr>
 <tr><td>colmillo_blanco</td><td>192</td><td>49</td><td>—</td><td>Colmillo de Jabalí (35%), Colmillo Perforante (8%), Carne Cruda (70%)</td></tr>
@@ -1107,11 +1523,11 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <tr><td>cazador</td><td>99</td><td>30</td><td>—</td><td>Piel de Zorro (40%), Carne Cruda (30%)</td></tr>
 <tr><td>alfa_mini</td><td>132</td><td>35</td><td>🌙 Noche</td><td>Piel de Zorro (60%), Colmillo de Alfa (15%), Carne Cruda (30%)</td></tr>
 </tbody></table></div></details>
-<div class="zone-header">
-<h4>Zona 5 — Claro Prohibido</h4>
+</div></details>
+<details class="nested"><summary>🌳 Zona 5 — Claro Prohibido</summary><div class="inner">
+
 <p><strong>Nivel:</strong> 55+ · <strong>Peligro:</strong> 💀 Jefe único · <strong>Nodos:</strong> 1</p>
 <p class="horario">Nodos: n5_0</p>
-</div>
 <div class="activities">
 <div class="activity no">⛏️ Minar ❌</div>
 <div class="activity no">🪓 Talar ❌</div>
@@ -1141,13 +1557,15 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 </tbody></table></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">💠 Treant Ancestral</span><span class="mob-meta">Rango S · Jefe único</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>unica</td><td>1530</td><td>132</td><td>—</td><td>Savia Ancestral (40%), Ramas del Tiempo (25%), Fruta Ámbar (20%), Corazón de la Arboleda (8%), Aliento de la Tierra (3%)</td></tr>
-</tbody></table></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 40% Corona Olvidada.</p></div></details>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">🔴 Treant Vigía</span><span class="mob-meta">Rango A</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>guardabosques</td><td>605</td><td>69</td><td>☀️ Día</td><td>Madera de Treant (40%)</td></tr>
 <tr><td>quemado</td><td>614</td><td>72</td><td>—</td><td>Carbón de Treant (15%)</td></tr>
 <tr><td>sabio_antiguo</td><td>596</td><td>81</td><td>—</td><td>Runa de Enraizar (5%)</td></tr>
 <tr><td>castigador</td><td>608</td><td>75</td><td>☀️ Día</td><td>Mazo de Raíces (4%)</td></tr>
 </tbody></table></div></details>
+</div></details>
+
 <h3 id="s6-forja">🌋 Forja de Pyraen</h3>
 <p>Zona volcánica al sur del bosque. A diferencia del bosque, <strong>cada nodo tiene su propia tabla de recursos</strong>. Tocá un anillo para ver sus nodos; tocá un nodo para ver sus recursos.</p>
 <details class="nested"><summary>Zona 1 — Páramos de Ceniza</summary><div class="inner"><p><strong>Rango:</strong> D · <strong>Peligro:</strong> 🟠 Alto · <strong>Nodos:</strong> 16</p>
@@ -1710,7 +2128,7 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 <p><em>Tocá una criatura para ver sus variantes y drops.</em></p>
 <details class=""><summary><span class="mob-summary"><span class="mob-name">✨ Pyraxis, Guardián de la Forja</span><span class="mob-meta">Rango S+ · Jefe único</span></span></summary><div class="inner"><table><thead><tr><th>Variante</th><th>HP</th><th>Daño</th><th>Horario</th><th>Drops</th></tr></thead><tbody>
 <tr><td>unica</td><td>2844</td><td>159</td><td>—</td><td>Escama de Dragón (70%), Sangre de Dragón (50%), Corazón de Fuego (25%), Lágrima de Dragón (15%), Aliento Eterno (10%), Hueso de Dragón (5%), Núcleo del Dragón Eterno (2%)</td></tr>
-</tbody></table></div></details></div></details>
+</tbody></table><p class="drop-extra" style="margin-top:.5rem;font-size:.85rem;color:var(--muted)"><strong>🎁 Drop extra:</strong> 40% Corona Olvidada.</p></div></details></div></details>
 </section>
 <section id="s7"><h2>7. Progresión</h2>
 <h3>Niveles de personaje</h3>
@@ -1768,59 +2186,7 @@ details.subnested summary{font-size:.9rem;padding:.55rem .3rem}
 </section>
 
 <div class="footer">
-Generado el 2026-10-02 · Klurtenias RPG
+Generado el 2026-10-20 · Klurtenias RPG
 </div>
-
-<section id="s8">
-<h2>8. Encantamiento y Runas</h2>
-<p>El sistema de personalización de equipo te permite potenciar tus armas, armaduras y joyas más allá de su rareza base. Se divide en dos grandes mecánicas: <strong>Encantamientos</strong> (profesión de Encantador) y <strong>Runas y Marcas</strong> (Inscripción).</p>
-
-<h3>La Profesión de Encantador</h3>
-<p>El Encantador destruye objetos para obtener materiales místicos y luego los usa para crear pergaminos que aplican bonos permanentes a tu equipo.</p>
-<ol class="steps">
-<li><strong>Desencantar:</strong> Usá <code>/desencantar_&lt;id_item&gt;__&lt;uid&gt;</code> para destruir un ítem y obtener <strong>Polvo Espiritual</strong>, <strong>Esencia Rúnica</strong> o <strong>Fragmento de Vacío</strong> (según la rareza). También podés usar el botón <strong>"🗑️ Desencantar en masa"</strong> en tu menú de Clases de Vida para limpiar todos los ítems comunes, raros o mágicos de una sola vez.</li>
-<li><strong>Craftear:</strong> En la tienda de la Encantadora Lys comprás el <strong>Pergamino de Encantamiento (Vacío)</strong> por 50 de oro. Con ese pergamino + los materiales de desencantar, crafteás encantamientos específicos (ej: <code>/craftear_enc_filo_ardiente_menor</code>).</li>
-<li><strong>Aplicar:</strong> Abrís el <code>/info_&lt;item&gt;</code> de tu equipo, y usás <code>/encantar_&lt;id_pergamino&gt;_en_&lt;id_item&gt;__&lt;uid&gt;</code> para estampar el bono. El ítem mostrará <code>🌟 Encantamiento: &lt;nombre&gt;</code> en su ficha.</li>
-</ol>
-<div class="callout tip">
-<p>💡 <strong>El truco del trade:</strong> Como los ítems no están ligados, un amigo Encantador puede recibir tu espada por trade, aplicarle el encantamiento desde su inventario, y devolvértela lista para usar.</p>
-</div>
-
-<h3>Encantamientos Base (48)</h3>
-<p>Hay 4 tipos de encantamiento por slot (Arma, Armadura y Joyería) y cada uno tiene 4 calidades (Menor, Media, Mayor, Superior). A mayor calidad, mayor el bono.</p>
-<ul>
-<li><strong>Armas:</strong> Filo Elemental (Fuego/Agua/Viento), Sello Vampírico.</li>
-<li><strong>Armaduras:</strong> Piel de Titán (HP), Coraza de Dragón (Defensa), Piel Elemental (Defensiva reactiva).</li>
-<li><strong>Joyería:</strong> Sabiduría/Fuerza (Stats), Codicia (Oro), Aprendiz (XP).</li>
-</ul>
-
-<h3>Encantamientos Únicos (12)</h3>
-<p>Son encantamientos legendarios de nivel 150 que no se pueden comprar con oro; se craftean con <strong>Fragmentos de Vacío</strong> (obtenidos de desencantar ítems épicos/legendarios).</p>
-<ul>
-<li><strong>Eco de Sombras:</strong> 15% de hacer un segundo ataque básico (50% del daño).</li>
-<li><strong>Instinto de Pyraen:</strong> Al hacer crítico, ganás +20% Velocidad de Ataque.</li>
-<li><strong>Fervor de Aeternus:</strong> Chance de curarte y darte +10% de tu stat principal al atacar.</li>
-<li><strong>Puntería del Cazador:</strong> Chance de ignorar la defensa del enemigo (solo Exploradores).</li>
-<li><strong>Furia de Sangre:</strong> Acumulás cargas de daño al golpear (solo Guerreros).</li>
-<li><strong>Sobrecarga Arcana:</strong> Chance de que tu próximo hechizo sea gratis y crítico (solo Magos).</li>
-<li><strong>Égida del Vacío:</strong> Empezás el combate con un escudo del 15% de tu HP.</li>
-<li><strong>Yunque Eterno:</strong> Inmunidad total a Aturdimiento y Derribo.</li>
-<li><strong>Corazón de Titán:</strong> Chance de regenerar HP y defensa al recibir golpes.</li>
-<li><strong>Sello de Sangre:</strong> Los críticos te curan un 10% del daño infligido.</li>
-<li><strong>Prisa Arcana:</strong> Reduce el cooldown de tus habilidades en 1 turno.</li>
-<li><strong>Aliento de Nymara:</strong> Recuperás maná con cada ataque básico.</li>
-</ul>
-
-<h3>Runas y Marcas (Inscripción)</h3>
-<p>Las runas son equipables que se colocan en tres slots especiales: <strong>Prestigio, Calamidad y Milagro</strong>. Al craftearlas, tiran bonos aleatorios según su tipo y calidad. Las <strong>Marcas</strong> se aplican encima de una runa equipada usando <code>/usar_marca_&lt;id&gt;__&lt;uid&gt;</code>, reemplazando la marca anterior.</p>
-
-<h3>Pergaminos de Re-encantamiento</h3>
-<p>Si no te gustaron los encantamientos (skills) que salieron en tu equipo, podés cambiarlos. Abrís el <code>/info_&lt;item&gt;</code> y verás botones de re-encantamiento <em>(si tenés los pergaminos en tu inventario)</em>:</p>
-<ul>
-<li><strong>🔮 Total:</strong> Vuelve a tirar TODOS los encantamientos del ítem.</li>
-<li><strong>🎯 Parcial:</strong> Elegís UN encantamiento específico para cambiar.</li>
-<li><strong>⚔️ / 🛡️ / 💚 / ⚡ DPS/TNK/SPT/UTL:</strong> Igual que el Parcial, pero asegura que el nuevo encantamiento sea de la categoría elegida (Daño, Defensa, Soporte o Utilidad).</li>
-</ul>
-</section>
 
 </main></div></body></html>
